@@ -37,13 +37,13 @@ dependencies:
   cupertino_icons:
 
   # FIREBASE Packages Section
-  firebase_core: 2.5.0 # Firebase Core package required to use other firebase services
-  firebase_auth: 4.2.6  # Used to Authenticate User Account (e.g. Sign in with Phone number, etc..)
-  cloud_firestore: 4.3.2 # Used to Save User Data in Database
-  firebase_messaging: 14.2.2 # Used to Send Push Notifications (e.g. New like, Visit and Message)
-  firebase_storage: 11.0.11 # Used to Save User Profile Images on Cloud Storage    
-  google_mobile_ads: 2.3.0 # Used to Show Admob Ads in App (e.g. Banner Ads, Interstitial Ads (full screen), Native Ads and Rewarded Video Ads)
-  # END 
+  firebase_core: ^2.5.0 # Firebase Core package required to use other firebase services
+  firebase_auth: ^4.2.6  # Used to Authenticate User Account (e.g. Sign in with Phone number, etc..)
+  cloud_firestore: ^4.4.0 # Used to Save User Data in Database
+  firebase_messaging: ^14.2.2 # Used to Send Push Notifications (e.g. New like, Visit and Message)
+  firebase_storage: ^11.0.11 # Used to Save User Profile Images on Cloud Storage    
+  google_mobile_ads: ^2.3.0 # Used to Show Admob Ads in App (e.g. Banner Ads, Interstitial Ads (full screen), Native Ads and Rewarded Video Ads)
+
 
   in_app_purchase: 3.1.1 # This plugin help us to Sell VIP Subscription Plans in app
   flutter_svg: 1.1.6 # This plugin help us to use custom svg icons          
