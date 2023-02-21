@@ -18,7 +18,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
-// checking push premissions
+// hellooo world
   // Initialized before calling runApp to init firebase app
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -53,6 +53,30 @@ final scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  // App theme
+  ThemeData _appTheme() {
+    return ThemeData(
+      primaryColor: APP_PRIMARY_COLOR,
+      colorScheme: const ColorScheme.light().copyWith(
+          primary: APP_PRIMARY_COLOR,
+          secondary: APP_ACCENT_COLOR,
+          background: APP_PRIMARY_COLOR),
+      scaffoldBackgroundColor: Colors.white,
+      inputDecorationTheme: InputDecorationTheme(
+          errorStyle: const TextStyle(fontSize: 16),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(28),
+          )),
+      appBarTheme: AppBarTheme(
+        color: Colors.white,
+        elevation: Platform.isIOS ? 0 : 4.0,
+        iconTheme: const IconThemeData(color: Colors.black),
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        titleTextStyle: const TextStyle(color: Colors.grey, fontSize: 18),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,30 +116,6 @@ class MyApp extends StatelessWidget {
           home: const SplashScreen(),
           theme: _appTheme(),
         ),
-      ),
-    );
-  }
-
-  // App theme
-  ThemeData _appTheme() {
-    return ThemeData(
-      primaryColor: APP_PRIMARY_COLOR,
-      colorScheme: const ColorScheme.light().copyWith(
-          primary: APP_PRIMARY_COLOR,
-          secondary: APP_ACCENT_COLOR,
-          background: APP_PRIMARY_COLOR),
-      scaffoldBackgroundColor: Colors.white,
-      inputDecorationTheme: InputDecorationTheme(
-          errorStyle: const TextStyle(fontSize: 16),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(28),
-          )),
-      appBarTheme: AppBarTheme(
-        color: Colors.white,
-        elevation: Platform.isIOS ? 0 : 4.0,
-        iconTheme: const IconThemeData(color: Colors.black),
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
-        titleTextStyle: const TextStyle(color: Colors.grey, fontSize: 18),
       ),
     );
   }
