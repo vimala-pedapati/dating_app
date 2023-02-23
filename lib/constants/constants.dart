@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 /// APP SETINGS INFO CONSTANTS - SECTION ///
 ///
 const String APP_NAME = "Flutter Dating App";
-const Color APP_PRIMARY_COLOR = Colors.pink; 
-const Color APP_ACCENT_COLOR = Colors.pinkAccent;
+const Color APP_PRIMARY_COLOR = Color(0xfffff67a3d9);
+const Color APP_ACCENT_COLOR = Color(0xfffff6d2e0);
 const String APP_VERSION_NAME = "Android v1.0.0 & iOS v1.0.0";
 const int ANDROID_APP_VERSION_NUMBER = 1; // Google Play Version Number
 const int IOS_APP_VERSION_NUMBER = 1; // App Store Version Number
-// 
+//
 // Add Google Maps - API KEY required for Passport feature
-// 
+//
 const String ANDROID_MAPS_API_KEY = "YOUR ANDROID API KEY";
 const String IOS_MAPS_API_KEY = "YOUR IOS API KEY";
 //
@@ -31,13 +31,13 @@ const String IOS_INTERSTITIAL_ID = "YOUR iOS AD ID";
 const List<Locale> SUPPORTED_LOCALES = [
   Locale('en'),
 ];
+
 ///
 /// END APP SETINGS - SECTION
 
-
-/// 
+///
 /// DATABASE COLLECTIONS FIELD - SECTION
-/// 
+///
 /// FIREBASE MESSAGING TOPIC
 const NOTIFY_USERS = "NOTIFY_USERS";
 
