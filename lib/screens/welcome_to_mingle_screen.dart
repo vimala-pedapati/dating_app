@@ -20,7 +20,7 @@ class _WelcomeScreenMingleState extends State<WelcomeScreenMingle> {
     APP_ACCENT_COLOR,
     APP_PRIMARY_COLOR,
   ];
-  final List<double> _stops = [0.0, 0.7];
+
   @override
   Widget build(BuildContext context) {
     /// Initialization
@@ -48,16 +48,25 @@ class _WelcomeScreenMingleState extends State<WelcomeScreenMingle> {
         child: Container(
           height: MediaQuery.of(context).size.height * 0.5,
           decoration: BoxDecoration(
-              gradient: LinearGradient(begin: Alignment.bottomRight, colors: [
-            Theme.of(context).primaryColor,
-            Colors.black.withOpacity(.4)
-          ])),
+              gradient: LinearGradient(
+            colors: _colors,
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+            stops: const [0.4, 0.7],
+            tileMode: TileMode.repeated,
+          )
+              // image: DecorationImage(
+              //     image: AssetImage("assets/images/background_image.jpg"),
+              //     fit: BoxFit.cover,
+              //     repeat: ImageRepeat.noRepeat),
+              ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+
               /// App logo
               const SizedBox(height: 250, width: 200, child: AppLogo()),
-              const SizedBox(height: 10),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
 
               /// App name
               // const Text(APP_NAME,
@@ -68,10 +77,11 @@ class _WelcomeScreenMingleState extends State<WelcomeScreenMingle> {
 
               const Text("Get ready to Mingle! ",
                   style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 24,
+                      fontFamily: 'Inter',
                       fontWeight: FontWeight.bold,
                       color: Colors.white)),
-              const SizedBox(height: 10),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
 
               // Text(_i18n.translate("welcome_back"),
               //     textAlign: TextAlign.center,
@@ -83,7 +93,7 @@ class _WelcomeScreenMingleState extends State<WelcomeScreenMingle> {
               //     textAlign: TextAlign.center,
               //     style: const TextStyle(fontSize: 18, color: Colors.white)),
 
-              // const SizedBox(height: 50),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
               InkWell(
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -94,7 +104,7 @@ class _WelcomeScreenMingleState extends State<WelcomeScreenMingle> {
                   height: 50.0,
                   width: 200,
                   decoration: BoxDecoration(
-                    color: Colors.white60,
+                    color: Colors.white24,
                     border: Border.all(color: Colors.white, width: 2.0),
                     borderRadius: BorderRadius.circular(10.0),
                   ),

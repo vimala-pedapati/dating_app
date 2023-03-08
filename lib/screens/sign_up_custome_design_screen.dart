@@ -1,6 +1,7 @@
-import 'package:dating_app/screens/phone_number_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
+import '../api/google_signin_api.dart';
 import '../helpers/app_localizations.dart';
 import '../widgets/app_logo.dart';
 import '../widgets/default_button.dart';
@@ -41,33 +42,13 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
             children: <Widget>[
               /// App logo
               const SizedBox(height: 250, width: 200, child: AppLogo()),
-              const SizedBox(height: 10),
-
-              /// App name
-              // const Text(APP_NAME,
-              //     style: TextStyle(
-              //         fontSize: 22,
-              //         fontWeight: FontWeight.bold,
-              //         color: Colors.white)),
 
               const Text("Sign up to continue ",
                   style: TextStyle(
                       fontSize: 22,
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w400,
                       color: Colors.black)),
-              const SizedBox(height: 10),
 
-              // Text(_i18n.translate("welcome_back"),
-              //     textAlign: TextAlign.center,
-              //     style: const TextStyle(fontSize: 18, color: Colors.white)),
-
-              // const SizedBox(height: 10),
-
-              // Text(_i18n.translate("app_short_description"),
-              //     textAlign: TextAlign.center,
-              //     style: const TextStyle(fontSize: 18, color: Colors.white)),
-
-              // const SizedBox(height: 50),
               InkWell(
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -91,77 +72,146 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
                 ),
               ),
 
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const SignUpScreenCostom()));
-                },
-                child: Container(
-                  //width: 100.0,
-                  height: 50.0,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.white60,
-                    border: Border.all(color: Colors.grey, width: 2.0),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'Sign In',
-                      style: TextStyle(fontSize: 18.0, color: Colors.black),
-                    ),
-                  ),
-                ),
-              ),
-               InkWell(
-                onTap: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const SignUpScreenCostom()));
-                },
-                child: Container(
-                  //width: 100.0,
-                  height: 50.0,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.white60,
-                    border: Border.all(color: Colors.white, width: 2.0),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'Sign In',
-                      style: TextStyle(fontSize: 18.0, color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
               // Sign in with Phone Number
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: SizedBox(
                   width: double.maxFinite,
                   child: DefaultButton(
-                    child: Text(_i18n.translate("sign_in_with_phone_number"),
+                    child: Text(_i18n.translate("Continue_with_email"),
                         style: const TextStyle(fontSize: 18)),
                     onPressed: () {
                       /// Go to phone number screen
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const PhoneNumberScreen()));
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //     builder: (context) => const PhoneNumberScreen()));
                     },
                   ),
                 ),
               ),
-              const SizedBox(height: 15),
-
-              //Terms of Service section
-              Text(
-                _i18n.translate("by_tapping_log_in_you_agree_with_our"),
-                style: const TextStyle(
-                    color: Colors.white, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
+              const SizedBox(
+                height: 20,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const SignUpScreenCostom()));
+                },
+                child: Container(
+                  //width: 100.0,
+                  height: 50.0,
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  decoration: BoxDecoration(
+                    color: Colors.white60,
+                    border: Border.all(color: Colors.grey, width: 2.0),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Center(
+                    child: Text(
+                      _i18n.translate("sign_in_with_phone_number"),
+                      style:
+                          const TextStyle(fontSize: 18.0, color: Colors.grey),
+                    ),
+                  ),
+                ),
               ),
               const SizedBox(
-                height: 7,
+                height: 80,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 40.0, right: 40),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      height: 1,
+                      width: 100,
+                      color: Colors.grey,
+                    ),
+                    const Text(
+                      "or sign up \nwith",
+                      textAlign: TextAlign.center,
+                    ),
+                    Container(
+                      height: 1,
+                      width: 100,
+                      color: Colors.grey,
+                    )
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white60,
+                      border: Border.all(color: Colors.grey, width: 2.0),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: SvgPicture.asset(
+                          "assets/icons/facebook_icon.svg",
+                        )),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white60,
+                      border: Border.all(color: Colors.grey, width: 2.0),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: SvgPicture.asset(
+                          "assets/icons/facebook_icon.svg",
+                        )),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      // google signin button
+                      Authentication.signInWithGoogle(context: context);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white60,
+                        border: Border.all(color: Colors.grey, width: 2.0),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: SvgPicture.asset(
+                            "assets/icons/facebook_icon.svg",
+                          )),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 80,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  //Terms of Service section
+                  Text(
+                    _i18n.translate("Terms_of_use"),
+                    style: const TextStyle(
+                        color: Colors.grey, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    _i18n.translate("Privacy_Policy"),
+                    style: const TextStyle(
+                        color: Colors.grey, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 7,
+                  ),
+                ],
               ),
               TermsOfServiceRow(),
 

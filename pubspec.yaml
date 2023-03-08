@@ -37,7 +37,7 @@ dependencies:
   cupertino_icons:
 
   # FIREBASE Packages Section
-  firebase_core: ^2.7.0 # Firebase Core package required to use other firebase services
+  firebase_core: ^2.7.1 # Firebase Core package required to use other firebase services
   firebase_auth: ^4.2.9  # Used to Authenticate User Account (e.g. Sign in with Phone number, etc..)
   cloud_firestore: ^4.4.0 # Used to Save User Data in Database
   firebase_messaging: ^14.2.2 # Used to Send Push Notifications (e.g. New like, Visit and Message)
