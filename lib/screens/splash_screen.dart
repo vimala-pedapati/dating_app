@@ -2,17 +2,15 @@ import 'dart:io';
 
 import 'package:dating_app/screens/blocked_account_screen.dart';
 import 'package:dating_app/screens/update_location_sceen.dart';
+import 'package:dating_app/screens/welcome_to_mingle_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:dating_app/constants/constants.dart';
 import 'package:dating_app/helpers/app_localizations.dart';
 import 'package:dating_app/helpers/app_helper.dart';
 import 'package:dating_app/screens/update_app_screen.dart';
-import 'package:dating_app/widgets/app_logo.dart';
-import 'package:dating_app/widgets/my_circular_progress.dart';
 import 'package:dating_app/models/user_model.dart';
 import 'package:dating_app/screens/home_screen.dart';
 import 'package:dating_app/screens/sign_up_screen.dart';
-import 'package:dating_app/screens/sign_in_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -25,6 +23,11 @@ class _SplashScreenState extends State<SplashScreen> {
   // Variables
   final AppHelper _appHelper = AppHelper();
   late AppLocalizations _i18n;
+  final List<Color> _colors = [
+    APP_ACCENT_COLOR,
+    APP_PRIMARY_COLOR,
+  ];
+  final List<double> _stops = [0.0, 0.7];
 
   /// Navigate to next page
   void _nextScreen(screen) {
@@ -60,8 +63,9 @@ class _SplashScreenState extends State<SplashScreen> {
       } else {
         /// Authenticate User Account
         UserModel().authUserAccount(
-            updateLocationScreen: () => _nextScreen(const UpdateLocationScreen()),
-            signInScreen: () => _nextScreen(const SignInScreen()),
+            updateLocationScreen: () =>
+                _nextScreen(const UpdateLocationScreen()),
+            signInScreen: () => _nextScreen(const WelcomeScreenMingle()),
             signUpScreen: () => _nextScreen(const SignUpScreen()),
             homeScreen: () => _nextScreen(const HomeScreen()),
             blockedScreen: () => _nextScreen(const BlockedAccountScreen()));
@@ -78,22 +82,34 @@ class _SplashScreenState extends State<SplashScreen> {
           color: Colors.white,
           child: Center(
             child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const AppLogo(),
-                  const SizedBox(height: 10),
-                  const Text(APP_NAME,
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 5),
-                  Text(_i18n.translate("app_short_description"),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 18, color: Colors.grey)),
-                  const SizedBox(height: 20),
-                  const MyCircularProgress()
-                ],
-              ),
+              child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                    colors: _colors,
+                    begin: Alignment.bottomLeft,
+                    end: Alignment.topRight,
+                    stops: const [0.4, 0.7],
+                    tileMode: TileMode.repeated,
+                  )),
+                  child: Image.asset("assets/icons/logo_name_png.png")),
+              // child: Column(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: <Widget>[
+              //     const AppLogo(),
+              //     const SizedBox(height: 10),
+              //     const Text(APP_NAME,
+              //         style:
+              //             TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+              //     const SizedBox(height: 5),
+              //     Text(_i18n.translate("app_short_description"),
+              //         textAlign: TextAlign.center,
+              //         style: const TextStyle(fontSize: 18, color: Colors.grey)),
+              //     const SizedBox(height: 20),
+              //     const MyCircularProgress()
+              //   ],
+              // ),
             ),
           ),
         ),

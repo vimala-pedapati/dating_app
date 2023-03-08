@@ -9,10 +9,13 @@ class AppLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CircleAvatar(
-      backgroundImage: AssetImage('assets/images/app_logo.png'),
-      radius: 120,
+    return Container(
+      child: Image.asset("assets/icons/logo_name_png.png"),
     );
+    // return const CircleAvatar(
+    //   backgroundImage: AssetImage('assets/icons/logo_name_png.png'),
+    //   radius: 120,
+    // );
     // return CircleAvatar(
     //   child: Image.asset("assets/images/app_logo.png",
     //       width: width ?? 120, height: height ?? 120),
