@@ -56,7 +56,7 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
                 },
                 child: Container(
                   //width: 100.0,
-                  height: 50.0,
+                  height: 70.0,
                   width: 200,
                   decoration: BoxDecoration(
                     color: Colors.white60,
@@ -154,18 +154,6 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
                           "assets/icons/facebook_icon.svg",
                         )),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white60,
-                      border: Border.all(color: Colors.grey, width: 2.0),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: SvgPicture.asset(
-                          "assets/icons/facebook_icon.svg",
-                        )),
-                  ),
                   InkWell(
                     onTap: () {
                       // google signin button
@@ -180,10 +168,22 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
                       child: Padding(
                           padding: const EdgeInsets.all(10),
                           child: SvgPicture.asset(
-                            "assets/icons/facebook_icon.svg",
+                            "assets/icons/google_icon_bw.svg",
                           )),
                     ),
-                  )
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white60,
+                      border: Border.all(color: Colors.grey, width: 2.0),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: SvgPicture.asset(
+                          "assets/icons/apple_icon_bw.svg",
+                        )),
+                  ),
                 ],
               ),
               const SizedBox(

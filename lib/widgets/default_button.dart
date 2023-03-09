@@ -44,8 +44,8 @@ class DefaultButton extends StatelessWidget {
         Container(
       decoration: BoxDecoration(
         boxShadow: const [
-          BoxShadow(
-              color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)
+          // BoxShadow(
+          //     color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)
         ],
         gradient: const LinearGradient(
           begin: Alignment(-1.0, -1),
