@@ -64,6 +64,6 @@ class DefaultFirebaseOptions {
     projectId: 'datingapp-f7b21',
     storageBucket: 'datingapp-f7b21.appspot.com',
     iosClientId: '992757822483-c6e0kemk444i06l6epkn4f16frq23mr5.apps.googleusercontent.com',
-    iosBundleId: 'com.company.appname',
+    iosBundleId: 'com.prabhatech.mingle',
   );
 }

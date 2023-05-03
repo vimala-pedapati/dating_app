@@ -85,6 +85,7 @@ class _SignInScreenState extends State<SignInScreen> {
               // const SizedBox(height: 50),
               InkWell(
                 onTap: () {
+                  debugPrint("sign in pressed");
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => const SignInScreen()));
                 },
