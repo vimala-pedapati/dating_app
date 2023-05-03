@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>992757822483-c6e0kemk444i06l6epkn4f16frq23mr5.apps.googleusercontent.com</string>
+	<string>992757822483-i5sdmdr8l8p55306ad17iadbpkbjrpat.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.992757822483-c6e0kemk444i06l6epkn4f16frq23mr5</string>
+	<string>com.googleusercontent.apps.992757822483-i5sdmdr8l8p55306ad17iadbpkbjrpat</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>992757822483-89doedg7amjhi4pm36vrersp08lm80cs.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBQIFtCFwgjD9nqgSG-DRTf2uBnWpILshU</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.company.appname</string>
+	<string>com.prabhatech.mingle</string>
 	<key>PROJECT_ID</key>
 	<string>datingapp-f7b21</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:992757822483:ios:a2bb0d608814a8ce533be6</string>
+	<string>1:992757822483:ios:156eb280da02b770533be6</string>
 </dict>
 </plist>
