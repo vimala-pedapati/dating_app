@@ -51,6 +51,7 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
                         fontWeight: FontWeight.w400,
                         color: Colors.black)),
 
+
                 InkWell(
                   onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -70,9 +71,30 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
                         'Sign In',
                         style: TextStyle(fontSize: 18.0, color: Colors.white),
                       ),
+                    )),),
+// =======
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const SignUpScreenCostom()));
+                },
+                child: Container(
+                  //width: 100.0,
+                  height: 70.0,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.white60,
+                    border: Border.all(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Sign In',
+                      style: TextStyle(fontSize: 18.0, color: Colors.white),
+// >>>>>>> f424c9835909786e5ce4dfcea63485c12817acd1
                     ),
                   ),
-                ),
+                ),),
 
                 // Sign in with Phone Number
                 Padding(
@@ -214,6 +236,7 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
                           color: Colors.grey, fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
+// <<<<<<< HEAD
                     const SizedBox(
                       width: 30,
                     ),
@@ -229,6 +252,73 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
                   ],
                 ),
                 TermsOfServiceRow(),
+// =======
+            Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: SvgPicture.asset(
+                          "assets/icons/facebook_icon.svg",
+                        )),
+
+                  InkWell(
+                    onTap: () {
+                      // google signin button
+                      Authentication.signInWithGoogle(context: context);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white60,
+                        border: Border.all(color: Colors.grey, width: 2.0),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: SvgPicture.asset(
+                            "assets/icons/google_icon_bw.svg",
+                          )),
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white60,
+                      border: Border.all(color: Colors.grey, width: 2.0),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: SvgPicture.asset(
+                          "assets/icons/apple_icon_bw.svg",
+                        )),
+                  ),
+
+              const SizedBox(
+                height: 80,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  //Terms of Service section
+                  Text(
+                    _i18n.translate("Terms_of_use"),
+                    style: const TextStyle(
+                        color: Colors.grey, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    _i18n.translate("Privacy_Policy"),
+                    style: const TextStyle(
+                        color: Colors.grey, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 7,
+                  ),
+                ],
+              ),
+              TermsOfServiceRow(),
+// >>>>>>> f424c9835909786e5ce4dfcea63485c12817acd1
 
                 const SizedBox(height: 15),
               ],
