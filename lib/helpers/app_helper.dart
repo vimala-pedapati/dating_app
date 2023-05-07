@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-
-import 'package:dating_app/constants/constants.dart';
+ 
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -9,10 +8,13 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/plugins/geoflutterfire/geoflutterfire.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/models/app_model.dart';
 
+import '../constants/constants.dart';
+import '../models/app_model.dart';
+import '../models/user_model.dart';
+import '../plugins/geoflutterfire/src/geoflutterfire.dart';
+import '../plugins/geoflutterfire/src/models/point.dart';
+ 
 class AppHelper {
   /// Local variables
   final _firestore = FirebaseFirestore.instance;

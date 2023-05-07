@@ -1,4 +1,4 @@
-import 'package:dating_app/widgets/svg_icon.dart';
+import 'package:Mingledxb/widgets/svg_icon.dart';
 import 'package:flutter/material.dart';
 
 class NoData extends StatelessWidget {
@@ -7,11 +7,8 @@ class NoData extends StatelessWidget {
   final Widget? icon;
   final String text;
 
-  const NoData(
-      {Key? key, 
-      this.svgName,
-      this.icon,
-      required this.text}) : super(key: key);
+  const NoData({Key? key, this.svgName, this.icon, required this.text})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +16,9 @@ class NoData extends StatelessWidget {
     late Widget _icon;
     // Check svgName
     if (svgName != null) {
-        // Get SVG icon
-        _icon = SvgIcon("assets/icons/$svgName.svg",
-            width: 100, height: 100, color: Theme.of(context).primaryColor);
+      // Get SVG icon
+      _icon = SvgIcon("assets/icons/$svgName.svg",
+          width: 100, height: 100, color: Theme.of(context).primaryColor);
     } else {
       _icon = icon!;
     }
@@ -33,7 +30,8 @@ class NoData extends StatelessWidget {
           // Show icon
           _icon,
           Text(text,
-              style: const TextStyle(fontSize: 18), textAlign: TextAlign.center),
+              style: const TextStyle(fontSize: 18),
+              textAlign: TextAlign.center),
         ],
       ),
     );

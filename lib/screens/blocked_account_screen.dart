@@ -1,6 +1,8 @@
-import 'package:dating_app/models/app_model.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
+ 
 import 'package:flutter/material.dart';
+
+import '../helpers/app_localizations.dart';
+import '../models/app_model.dart';
 
 class BlockedAccountScreen extends StatelessWidget {
   const BlockedAccountScreen({Key? key}) : super(key: key);

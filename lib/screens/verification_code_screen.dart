@@ -1,20 +1,21 @@
-import 'package:dating_app/dialogs/common_dialogs.dart';
-import 'package:dating_app/dialogs/progress_dialog.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/plugins/otp_screen/otp_screen.dart';
-import 'package:dating_app/screens/home_screen.dart';
-import 'package:dating_app/screens/sign_up_screen.dart';
-import 'package:dating_app/screens/update_location_sceen.dart';
-import 'package:dating_app/widgets/svg_icon.dart';
+import 'package:Mingledxb/dialogs/common_dialogs.dart';
+import 'package:Mingledxb/dialogs/progress_dialog.dart';
+import 'package:Mingledxb/models/user_model.dart';
+import 'package:Mingledxb/plugins/otp_screen/otp_screen.dart';
+import 'package:Mingledxb/screens/home_screen.dart';
+import 'package:Mingledxb/screens/sign_up_screen.dart';
+import 'package:Mingledxb/screens/update_location_sceen.dart';
+import 'package:Mingledxb/widgets/svg_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
+import 'package:Mingledxb/helpers/app_localizations.dart';
 
 class VerificationCodeScreen extends StatefulWidget {
   // Variables
   final String verificationId;
 
   // Constructor
-  const VerificationCodeScreen({Key? key, 
+  const VerificationCodeScreen({
+    Key? key,
     required this.verificationId,
   }) : super(key: key);
 
@@ -49,9 +50,10 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
         checkUserAccount: () {
           /// Auth user account
           UserModel().authUserAccount(
-            updateLocationScreen: () => _nextScreen(const UpdateLocationScreen()),
-            homeScreen: () => _nextScreen(const HomeScreen()), 
-            signUpScreen: () => _nextScreen(const SignUpScreen()));
+              updateLocationScreen: () =>
+                  _nextScreen(const UpdateLocationScreen()),
+              homeScreen: () => _nextScreen(const HomeScreen()),
+              signUpScreen: () => _nextScreen(const SignUpScreen()));
         },
         onError: () async {
           // Hide dialog

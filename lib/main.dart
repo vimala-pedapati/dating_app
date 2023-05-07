@@ -1,14 +1,11 @@
 import 'dart:io';
+import 'package:Mingledxb/constants/constants.dart';
 /// hello
 import 'package:country_code_picker/country_localizations.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/models/app_model.dart';
-import 'package:dating_app/screens/splash_screen.dart';
+ 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:dating_app/constants/constants.dart';
-import 'package:flutter/services.dart';
+ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -16,6 +13,10 @@ import 'package:firebase_core/firebase_core.dart';
 
 // TODO: Please "scroll down" to see the instructions to fix it.
 import 'firebase_options.dart';
+import 'helpers/app_localizations.dart';
+import 'models/app_model.dart';
+import 'models/user_model.dart';
+import 'screens/splash_screen.dart';
 
 void main() async {
 // hellooo world

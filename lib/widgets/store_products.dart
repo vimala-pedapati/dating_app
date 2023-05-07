@@ -1,7 +1,7 @@
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/models/app_model.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/widgets/my_circular_progress.dart';
+import 'package:Mingledxb/helpers/app_localizations.dart';
+import 'package:Mingledxb/models/app_model.dart';
+import 'package:Mingledxb/models/user_model.dart';
+import 'package:Mingledxb/widgets/my_circular_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:scoped_model/scoped_model.dart';

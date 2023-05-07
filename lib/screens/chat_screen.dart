@@ -1,26 +1,28 @@
 import 'dart:io';
 
+import 'package:Mingledxb/screens/profile_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/api/blocked_users_api.dart';
-import 'package:dating_app/api/likes_api.dart';
-import 'package:dating_app/api/matches_api.dart';
-import 'package:dating_app/api/messages_api.dart';
-import 'package:dating_app/api/notifications_api.dart';
-import 'package:dating_app/constants/constants.dart';
-import 'package:dating_app/datas/user.dart';
-import 'package:dating_app/dialogs/common_dialogs.dart';
-import 'package:dating_app/dialogs/progress_dialog.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/main.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/screens/profile_screen.dart';
-import 'package:dating_app/widgets/chat_message.dart';
-import 'package:dating_app/widgets/image_source_sheet.dart';
-import 'package:dating_app/widgets/my_circular_progress.dart';
-import 'package:dating_app/widgets/show_scaffold_msg.dart';
-import 'package:dating_app/widgets/svg_icon.dart';
+ 
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
+
+import '../api/blocked_users_api.dart';
+import '../api/likes_api.dart';
+import '../api/matches_api.dart';
+import '../api/messages_api.dart';
+import '../api/notifications_api.dart';
+import '../constants/constants.dart';
+import '../datas/user.dart';
+import '../dialogs/common_dialogs.dart';
+import '../dialogs/progress_dialog.dart';
+import '../helpers/app_localizations.dart';
+import '../main.dart';
+import '../models/user_model.dart';
+import '../widgets/chat_message.dart';
+import '../widgets/image_source_sheet.dart';
+import '../widgets/my_circular_progress.dart';
+import '../widgets/show_scaffold_msg.dart';
+import '../widgets/svg_icon.dart';
 
 class ChatScreen extends StatefulWidget {
   /// Get user object

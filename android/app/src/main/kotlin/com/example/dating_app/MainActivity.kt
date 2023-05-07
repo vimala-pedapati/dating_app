@@ -1,4 +1,4 @@
-package com.company.appname
+package com.prabhatech.mingle
 
 import io.flutter.embedding.android.FlutterActivity
 

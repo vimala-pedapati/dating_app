@@ -1,5 +1,5 @@
-import 'package:dating_app/constants/constants.dart';
-import 'package:dating_app/widgets/default_card_border.dart';
+import 'package:Mingledxb/constants/constants.dart';
+import 'package:Mingledxb/widgets/default_card_border.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 

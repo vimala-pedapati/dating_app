@@ -1,13 +1,15 @@
-import 'package:dating_app/dialogs/common_dialogs.dart';
-import 'package:dating_app/dialogs/progress_dialog.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/screens/profile_screen.dart';
-import 'package:dating_app/widgets/image_source_sheet.dart';
-import 'package:dating_app/widgets/svg_icon.dart';
-import 'package:dating_app/widgets/user_gallery.dart';
+ 
+import 'package:Mingledxb/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+
+import '../dialogs/common_dialogs.dart';
+import '../dialogs/progress_dialog.dart';
+import '../helpers/app_localizations.dart';
+import '../models/user_model.dart';
+import '../widgets/image_source_sheet.dart';
+import '../widgets/svg_icon.dart';
+import '../widgets/user_gallery.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({Key? key}) : super(key: key);
@@ -233,4 +235,5 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   .translate("an_error_occurred_while_updating_your_profile"));
         });
   }
+
 }

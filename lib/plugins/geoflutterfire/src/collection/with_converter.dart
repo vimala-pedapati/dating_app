@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/plugins/geoflutterfire/src/models/distance_doc_snapshot.dart';
-import 'package:dating_app/plugins/geoflutterfire/src/models/point.dart';
-
+ 
+import '../models/distance_doc_snapshot.dart';
+import '../models/point.dart';
 import 'base.dart';
 
 class GeoFireCollectionWithConverterRef<T> extends BaseGeoFireCollectionRef<T> {
@@ -27,6 +27,7 @@ class GeoFireCollectionWithConverterRef<T> extends BaseGeoFireCollectionRef<T> {
   }
 
   Stream<List<DistanceDocSnapshot<T>>> withinWithDistance({
+    
     required GeoFirePoint center,
     required double radius,
     required String field,

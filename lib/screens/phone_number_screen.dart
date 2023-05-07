@@ -1,17 +1,20 @@
+import 'package:Mingledxb/screens/sign_up_screen.dart';
+import 'package:Mingledxb/screens/update_location_sceen.dart';
+import 'package:Mingledxb/screens/verification_code_screen.dart';
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:dating_app/dialogs/progress_dialog.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/screens/blocked_account_screen.dart';
-import 'package:dating_app/screens/home_screen.dart';
-import 'package:dating_app/screens/sign_up_screen.dart';
-import 'package:dating_app/screens/update_location_sceen.dart';
-import 'package:dating_app/screens/verification_code_screen.dart';
-import 'package:dating_app/widgets/default_button.dart';
-import 'package:dating_app/widgets/show_scaffold_msg.dart';
-import 'package:dating_app/widgets/svg_icon.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import '../dialogs/progress_dialog.dart';
+import '../helpers/app_localizations.dart';
+import '../models/user_model.dart';
+import '../widgets/default_button.dart';
+import '../widgets/show_scaffold_msg.dart';
+import '../widgets/svg_icon.dart';
+import 'blocked_account_screen.dart';
+import 'home_screen.dart';
 
 class PhoneNumberScreen extends StatefulWidget {
   const PhoneNumberScreen({Key? key}) : super(key: key);

@@ -1,20 +1,22 @@
-import 'package:dating_app/api/dislikes_api.dart';
-import 'package:dating_app/api/likes_api.dart';
-import 'package:dating_app/api/matches_api.dart';
-import 'package:dating_app/datas/user.dart';
-import 'package:dating_app/dialogs/its_match_dialog.dart';
-import 'package:dating_app/dialogs/report_dialog.dart';
-import 'package:dating_app/helpers/app_helper.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/plugins/carousel_pro/carousel_pro.dart';
-import 'package:dating_app/widgets/custom_badge.dart';
-import 'package:dating_app/widgets/cicle_button.dart';
-import 'package:dating_app/widgets/show_scaffold_msg.dart';
-import 'package:dating_app/widgets/svg_icon.dart';
+ 
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:timeago/timeago.dart' as timeago;
+
+import '../api/dislikes_api.dart';
+import '../api/likes_api.dart';
+import '../api/matches_api.dart';
+import '../datas/user.dart';
+import '../dialogs/its_match_dialog.dart';
+import '../dialogs/report_dialog.dart';
+import '../helpers/app_helper.dart';
+import '../helpers/app_localizations.dart';
+import '../models/user_model.dart';
+import '../plugins/carousel_pro/carousel_pro.dart';
+import '../widgets/cicle_button.dart';
+import '../widgets/custom_badge.dart';
+import '../widgets/show_scaffold_msg.dart';
+import '../widgets/svg_icon.dart';
 
 // ignore: must_be_immutable
 class ProfileScreen extends StatefulWidget {
@@ -139,6 +141,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               /// Location distance
                               CustomBadge(
                                   icon: const SvgIcon(
+                                    
                                       "assets/icons/location_point_icon.svg",
                                       color: Colors.white,
                                       width: 15,

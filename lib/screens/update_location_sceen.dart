@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:dating_app/dialogs/common_dialogs.dart';
-import 'package:dating_app/dialogs/progress_dialog.dart';
-import 'package:dating_app/helpers/app_helper.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/screens/home_screen.dart';
-import 'package:dating_app/widgets/default_button.dart';
+import 'package:Mingledxb/dialogs/common_dialogs.dart';
+import 'package:Mingledxb/dialogs/progress_dialog.dart';
+import 'package:Mingledxb/helpers/app_helper.dart';
+import 'package:Mingledxb/helpers/app_localizations.dart';
+import 'package:Mingledxb/models/user_model.dart';
+import 'package:Mingledxb/screens/home_screen.dart';
+import 'package:Mingledxb/widgets/default_button.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -16,7 +16,8 @@ class UpdateLocationScreen extends StatefulWidget {
   final bool isSignUpProcess;
 
   // Conastructor
-  const UpdateLocationScreen({Key? key, this.isSignUpProcess = true}) : super(key: key);
+  const UpdateLocationScreen({Key? key, this.isSignUpProcess = true})
+      : super(key: key);
 
   @override
   _UpdateLocationScreenState createState() => _UpdateLocationScreenState();
@@ -186,19 +187,21 @@ class _UpdateLocationScreenState extends State<UpdateLocationScreen> {
               const SizedBox(height: 5),
               // Title description
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                 child: Text(
                     _i18n.translate(
                         'the_app_needs_your_permission_to_access_your_device_current_location'),
-                    style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                    style: const TextStyle(
+                        fontSize: 25, fontWeight: FontWeight.w400),
                     textAlign: TextAlign.center),
               ),
               const SizedBox(height: 20),
               // Get current location button
               DefaultButton(
                   child: Text(_i18n.translate('GET_LOCATION'),
-                      style:
-                          const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold)),
                   onPressed: () async {
                     // Get location permission
                     _getLocationPermission(context);

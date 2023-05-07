@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBuFNUgDdtHZtyYqciGe77ZOhAwTmNDaM4',
-    appId: '1:992757822483:android:db2e0b1379f648b6533be6',
+    appId: '1:992757822483:android:0d5bd47cf906f0a3533be6',
     messagingSenderId: '992757822483',
     projectId: 'datingapp-f7b21',
     storageBucket: 'datingapp-f7b21.appspot.com',
@@ -59,11 +59,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBQIFtCFwgjD9nqgSG-DRTf2uBnWpILshU',
-    appId: '1:992757822483:ios:a2bb0d608814a8ce533be6',
+    appId: '1:992757822483:ios:156eb280da02b770533be6',
     messagingSenderId: '992757822483',
     projectId: 'datingapp-f7b21',
     storageBucket: 'datingapp-f7b21.appspot.com',
-    iosClientId: '992757822483-c6e0kemk444i06l6epkn4f16frq23mr5.apps.googleusercontent.com',
+    androidClientId: '992757822483-89doedg7amjhi4pm36vrersp08lm80cs.apps.googleusercontent.com',
+    iosClientId: '992757822483-i5sdmdr8l8p55306ad17iadbpkbjrpat.apps.googleusercontent.com',
     iosBundleId: 'com.prabhatech.mingle',
   );
 }

@@ -1,10 +1,10 @@
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/widgets/app_section_card.dart';
-import 'package:dating_app/widgets/profile_basic_info_card.dart';
-import 'package:dating_app/widgets/profile_statistics_card.dart';
-import 'package:dating_app/widgets/delete_account_button.dart';
-import 'package:dating_app/widgets/sign_out_button_card.dart';
-import 'package:dating_app/widgets/vip_account_card.dart';
+import 'package:Mingledxb/models/user_model.dart';
+import 'package:Mingledxb/widgets/app_section_card.dart';
+import 'package:Mingledxb/widgets/profile_basic_info_card.dart';
+import 'package:Mingledxb/widgets/profile_statistics_card.dart';
+import 'package:Mingledxb/widgets/delete_account_button.dart';
+import 'package:Mingledxb/widgets/sign_out_button_card.dart';
+import 'package:Mingledxb/widgets/vip_account_card.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -46,12 +46,11 @@ class ProfileTab extends StatelessWidget {
             const SignOutButtonCard(),
 
             const SizedBox(height: 25),
-            
+
             /// Delete Account Button
             const DeleteAccountButton(),
 
             const SizedBox(height: 25),
-
           ],
         );
       }),

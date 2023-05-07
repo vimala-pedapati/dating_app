@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:dating_app/constants/constants.dart';
-import 'package:dating_app/models/user_model.dart';
+
+import '../constants/constants.dart';
+import '../models/user_model.dart';
+
 
 class ConversationsApi {
   /// Get firestore instance

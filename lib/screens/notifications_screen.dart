@@ -1,16 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/api/notifications_api.dart';
-import 'package:dating_app/constants/constants.dart';
-import 'package:dating_app/dialogs/common_dialogs.dart';
-import 'package:dating_app/dialogs/progress_dialog.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/helpers/app_notifications.dart';
-import 'package:dating_app/widgets/custom_badge.dart';
-import 'package:dating_app/widgets/no_data.dart';
-import 'package:dating_app/widgets/processing.dart';
-import 'package:dating_app/widgets/svg_icon.dart';
+ 
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
+
+import '../api/notifications_api.dart';
+import '../constants/constants.dart';
+import '../dialogs/common_dialogs.dart';
+import '../dialogs/progress_dialog.dart';
+import '../helpers/app_localizations.dart';
+import '../helpers/app_notifications.dart';
+import '../widgets/custom_badge.dart';
+import '../widgets/no_data.dart';
+import '../widgets/processing.dart';
+import '../widgets/svg_icon.dart';
 
 class NotificationsScreen extends StatelessWidget {
   // Variables

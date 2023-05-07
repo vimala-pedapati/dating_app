@@ -1,6 +1,7 @@
-import 'package:dating_app/constants/constants.dart';
+import 'package:Mingledxb/constants/constants.dart';
+import 'package:Mingledxb/screens/sign_up_custome_design_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
+import 'package:Mingledxb/helpers/app_localizations.dart';
 
 import '../widgets/app_logo.dart';
 
@@ -87,7 +88,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 onTap: () {
                   debugPrint("sign in pressed");
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const SignInScreen()));
+                      builder: (context) => const SignUpScreenCostom()));
                 },
                 child: Container(
                   //width: 100.0,

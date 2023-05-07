@@ -1,19 +1,21 @@
+import 'package:Mingledxb/screens/sign_in_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/api/blocked_users_api.dart';
-import 'package:dating_app/api/conversations_api.dart';
-import 'package:dating_app/api/dislikes_api.dart';
-import 'package:dating_app/api/likes_api.dart';
-import 'package:dating_app/api/matches_api.dart';
-import 'package:dating_app/api/messages_api.dart';
-import 'package:dating_app/api/notifications_api.dart';
-import 'package:dating_app/api/visits_api.dart';
-import 'package:dating_app/constants/constants.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/screens/sign_in_screen.dart';
-import 'package:dating_app/widgets/processing.dart';
+ 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+
+import '../api/blocked_users_api.dart';
+import '../api/conversations_api.dart';
+import '../api/dislikes_api.dart';
+import '../api/likes_api.dart';
+import '../api/matches_api.dart';
+import '../api/messages_api.dart';
+import '../api/notifications_api.dart';
+import '../api/visits_api.dart';
+import '../constants/constants.dart';
+import '../helpers/app_localizations.dart';
+import '../models/user_model.dart';
+import '../widgets/processing.dart';
 
 class DeleteAccountScreen extends StatefulWidget {
   const DeleteAccountScreen({Key? key}) : super(key: key);

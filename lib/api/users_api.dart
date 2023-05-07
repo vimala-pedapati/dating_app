@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/api/blocked_users_api.dart';
-import 'package:dating_app/constants/constants.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/plugins/geoflutterfire/geoflutterfire.dart';
 import 'package:flutter/material.dart';
+
+import '../constants/constants.dart';
+import '../models/user_model.dart';
+import '../plugins/geoflutterfire/src/geoflutterfire.dart';
+import '../plugins/geoflutterfire/src/models/point.dart';
+import 'blocked_users_api.dart';
 
 class UsersApi {
   /// Get firestore instance

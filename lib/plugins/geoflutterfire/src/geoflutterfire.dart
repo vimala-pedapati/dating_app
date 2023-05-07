@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/plugins/geoflutterfire/src/collection/with_converter.dart';
-
+ 
 import 'collection/default.dart';
+import 'collection/with_converter.dart';
 import 'models/point.dart';
 
 class Geoflutterfire {

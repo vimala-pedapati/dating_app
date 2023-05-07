@@ -1,4 +1,5 @@
-import 'package:dating_app/constants/constants.dart';
+ 
+import '../constants/constants.dart';
 
 class AppInfo {
   /// Variables

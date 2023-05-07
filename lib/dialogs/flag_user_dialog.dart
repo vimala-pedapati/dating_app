@@ -1,10 +1,12 @@
 
-import 'package:dating_app/dialogs/progress_dialog.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/main.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/widgets/show_scaffold_msg.dart';
+
+import 'package:Mingledxb/dialogs/progress_dialog.dart';
 import 'package:flutter/material.dart';
+
+import '../helpers/app_localizations.dart';
+import '../main.dart';
+import '../models/user_model.dart';
+import '../widgets/show_scaffold_msg.dart';
 
 class FlagUserDialog extends StatefulWidget {
   // Variables

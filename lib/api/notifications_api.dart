@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/constants/constants.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/models/app_model.dart';
+ 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
+import '../constants/constants.dart';
+import '../models/app_model.dart';
+import '../models/user_model.dart';
 
 class NotificationsApi {
   /// FINAL VARIABLES

@@ -1,9 +1,11 @@
-import 'package:dating_app/constants/constants.dart';
-import 'package:dating_app/helpers/app_helper.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/widgets/app_logo.dart';
-import 'package:dating_app/models/app_model.dart';
+ 
 import 'package:flutter/material.dart';
+
+import '../constants/constants.dart';
+import '../helpers/app_helper.dart';
+import '../helpers/app_localizations.dart';
+import '../models/app_model.dart';
+import '../widgets/app_logo.dart';
 
 class AboutScreen extends StatelessWidget {
   // Variables

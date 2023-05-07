@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:dating_app/helpers/app_helper.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/screens/about_us_screen.dart';
-import 'package:dating_app/widgets/default_card_border.dart';
-import 'package:dating_app/widgets/svg_icon.dart';
+import 'package:Mingledxb/helpers/app_helper.dart';
+import 'package:Mingledxb/helpers/app_localizations.dart';
+import 'package:Mingledxb/screens/about_us_screen.dart';
+import 'package:Mingledxb/widgets/default_card_border.dart';
+import 'package:Mingledxb/widgets/svg_icon.dart';
 import 'package:flutter/material.dart';
 
 class AppSectionCard extends StatelessWidget {
@@ -41,8 +41,8 @@ class AppSectionCard extends StatelessWidget {
             title: Text(i18n.translate("about_us"), style: _textStyle),
             onTap: () {
               /// Go to About us screen
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => const AboutScreen()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const AboutScreen()));
             },
           ),
           const Divider(height: 0),
@@ -57,8 +57,8 @@ class AppSectionCard extends StatelessWidget {
           ),
           const Divider(height: 0),
           ListTile(
-            leading:
-                const SvgIcon("assets/icons/star_icon.svg", width: 22, height: 22),
+            leading: const SvgIcon("assets/icons/star_icon.svg",
+                width: 22, height: 22),
             title: Text(
                 i18n.translate(Platform.isAndroid
                     ? "rate_on_play_store"
@@ -71,8 +71,8 @@ class AppSectionCard extends StatelessWidget {
           ),
           const Divider(height: 0),
           ListTile(
-            leading:
-                const SvgIcon("assets/icons/lock_icon.svg", width: 22, height: 22),
+            leading: const SvgIcon("assets/icons/lock_icon.svg",
+                width: 22, height: 22),
             title: Text(i18n.translate("privacy_policy"), style: _textStyle),
             onTap: () async {
               /// Go to privacy policy

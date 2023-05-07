@@ -1,11 +1,13 @@
-import 'package:dating_app/constants/constants.dart';
-import 'package:dating_app/helpers/app_helper.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/models/app_model.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/widgets/store_products.dart';
+ 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+import '../constants/constants.dart';
+import '../helpers/app_helper.dart';
+import '../helpers/app_localizations.dart';
+import '../models/app_model.dart';
+import '../models/user_model.dart';
+import '../widgets/store_products.dart';
 
 class VipDialog extends StatelessWidget {
   const VipDialog({Key? key}) : super(key: key);

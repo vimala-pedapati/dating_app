@@ -1,6 +1,6 @@
-import 'package:dating_app/dialogs/vip_dialog.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/widgets/default_card_border.dart';
+import 'package:Mingledxb/dialogs/vip_dialog.dart';
+import 'package:Mingledxb/helpers/app_localizations.dart';
+import 'package:Mingledxb/widgets/default_card_border.dart';
 import 'package:flutter/material.dart';
 
 class VipAccountCard extends StatelessWidget {
@@ -23,8 +23,7 @@ class VipAccountCard extends StatelessWidget {
         trailing: const Icon(Icons.arrow_forward),
         onTap: () {
           /// Show VIP dialog
-          showDialog(context: context, 
-            builder: (context) => const VipDialog());
+          showDialog(context: context, builder: (context) => const VipDialog());
         },
       ),
     );

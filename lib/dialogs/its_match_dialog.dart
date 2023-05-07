@@ -1,8 +1,10 @@
-import 'package:dating_app/datas/user.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/plugins/swipe_stack/swipe_stack.dart';
-import 'package:dating_app/screens/chat_screen.dart';
+ 
 import 'package:flutter/material.dart';
+
+import '../datas/user.dart';
+import '../helpers/app_localizations.dart';
+import '../plugins/swipe_stack/swipe_stack.dart';
+import '../screens/chat_screen.dart';
 
 class ItsMatchDialog extends StatelessWidget {
   // Variables

@@ -1,21 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/api/conversations_api.dart';
-import 'package:dating_app/constants/constants.dart';
-import 'package:dating_app/datas/user.dart';
-import 'package:dating_app/dialogs/progress_dialog.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/screens/chat_screen.dart';
-import 'package:dating_app/widgets/custom_badge.dart';
-import 'package:dating_app/widgets/build_title.dart';
-import 'package:dating_app/widgets/no_data.dart';
-import 'package:dating_app/widgets/processing.dart';
+import 'package:Mingledxb/api/conversations_api.dart';
+import 'package:Mingledxb/constants/constants.dart';
+import 'package:Mingledxb/datas/user.dart';
+import 'package:Mingledxb/dialogs/progress_dialog.dart';
+import 'package:Mingledxb/helpers/app_localizations.dart';
+import 'package:Mingledxb/models/user_model.dart';
+import 'package:Mingledxb/screens/chat_screen.dart';
+import 'package:Mingledxb/widgets/custom_badge.dart';
+import 'package:Mingledxb/widgets/build_title.dart';
+import 'package:Mingledxb/widgets/no_data.dart';
+import 'package:Mingledxb/widgets/processing.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-class ConversationsTab extends StatelessWidget {
+class ConversationsTab extends StatefulWidget {
   const ConversationsTab({Key? key}) : super(key: key);
 
+  @override
+  State<ConversationsTab> createState() => _ConversationsTabState();
+}
+
+class _ConversationsTabState extends State<ConversationsTab> {
   @override
   Widget build(BuildContext context) {
     /// Initialization
@@ -53,6 +58,8 @@ class ConversationsTab extends StatelessWidget {
                       /// Get conversation DocumentSnapshot<Map<String, dynamic>>
                       final DocumentSnapshot<Map<String, dynamic>>
                           conversation = snapshot.data!.docs[index];
+                      dynamic backgroundImage =
+                          NetworkImage(conversation[USER_PROFILE_PHOTO]);
 
                       /// Show conversation
                       return Container(
@@ -62,11 +69,13 @@ class ConversationsTab extends StatelessWidget {
                         child: ListTile(
                           leading: CircleAvatar(
                             backgroundColor: Theme.of(context).primaryColor,
-                            backgroundImage: NetworkImage(
-                              conversation[USER_PROFILE_PHOTO],
-                            ),
-                            onBackgroundImageError: (e, s) =>
-                                {debugPrint(e.toString())},
+                            backgroundImage: backgroundImage,
+                            onBackgroundImageError: (e, s) {
+                              setState(() {
+                                backgroundImage = const AssetImage(
+                                    'assets/images/background_image.jpg');
+                              });
+                            },
                           ),
                           title: Text(conversation[USER_FULLNAME].split(" ")[0],
                               style: const TextStyle(fontSize: 18)),

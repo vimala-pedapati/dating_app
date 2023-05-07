@@ -1,7 +1,7 @@
-import 'package:dating_app/dialogs/common_dialogs.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/screens/delete_account_screen.dart';
-import 'package:dating_app/widgets/default_button.dart';
+import 'package:Mingledxb/dialogs/common_dialogs.dart';
+import 'package:Mingledxb/helpers/app_localizations.dart';
+import 'package:Mingledxb/screens/delete_account_screen.dart';
+import 'package:Mingledxb/widgets/default_button.dart';
 import 'package:flutter/material.dart';
 
 class DeleteAccountButton extends StatelessWidget {

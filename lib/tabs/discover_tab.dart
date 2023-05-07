@@ -1,22 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/api/dislikes_api.dart';
-import 'package:dating_app/api/likes_api.dart';
-import 'package:dating_app/api/matches_api.dart';
-import 'package:dating_app/api/visits_api.dart';
-import 'package:dating_app/constants/constants.dart';
-import 'package:dating_app/datas/user.dart';
-import 'package:dating_app/dialogs/its_match_dialog.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/plugins/swipe_stack/swipe_stack.dart';
-import 'package:dating_app/screens/disliked_profile_screen.dart';
-import 'package:dating_app/screens/profile_screen.dart';
-import 'package:dating_app/widgets/cicle_button.dart';
-import 'package:dating_app/widgets/no_data.dart';
-import 'package:dating_app/widgets/processing.dart';
-import 'package:dating_app/widgets/profile_card.dart';
+import 'package:Mingledxb/api/dislikes_api.dart';
+import 'package:Mingledxb/api/likes_api.dart';
+import 'package:Mingledxb/api/matches_api.dart';
+import 'package:Mingledxb/api/visits_api.dart';
+import 'package:Mingledxb/constants/constants.dart';
+import 'package:Mingledxb/datas/user.dart';
+import 'package:Mingledxb/dialogs/its_match_dialog.dart';
+import 'package:Mingledxb/helpers/app_localizations.dart';
+import 'package:Mingledxb/models/user_model.dart';
+import 'package:Mingledxb/plugins/swipe_stack/swipe_stack.dart';
+import 'package:Mingledxb/screens/disliked_profile_screen.dart';
+import 'package:Mingledxb/screens/profile_screen.dart';
+import 'package:Mingledxb/widgets/cicle_button.dart';
+import 'package:Mingledxb/widgets/no_data.dart';
+import 'package:Mingledxb/widgets/processing.dart';
+import 'package:Mingledxb/widgets/profile_card.dart';
 import 'package:flutter/material.dart';
-import 'package:dating_app/api/users_api.dart';
+import 'package:Mingledxb/api/users_api.dart';
 
 class DiscoverTab extends StatefulWidget {
   const DiscoverTab({Key? key}) : super(key: key);
@@ -208,7 +208,8 @@ class _DiscoverTabState extends State<DiscoverTab> {
         cicleButton(
             bgColor: Colors.white,
             padding: 8,
-            icon: const Icon(Icons.remove_red_eye, size: 22, color: Colors.grey),
+            icon:
+                const Icon(Icons.remove_red_eye, size: 22, color: Colors.grey),
             onTap: () {
               /// Get card current index
               final cardIndex = _swipeKey.currentState!.currentIndex;

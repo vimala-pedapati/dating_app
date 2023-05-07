@@ -1,16 +1,16 @@
 import 'dart:io';
 
-import 'package:dating_app/screens/blocked_account_screen.dart';
-import 'package:dating_app/screens/update_location_sceen.dart';
-import 'package:dating_app/screens/welcome_to_mingle_screen.dart';
+import 'package:Mingledxb/screens/blocked_account_screen.dart';
+import 'package:Mingledxb/screens/update_location_sceen.dart';
+import 'package:Mingledxb/screens/welcome_to_mingle_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:dating_app/constants/constants.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/helpers/app_helper.dart';
-import 'package:dating_app/screens/update_app_screen.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/screens/home_screen.dart';
-import 'package:dating_app/screens/sign_up_screen.dart';
+import 'package:Mingledxb/constants/constants.dart';
+import 'package:Mingledxb/helpers/app_localizations.dart';
+import 'package:Mingledxb/helpers/app_helper.dart';
+import 'package:Mingledxb/screens/update_app_screen.dart';
+import 'package:Mingledxb/models/user_model.dart';
+import 'package:Mingledxb/screens/home_screen.dart';
+import 'package:Mingledxb/screens/sign_up_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

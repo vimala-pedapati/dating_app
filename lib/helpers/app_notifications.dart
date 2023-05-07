@@ -1,11 +1,12 @@
-
-import 'package:dating_app/datas/user.dart';
-import 'package:dating_app/dialogs/common_dialogs.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/screens/profile_likes_screen.dart';
-import 'package:dating_app/screens/profile_screen.dart';
-import 'package:dating_app/screens/profile_visits_screen.dart';
+ 
 import 'package:flutter/material.dart';
+
+import '../datas/user.dart';
+import '../dialogs/common_dialogs.dart';
+import '../models/user_model.dart';
+import '../screens/profile_likes_screen.dart';
+import '../screens/profile_screen.dart';
+import '../screens/profile_visits_screen.dart';
 
 class AppNotifications {
   /// Handle notification click for push
@@ -65,4 +66,5 @@ class AppNotifications {
     Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => ProfileScreen(user: user)));
   }
+  
 }

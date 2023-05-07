@@ -1,17 +1,17 @@
 import 'dart:io';
 
-import 'package:dating_app/dialogs/common_dialogs.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/screens/sign_in_screen.dart';
-import 'package:dating_app/screens/update_location_sceen.dart';
-import 'package:dating_app/widgets/image_source_sheet.dart';
-import 'package:dating_app/widgets/processing.dart';
-import 'package:dating_app/widgets/show_scaffold_msg.dart';
-import 'package:dating_app/widgets/svg_icon.dart';
-import 'package:dating_app/widgets/terms_of_service_row.dart';
+import 'package:Mingledxb/dialogs/common_dialogs.dart';
+import 'package:Mingledxb/helpers/app_localizations.dart';
+import 'package:Mingledxb/models/user_model.dart';
+import 'package:Mingledxb/screens/sign_in_screen.dart';
+import 'package:Mingledxb/screens/update_location_sceen.dart';
+import 'package:Mingledxb/widgets/image_source_sheet.dart';
+import 'package:Mingledxb/widgets/processing.dart';
+import 'package:Mingledxb/widgets/show_scaffold_msg.dart';
+import 'package:Mingledxb/widgets/svg_icon.dart';
+import 'package:Mingledxb/widgets/terms_of_service_row.dart';
 import 'package:flutter/material.dart';
-import 'package:dating_app/widgets/default_button.dart';
+import 'package:Mingledxb/widgets/default_button.dart';
 import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_picker.dart';
 import 'package:scoped_model/scoped_model.dart';
 

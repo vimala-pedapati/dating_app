@@ -2,24 +2,27 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dating_app/api/conversations_api.dart';
-import 'package:dating_app/api/notifications_api.dart';
-import 'package:dating_app/helpers/app_helper.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/helpers/app_notifications.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/screens/notifications_screen.dart';
-import 'package:dating_app/tabs/conversations_tab.dart';
-import 'package:dating_app/tabs/discover_tab.dart';
-import 'package:dating_app/tabs/matches_tab.dart';
-import 'package:dating_app/tabs/profile_tab.dart';
-import 'package:dating_app/widgets/notification_counter.dart';
-import 'package:dating_app/widgets/svg_icon.dart';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:dating_app/constants/constants.dart';
+
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
+
+import '../api/conversations_api.dart';
+import '../api/notifications_api.dart';
+import '../constants/constants.dart';
+import '../helpers/app_helper.dart';
+import '../helpers/app_localizations.dart';
+import '../helpers/app_notifications.dart';
+import '../models/user_model.dart';
+import '../tabs/conversations_tab.dart';
+import '../tabs/discover_tab.dart';
+import '../tabs/matches_tab.dart';
+import '../tabs/profile_tab.dart';
+import '../widgets/notification_counter.dart';
+import '../widgets/svg_icon.dart';
+import 'notifications_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -243,8 +246,10 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Row(
           children: [
             Image.asset("assets/images/app_logo.png", width: 40, height: 40),
-            const SizedBox(width: 5),
-            const Text(APP_NAME),
+            const SizedBox(width: 20),
+            const Text(
+              APP_NAME,
+            ),
           ],
         ),
         actions: [

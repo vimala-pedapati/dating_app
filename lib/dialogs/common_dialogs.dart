@@ -1,6 +1,8 @@
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/widgets/default_card_border.dart';
+
 import 'package:flutter/material.dart';
+
+import '../helpers/app_localizations.dart';
+import '../widgets/default_card_border.dart';
 
 /// Success Dialog
 void successDialog(

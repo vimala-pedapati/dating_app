@@ -1,13 +1,13 @@
-import 'package:dating_app/datas/user.dart';
-import 'package:dating_app/dialogs/report_dialog.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/plugins/swipe_stack/swipe_stack.dart';
-import 'package:dating_app/widgets/custom_badge.dart';
-import 'package:dating_app/widgets/default_card_border.dart';
-import 'package:dating_app/widgets/show_like_or_dislike.dart';
-import 'package:dating_app/widgets/svg_icon.dart';
+import 'package:Mingledxb/datas/user.dart';
+import 'package:Mingledxb/dialogs/report_dialog.dart';
+import 'package:Mingledxb/models/user_model.dart';
+import 'package:Mingledxb/plugins/swipe_stack/swipe_stack.dart';
+import 'package:Mingledxb/widgets/custom_badge.dart';
+import 'package:Mingledxb/widgets/default_card_border.dart';
+import 'package:Mingledxb/widgets/show_like_or_dislike.dart';
+import 'package:Mingledxb/widgets/svg_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:dating_app/helpers/app_helper.dart';
+import 'package:Mingledxb/helpers/app_helper.dart';
 
 class ProfileCard extends StatelessWidget {
   /// User object

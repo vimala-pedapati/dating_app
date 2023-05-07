@@ -1,15 +1,17 @@
-import 'package:dating_app/constants/constants.dart';
-import 'package:dating_app/dialogs/show_me_dialog.dart';
-import 'package:dating_app/dialogs/vip_dialog.dart';
-import 'package:dating_app/helpers/app_localizations.dart';
-import 'package:dating_app/models/app_model.dart';
-import 'package:dating_app/models/user_model.dart';
-import 'package:dating_app/screens/passport_screen.dart';
-import 'package:dating_app/widgets/show_scaffold_msg.dart';
-import 'package:dating_app/widgets/svg_icon.dart';
+ 
+import 'package:Mingledxb/screens/passport_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:place_picker/place_picker.dart';
 import 'package:scoped_model/scoped_model.dart';
+
+import '../constants/constants.dart';
+import '../dialogs/show_me_dialog.dart';
+import '../dialogs/vip_dialog.dart';
+import '../helpers/app_localizations.dart';
+import '../models/app_model.dart';
+import '../models/user_model.dart';
+import '../widgets/show_scaffold_msg.dart';
+import '../widgets/svg_icon.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
