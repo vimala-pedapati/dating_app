@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:timeago/timeago.dart' as timeago;
 
 import '../api/dislikes_api.dart';
 import '../api/likes_api.dart';
@@ -13,9 +12,7 @@ import '../helpers/app_localizations.dart';
 import '../models/user_model.dart';
 import '../plugins/carousel_pro/carousel_pro.dart';
 import '../widgets/cicle_button.dart';
-import '../widgets/custom_badge.dart';
 import '../widgets/show_scaffold_msg.dart';
-import '../widgets/svg_icon.dart';
 
 // ignore: must_be_immutable
 class ProfileScreen extends StatefulWidget {
@@ -84,139 +81,151 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   children: [
                     /// Carousel Profile images
-                    AspectRatio(
-                      aspectRatio: 1 / 1,
-                      child: Carousel(
-                          autoplay: false,
-                          dotBgColor: Colors.transparent,
-                          dotIncreasedColor: Theme.of(context).primaryColor,
-                          images: UserModel()
-                              .getUserProfileImages(widget.user)
-                              .map((url) => NetworkImage(url))
-                              .toList()),
+                    Stack(
+                      children: [
+                        AspectRatio(
+                          aspectRatio: 1 / 1,
+                          child: Carousel(
+                              autoplay: false,
+                              dotBgColor: Colors.transparent,
+                              dotIncreasedColor: Theme.of(context).primaryColor,
+                              images: UserModel()
+                                  .getUserProfileImages(widget.user)
+                                  .map((url) => NetworkImage(url))
+                                  .toList()),
+                        ),
+                        Positioned(
+                            top: 190,
+                            bottom: 0,
+                            child: Container(
+                              color: Colors.red,
+                              height: 900,
+                              width: 500,
+                            ))
+                      ],
                     ),
 
                     /// Profile details
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              /// Full Name
-                              Expanded(
-                                child: Text(
-                                  '${widget.user.userFullname}, '
-                                  '${userAge.toString()}',
-                                  style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(10),
+                    //   child: Column(
+                    //     crossAxisAlignment: CrossAxisAlignment.start,
+                    //     children: [
+                    //       Row(
+                    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //         children: [
+                    //           /// Full Name
+                    //           Expanded(
+                    //             child: Text(
+                    //               '${widget.user.userFullname}, '
+                    //               '${userAge.toString()}',
+                    //               style: const TextStyle(
+                    //                   fontSize: 20,
+                    //                   fontWeight: FontWeight.bold),
+                    //             ),
+                    //           ),
 
-                              /// Show verified badge
-                              widget.user.userIsVerified
-                                  ? Container(
-                                      margin: const EdgeInsets.only(right: 5),
-                                      child: Image.asset(
-                                          'assets/images/verified_badge.png',
-                                          width: 30,
-                                          height: 30))
-                                  : const SizedBox(width: 0, height: 0),
+                    //           /// Show verified badge
+                    //           widget.user.userIsVerified
+                    //               ? Container(
+                    //                   margin: const EdgeInsets.only(right: 5),
+                    //                   child: Image.asset(
+                    //                       'assets/images/verified_badge.png',
+                    //                       width: 30,
+                    //                       height: 30))
+                    //               : const SizedBox(width: 0, height: 0),
 
-                              /// Show VIP badge for current user
-                              UserModel().user.userId == widget.user.userId &&
-                                      UserModel().userIsVip
-                                  ? Container(
-                                      margin: const EdgeInsets.only(right: 5),
-                                      child: Image.asset(
-                                          'assets/images/crow_badge.png',
-                                          width: 25,
-                                          height: 25))
-                                  : const SizedBox(width: 0, height: 0),
+                    //           /// Show VIP badge for current user
+                    //           UserModel().user.userId == widget.user.userId &&
+                    //                   UserModel().userIsVip
+                    //               ? Container(
+                    //                   margin: const EdgeInsets.only(right: 5),
+                    //                   child: Image.asset(
+                    //                       'assets/images/crow_badge.png',
+                    //                       width: 25,
+                    //                       height: 25))
+                    //               : const SizedBox(width: 0, height: 0),
 
-                              /// Location distance
-                              CustomBadge(
-                                  icon: const SvgIcon(
-                                      "assets/icons/location_point_icon.svg",
-                                      color: Colors.white,
-                                      width: 15,
-                                      height: 15),
-                                  text:
-                                      '${_appHelper.getDistanceBetweenUsers(userLat: widget.user.userGeoPoint.latitude, userLong: widget.user.userGeoPoint.longitude)}km')
-                            ],
-                          ),
+                    //           /// Location distance
+                    //           CustomBadge(
+                    //               icon: const SvgIcon(
+                    //                   "assets/icons/location_point_icon.svg",
+                    //                   color: Colors.white,
+                    //                   width: 15,
+                    //                   height: 15),
+                    //               text:
+                    //                   '${_appHelper.getDistanceBetweenUsers(userLat: widget.user.userGeoPoint.latitude, userLong: widget.user.userGeoPoint.longitude)}km')
+                    //         ],
+                    //       ),
 
-                          const SizedBox(height: 5),
+                    //       const SizedBox(height: 5),
 
-                          /// Home location
-                          _rowProfileInfo(
-                            context,
-                            icon: SvgIcon(
-                                "assets/icons/location_point_icon.svg",
-                                color: Theme.of(context).primaryColor,
-                                width: 24,
-                                height: 24),
-                            title:
-                                "${widget.user.userLocality}, ${widget.user.userCountry}",
-                          ),
+                    //       /// Home location
+                    //       _rowProfileInfo(
+                    //         context,
+                    //         icon: SvgIcon(
+                    //             "assets/icons/location_point_icon.svg",
+                    //             color: Theme.of(context).primaryColor,
+                    //             width: 24,
+                    //             height: 24),
+                    //         title:
+                    //             "${widget.user.userLocality}, ${widget.user.userCountry}",
+                    //       ),
 
-                          const SizedBox(height: 5),
+                    //       const SizedBox(height: 5),
 
-                          /// Job title
-                          _rowProfileInfo(context,
-                              icon: SvgIcon("assets/icons/job_bag_icon.svg",
-                                  color: Theme.of(context).primaryColor,
-                                  width: 27,
-                                  height: 27),
-                              title: widget.user.userJobTitle),
+                    //       /// Job title
+                    //       _rowProfileInfo(context,
+                    //           icon: SvgIcon("assets/icons/job_bag_icon.svg",
+                    //               color: Theme.of(context).primaryColor,
+                    //               width: 27,
+                    //               height: 27),
+                    //           title: widget.user.userJobTitle),
 
-                          const SizedBox(height: 5),
+                    //       const SizedBox(height: 5),
 
-                          /// Education
-                          _rowProfileInfo(context,
-                              icon: SvgIcon("assets/icons/university_icon.svg",
-                                  color: Theme.of(context).primaryColor,
-                                  width: 34,
-                                  height: 34),
-                              title: widget.user.userSchool),
+                    //       /// Education
+                    //       _rowProfileInfo(context,
+                    //           icon: SvgIcon("assets/icons/university_icon.svg",
+                    //               color: Theme.of(context).primaryColor,
+                    //               width: 34,
+                    //               height: 34),
+                    //           title: widget.user.userSchool),
 
-                          /// Birthday
-                          _rowProfileInfo(context,
-                              icon: SvgIcon("assets/icons/gift_icon.svg",
-                                  color: Theme.of(context).primaryColor,
-                                  width: 28,
-                                  height: 28),
-                              title:
-                                  '${_i18n.translate('birthday')} ${widget.user.userBirthYear}/${widget.user.userBirthMonth}/${widget.user.userBirthDay}'),
+                    //       /// Birthday
+                    //       _rowProfileInfo(context,
+                    //           icon: SvgIcon("assets/icons/gift_icon.svg",
+                    //               color: Theme.of(context).primaryColor,
+                    //               width: 28,
+                    //               height: 28),
+                    //           title:
+                    //               '${_i18n.translate('birthday')} ${widget.user.userBirthYear}/${widget.user.userBirthMonth}/${widget.user.userBirthDay}'),
 
-                          /// Join date
-                          _rowProfileInfo(context,
-                              icon: SvgIcon("assets/icons/info_icon.svg",
-                                  color: Theme.of(context).primaryColor,
-                                  width: 28,
-                                  height: 28),
-                              title:
-                                  '${_i18n.translate('join_date')} ${timeago.format(widget.user.userRegDate)}'),
+                    //       /// Join date
+                    //       _rowProfileInfo(context,
+                    //           icon: SvgIcon("assets/icons/info_icon.svg",
+                    //               color: Theme.of(context).primaryColor,
+                    //               width: 28,
+                    //               height: 28),
+                    //           title:
+                    //               '${_i18n.translate('join_date')} ${timeago.format(widget.user.userRegDate)}'),
 
-                          const Divider(),
+                    //       const Divider(),
 
-                          /// Profile bio
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(_i18n.translate("bio"),
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    color: Theme.of(context).primaryColor)),
-                          ),
-                          Text(widget.user.userBio,
-                              style: const TextStyle(
-                                  fontSize: 18, color: Colors.grey)),
-                        ],
-                      ),
-                    ),
+                    //       /// Profile bio
+                    //       Padding(
+                    //         padding: const EdgeInsets.all(8.0),
+                    //         child: Text(_i18n.translate("bio"),
+                    //             style: TextStyle(
+                    //                 fontSize: 22,
+                    //                 color: Theme.of(context).primaryColor)),
+                    //       ),
+                    //       Text(widget.user.userBio,
+                    //           style: const TextStyle(
+                    //               fontSize: 18, color: Colors.grey)),
+                    //     ],
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

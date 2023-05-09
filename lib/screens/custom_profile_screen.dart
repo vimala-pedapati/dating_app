@@ -185,10 +185,6 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
 
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        title: Text(_i18n.translate("edit_profile")),
-        actions: const [],
-      ),
       body: SingleChildScrollView(
         // padding: const EdgeInsets.all(15),
         child: Form(
@@ -203,7 +199,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                   ClipPath(
                     clipper: CurveClipper(),
                     child: Container(
-                      height: MediaQuery.of(context).size.height * 0.35,
+                      height: MediaQuery.of(context).size.height * 0.4,
                       width: MediaQuery.of(context).size.width,
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
@@ -216,14 +212,43 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                         ),
                       ),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Center(
-                            child: Text(
-                              _i18n.translate("profile"),
-                              style: const TextStyle(
-                                  fontSize: 22, color: Colors.white),
-                              textAlign: TextAlign.center,
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.58,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.06,
+                                  width:
+                                      MediaQuery.of(context).size.height * 0.06,
+                                  margin: const EdgeInsets.only(left: 20),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: IconButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    icon: const Icon(
+                                      (Icons.arrow_back_ios_outlined),
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ),
+                                Center(
+                                  child: Text(
+                                    _i18n.translate("profile"),
+                                    style: const TextStyle(
+                                        fontSize: 22, color: Colors.white),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           const SizedBox(height: 10),
@@ -273,9 +298,9 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                               '${widget.user.userFullname}, '
                               '${userAge.toString()}',
                               style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
                             ),
                           ),
                         ],
@@ -316,6 +341,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                           ],
                         ),
                         Container(
+                          height: 50,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -331,6 +357,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                 width: MediaQuery.of(context).size.width * 0.7,
                                 child: TextFormField(
                                   decoration: InputDecoration(
+                                    contentPadding: const EdgeInsets.all(0),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide.none,
@@ -346,6 +373,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                         const SizedBox(height: 10),
                         //Phone Number
                         Container(
+                          height: 50,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -361,6 +389,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                 width: MediaQuery.of(context).size.width * 0.6,
                                 child: TextFormField(
                                   decoration: InputDecoration(
+                                    contentPadding: const EdgeInsets.all(0),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide.none,
@@ -376,6 +405,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                         const SizedBox(height: 10),
                         // Date of birth
                         Container(
+                          height: 50,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -391,6 +421,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                 width: MediaQuery.of(context).size.width * 0.6,
                                 child: TextFormField(
                                   decoration: InputDecoration(
+                                    contentPadding: const EdgeInsets.all(0),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide.none,
@@ -405,6 +436,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                         ),
                         const SizedBox(height: 10),
                         Container(
+                          height: 50,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -420,6 +452,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                 width: MediaQuery.of(context).size.width * 0.7,
                                 child: TextFormField(
                                   decoration: InputDecoration(
+                                    contentPadding: const EdgeInsets.all(0),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide.none,
@@ -701,29 +734,41 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
 
                         /// User Max distance
                         Card(
-                            margin: const EdgeInsets.symmetric(horizontal: 8),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Text(
-                                          '${_i18n.translate("maximum_distance")} ${_selectedMaxDistance.round()} km',
-                                          style: const TextStyle(fontSize: 18)),
-                                      const SizedBox(height: 3),
-                                      Text(
-                                          _i18n.translate(
-                                              "show_people_within_this_radius"),
-                                          style: const TextStyle(
-                                              color: Colors.grey)),
-                                    ],
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                        '${_i18n.translate("maximum_distance")} ${_selectedMaxDistance.round()} km',
+                                        style: const TextStyle(fontSize: 18)),
+                                    const SizedBox(height: 3),
+                                    Text(
+                                        _i18n.translate(
+                                            "show_people_within_this_radius"),
+                                        style: const TextStyle(
+                                            color: Colors.grey)),
+                                  ],
+                                ),
+                              ),
+                              SliderTheme(
+                                data: SliderTheme.of(context).copyWith(
+                                  trackHeight:
+                                      2, // Set the track height to 2 pixels
+                                  thumbShape: const RoundSliderThumbShape(
+                                    enabledThumbRadius:
+                                        8, // Set the thumb radius to 8 pixels
+                                  ),
+                                  overlayShape: const RoundSliderOverlayShape(
+                                    overlayRadius:
+                                        16, // Set the overlay radius to 16 pixels
                                   ),
                                 ),
-                                Slider(
+                                child: Slider(
                                   activeColor: APP_ACCENT_COLOR,
                                   value: _selectedMaxDistance,
                                   label:
@@ -731,8 +776,6 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                           ' km',
                                   divisions: 100,
                                   min: 0,
-
-                                  /// Check User VIP Account to set max distance available
                                   max: UserModel().userIsVip
                                       ? AppModel().appInfo.vipAccountMaxDistance
                                       : AppModel()
@@ -743,8 +786,8 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                       _selectedMaxDistance = radius;
                                     });
                                     // debug
-                                    debugPrint('_selectedMaxDistance: '
-                                        '${radius.toStringAsFixed(2)}');
+                                    debugPrint(
+                                        '_selectedMaxDistance: ${radius.toStringAsFixed(2)}');
                                   },
                                   onChangeEnd: (radius) {
                                     /// Update user max distance
@@ -760,21 +803,24 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                     });
                                   },
                                 ),
-                                // Show message for non VIP user
-                                UserModel().userIsVip
-                                    ? const SizedBox(width: 0, height: 0)
-                                    : Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                            "${_i18n.translate("need_more_radius_away")} "
-                                            "${AppModel().appInfo.vipAccountMaxDistance} km "
-                                            "${_i18n.translate('radius_away')}",
-                                            style: TextStyle(
-                                                color: Theme.of(context)
-                                                    .primaryColor)),
-                                      ),
-                              ],
-                            )),
+                              ),
+
+                              // Show message for non VIP user
+                              UserModel().userIsVip
+                                  ? const SizedBox(width: 0, height: 0)
+                                  : Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                          "${_i18n.translate("need_more_radius_away")} "
+                                          "${AppModel().appInfo.vipAccountMaxDistance} km "
+                                          "${_i18n.translate('radius_away')}",
+                                          style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .primaryColor)),
+                                    ),
+                            ],
+                          ),
+                        ),
                         const SizedBox(height: 15),
 
                         // User age range
@@ -794,45 +840,61 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold)),
                             ),
-                            RangeSlider(
-                                activeColor: APP_ACCENT_COLOR,
-                                values: _selectedAgeRange,
-                                labels: _selectedAgeRangeLabels,
-                                divisions: 100,
-                                min: 18,
-                                max: 100,
-                                onChanged: (newRange) {
-                                  // Update state
-                                  setState(() {
-                                    _selectedAgeRange = newRange;
-                                    _selectedAgeRangeLabels = RangeLabels(
-                                        newRange.start.toStringAsFixed(0),
-                                        newRange.end.toStringAsFixed(0));
-                                  });
-                                  debugPrint(
-                                      '_selectedAgeRange: $_selectedAgeRange');
-                                },
-                                onChangeEnd: (endValues) {
-                                  /// Update age range
-                                  ///
-                                  /// Get start value
-                                  final int minAge = int.parse(
-                                      endValues.start.toStringAsFixed(0));
+                            SliderTheme(
+                              data: SliderTheme.of(context).copyWith(
+                                trackHeight:
+                                    2, // Set the track height to 2 pixels
+                                thumbShape: const RoundSliderThumbShape(
+                                  enabledThumbRadius:
+                                      8, // Set the thumb radius to 8 pixels
+                                ),
+                                overlayShape: const RoundSliderOverlayShape(
+                                  overlayRadius:
+                                      16, // Set the overlay radius to 16 pixels
+                                ),
+                              ),
+                              child: RangeSlider(
+                                  activeColor: APP_ACCENT_COLOR,
+                                  values: _selectedAgeRange,
+                                  labels: _selectedAgeRangeLabels,
+                                  divisions: 100,
+                                  min: 18,
+                                  max: 100,
+                                  onChanged: (newRange) {
+                                    // Update state
+                                    setState(() {
+                                      _selectedAgeRange = newRange;
+                                      _selectedAgeRangeLabels = RangeLabels(
+                                          newRange.start.toStringAsFixed(0),
+                                          newRange.end.toStringAsFixed(0));
+                                    });
+                                    debugPrint(
+                                        '_selectedAgeRange: $_selectedAgeRange');
+                                  },
+                                  onChangeEnd: (endValues) {
+                                    /// Update age range
+                                    ///
+                                    /// Get start value
+                                    final int minAge = int.parse(
+                                        endValues.start.toStringAsFixed(0));
 
-                                  /// Get end value
-                                  final int maxAge = int.parse(
-                                      endValues.end.toStringAsFixed(0));
+                                    /// Get end value
+                                    final int maxAge = int.parse(
+                                        endValues.end.toStringAsFixed(0));
 
-                                  // Update age range
-                                  UserModel().updateUserData(
-                                      userId: UserModel().user.userId,
-                                      data: {
-                                        '$USER_SETTINGS.$USER_MIN_AGE': minAge,
-                                        '$USER_SETTINGS.$USER_MAX_AGE': maxAge,
-                                      }).then((_) {
-                                    debugPrint('Age range updated');
-                                  });
-                                })
+                                    // Update age range
+                                    UserModel().updateUserData(
+                                        userId: UserModel().user.userId,
+                                        data: {
+                                          '$USER_SETTINGS.$USER_MIN_AGE':
+                                              minAge,
+                                          '$USER_SETTINGS.$USER_MAX_AGE':
+                                              maxAge,
+                                        }).then((_) {
+                                      debugPrint('Age range updated');
+                                    });
+                                  }),
+                            )
                           ],
                         )),
 
@@ -1055,7 +1117,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
   }
 }
 
-/// For curve 
+/// For curve
 class CurveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
@@ -1065,7 +1127,8 @@ class CurveClipper extends CustomClipper<Path> {
 
     Path path = Path()
       ..lineTo(0, size.height - curveHeight)
-      ..quadraticBezierTo(controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy)
+      ..quadraticBezierTo(
+          controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy)
       ..lineTo(size.width, 0)
       ..close();
 
@@ -1075,7 +1138,6 @@ class CurveClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
-
 
 Widget _rowProfileInfo(BuildContext context,
     {required Widget icon, required String title}) {

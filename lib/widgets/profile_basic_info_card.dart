@@ -57,8 +57,14 @@ class ProfileBasicInfoCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "${UserModel().user.userFullname.split(' ')[0]}, "
-                        "${userAge.toString()}",
+                        "${UserModel().user.userFullname.split(' ')[0]} ",
+                        style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                      Text(
+                        userAge.toString(),
                         style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
