@@ -200,83 +200,86 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   /// Profile photo
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Color.fromRGBO(29, 162, 222, 1.0),
-                          Color.fromRGBO(244, 179, 183, 1.0),
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Center(
-                          child: Text(
-                            _i18n.translate("profile"),
-                            style: const TextStyle(
-                                fontSize: 22, color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ),
+                  ClipPath(
+                    clipper: CurveClipper(),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.35,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Color.fromRGBO(29, 162, 222, 1.0),
+                            Color.fromRGBO(244, 179, 183, 1.0),
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
                         ),
-                        const SizedBox(height: 10),
-                        GestureDetector(
-                          child: Center(
-                            child: Stack(
-                              children: <Widget>[
-                                CircleAvatar(
-                                  radius:
-                                      84, // Adjust as needed to make the white circle bigger or smaller
-                                  backgroundColor: Colors.white,
-                                  child: CircleAvatar(
-                                    radius: 80,
-                                    backgroundImage: NetworkImage(
-                                        userModel.user.userProfilePhoto),
-                                    backgroundColor:
-                                        Theme.of(context).primaryColor,
-                                  ),
-                                ),
-                                Positioned(
-                                  child: CircleAvatar(
-                                    radius: 18,
-                                    backgroundColor:
-                                        Theme.of(context).primaryColor,
-                                    child: const Icon(Icons.edit,
-                                        color: Colors.white),
-                                  ),
-                                  right: 0,
-                                  bottom: 0,
-                                ),
-                              ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Center(
+                            child: Text(
+                              _i18n.translate("profile"),
+                              style: const TextStyle(
+                                  fontSize: 22, color: Colors.white),
+                              textAlign: TextAlign.center,
                             ),
                           ),
-                          onTap: () async {
-                            /// Update profile image
-                            _selectImage(
-                                imageUrl: userModel.user.userProfilePhoto,
-                                path: 'profile');
-                          },
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        // name age
-                        Center(
-                          child: Text(
-                            '${widget.user.userFullname}, '
-                            '${userAge.toString()}',
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
+                          const SizedBox(height: 10),
+                          GestureDetector(
+                            child: Center(
+                              child: Stack(
+                                children: <Widget>[
+                                  CircleAvatar(
+                                    radius:
+                                        64, // Adjust as needed to make the white circle bigger or smaller
+                                    backgroundColor: Colors.white,
+                                    child: CircleAvatar(
+                                      radius: 60,
+                                      backgroundImage: NetworkImage(
+                                          userModel.user.userProfilePhoto),
+                                      backgroundColor:
+                                          Theme.of(context).primaryColor,
+                                    ),
+                                  ),
+                                  Positioned(
+                                    child: CircleAvatar(
+                                      radius: 18,
+                                      backgroundColor:
+                                          Theme.of(context).primaryColor,
+                                      child: const Icon(Icons.edit,
+                                          color: Colors.white),
+                                    ),
+                                    right: 0,
+                                    bottom: 0,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            onTap: () async {
+                              /// Update profile image
+                              _selectImage(
+                                  imageUrl: userModel.user.userProfilePhoto,
+                                  path: 'profile');
+                            },
                           ),
-                        ),
-                      ],
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          // name age
+                          Center(
+                            child: Text(
+                              '${widget.user.userFullname}, '
+                              '${userAge.toString()}',
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Padding(
@@ -1051,6 +1054,28 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
         });
   }
 }
+
+/// For curve 
+class CurveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    int curveHeight = 20;
+    Offset controlPoint = Offset(size.width / 2, size.height + curveHeight);
+    Offset endPoint = Offset(size.width, size.height - curveHeight);
+
+    Path path = Path()
+      ..lineTo(0, size.height - curveHeight)
+      ..quadraticBezierTo(controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy)
+      ..lineTo(size.width, 0)
+      ..close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+}
+
 
 Widget _rowProfileInfo(BuildContext context,
     {required Widget icon, required String title}) {
