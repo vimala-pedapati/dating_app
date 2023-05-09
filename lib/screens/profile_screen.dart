@@ -83,25 +83,71 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     /// Carousel Profile images
                     Stack(
                       children: [
-                        AspectRatio(
-                          aspectRatio: 1 / 1,
-                          child: Carousel(
-                              autoplay: false,
-                              dotBgColor: Colors.transparent,
-                              dotIncreasedColor: Theme.of(context).primaryColor,
-                              images: UserModel()
-                                  .getUserProfileImages(widget.user)
-                                  .map((url) => NetworkImage(url))
-                                  .toList()),
+
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height,
+                          width: MediaQuery.of(context).size.width,
                         ),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height/1.8,
+                            width: MediaQuery.of(context).size.width,
+                            child: Center(
+                              child: Carousel(
+                                  autoplay: false,
+                                  dotBgColor: Colors.transparent,
+                                  dotIncreasedColor: Theme.of(context).primaryColor,
+                                  images: UserModel()
+                                      .getUserProfileImages(widget.user)
+                                      .map((url) => NetworkImage(url))
+                                      .toList()),
+                            ),
+                          ),
+
+
                         Positioned(
-                            top: 190,
+                            top:  MediaQuery.of(context).size.height/2,
                             bottom: 0,
                             child: Container(
-                              color: Colors.red,
-                              height: 900,
-                              width: 500,
-                            ))
+
+                              // height: MediaQuery.of(context).size.height,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(50),topRight: Radius.circular(50))
+                              ),
+                            )),
+                        Positioned(
+                            top:  MediaQuery.of(context).size.height/2.2,
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width*0.05,
+                                  ),
+                                  CircleAvatar(
+                                    radius: 35,
+                                      backgroundColor: Colors.white,
+                                    child: Icon(Icons.add),
+                                  ),
+                                  CircleAvatar(
+                                    radius: 50,
+                                    backgroundColor: Colors.white,
+                                    child: Icon(Icons.heart_broken, size: 50,),
+                                  ),
+                                  CircleAvatar(
+                                    radius: 35,
+                                    backgroundColor: Colors.white,
+                                    child: Icon(Icons.star),
+                                  ),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width*0.05,
+                                  ),
+
+                                ],
+                              ),
+                            )),
                       ],
                     ),
 
