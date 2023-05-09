@@ -1,4 +1,3 @@
- 
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -141,7 +140,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               /// Location distance
                               CustomBadge(
                                   icon: const SvgIcon(
-                                    
                                       "assets/icons/location_point_icon.svg",
                                       color: Colors.white,
                                       width: 15,

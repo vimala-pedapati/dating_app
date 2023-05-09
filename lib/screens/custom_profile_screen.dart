@@ -17,8 +17,8 @@ import '../helpers/app_helper.dart';
 import '../helpers/app_localizations.dart';
 import '../models/app_model.dart';
 import '../models/user_model.dart';
+import '../widgets/user_gallery.dart';
 import 'passport_screen.dart';
-import 'profile_screen.dart';
 import '../widgets/image_source_sheet.dart';
 
 class CustomProfileScreen extends StatefulWidget {
@@ -187,19 +187,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
       key: _scaffoldKey,
       appBar: AppBar(
         title: Text(_i18n.translate("edit_profile")),
-        actions: [
-          // Save changes button
-          TextButton(
-            child: Text(_i18n.translate("SAVE"),
-                style: TextStyle(color: Theme.of(context).primaryColor)),
-            onPressed: () {
-              /// Validate form
-              if (_formKey.currentState!.validate()) {
-                _saveChanges();
-              }
-            },
-          )
-        ],
+        actions: const [],
       ),
       body: SingleChildScrollView(
         // padding: const EdgeInsets.all(15),
@@ -297,15 +285,32 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            _i18n.translate("account_settings"),
-                            style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                _i18n.translate("account_settings"),
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            const Spacer(),
+                            // Save changes button
+                            TextButton(
+                              child: Text(_i18n.translate("SAVE"),
+                                  style: TextStyle(
+                                      color: Theme.of(context).primaryColor)),
+                              onPressed: () {
+                                /// Validate form
+                                if (_formKey.currentState!.validate()) {
+                                  _saveChanges();
+                                }
+                              },
+                            )
+                          ],
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width,
@@ -485,7 +490,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                 child: Text(_i18n.translate("school")),
                               ),
                               SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.75,
+                                width: MediaQuery.of(context).size.width * 0.7,
                                 child: TextFormField(
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
@@ -524,7 +529,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                 child: Text(_i18n.translate("job_title")),
                               ),
                               SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.73,
+                                width: MediaQuery.of(context).size.width * 0.7,
                                 child: TextFormField(
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
@@ -574,7 +579,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                 child: Text(_i18n.translate("current_plan")),
                               ),
                               SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.66,
+                                width: MediaQuery.of(context).size.width * 0.6,
                                 child: TextFormField(
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
@@ -966,15 +971,15 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                           ),
                         ),
 
-                        /// Profile gallery
-                        // Text(_i18n.translate("gallery"),
-                        //     style: const TextStyle(
-                        //         fontSize: 18, color: Colors.grey),
-                        //     textAlign: TextAlign.left),
-                        // const SizedBox(height: 5),
+                        // Profile gallery
+                        Text(_i18n.translate("gallery"),
+                            style: const TextStyle(
+                                fontSize: 18, color: Colors.grey),
+                            textAlign: TextAlign.left),
+                        const SizedBox(height: 5),
 
-                        /// Show gallery
-                        //   const UserGallery(),
+                        // Show gallery
+                        const UserGallery(),
 
                         const SizedBox(height: 20),
                       ],
@@ -1028,9 +1033,12 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
             Navigator.of(context).pop();
 
             /// Go to profilescreen
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) =>
-                    ProfileScreen(user: UserModel().user, showButtons: false)));
+            // Navigator.of(context).push(
+            //   MaterialPageRoute(
+            //     builder: (context) =>
+            //         ProfileScreen(user: UserModel().user, showButtons: false),
+            //   ),
+            // );
           });
         },
         onFail: (error) {
