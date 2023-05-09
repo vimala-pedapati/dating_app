@@ -1,8 +1,6 @@
 import 'dart:io';
 import 'package:Mingledxb/constants/constants.dart';
-/// hello
 import 'package:country_code_picker/country_localizations.dart';
- 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
  import 'package:flutter/services.dart';
@@ -22,7 +20,6 @@ void main() async {
 // hellooo world
   // Initialized before calling runApp to init firebase app
   WidgetsFlutterBinding.ensureInitialized();
-
   /// ***  Initialize Firebase App *** ///
   /// 👉 Please check the [Documentation - README FIRST] instructions in the
   /// Table of Contents at section: [NEW - Firebase initialization for Dating App]

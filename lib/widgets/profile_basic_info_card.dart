@@ -90,7 +90,7 @@ class ProfileBasicInfoCard extends StatelessWidget {
                   ),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                   SizedBox(
-                    height: 35,
+                    height: MediaQuery.of(context).size.width * 0.1,
                     child: TextButton.icon(
                         icon: Icon(Icons.edit,
                             color: Theme.of(context).primaryColor),
