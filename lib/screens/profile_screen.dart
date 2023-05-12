@@ -17,6 +17,7 @@ import '../widgets/custom_badge.dart';
 import '../widgets/default_button.dart';
 import '../widgets/show_scaffold_msg.dart';
 import '../widgets/svg_icon.dart';
+import '../widgets/user_gallery.dart';
 
 // ignore: must_be_immutable
 class ProfileScreen extends StatefulWidget {
@@ -80,339 +81,356 @@ class _ProfileScreenState extends State<ProfileScreen> {
             builder: (context, child, userModel) {
           return Stack(
             children: [
-              Column(
-                children: [
-                  /// Carousel Profile images
-                  Stack(
-                    children: [
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height,
-                        width: MediaQuery.of(context).size.width,
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height / 1.8,
-                        width: MediaQuery.of(context).size.width,
-                        child: Center(
-                          child: Carousel(
-                              autoplay: false,
-                              dotBgColor: Colors.transparent,
-                              dotIncreasedColor: Theme.of(context).primaryColor,
-                              images: UserModel()
-                                  .getUserProfileImages(widget.user)
-                                  .map((url) => NetworkImage(url))
-                                  .toList()),
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    /// Carousel Profile images
+                    Stack(
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 2,
+                          width: MediaQuery.of(context).size.width,
                         ),
-                      ),
-                      Positioned(
-                          top: MediaQuery.of(context).size.height / 2,
-                          bottom: 0,
-                          child: Container(
-                            height: MediaQuery.of(context).size.height,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(50),
-                                    topRight: Radius.circular(50))),
-                          )),
-                      Positioned(
-                          top: MediaQuery.of(context).size.height / 2.3,
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 20.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.05,
-                                      ),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.grey.withOpacity(0.1),
-                                              spreadRadius: .01,
-                                              blurRadius: 10,
-                                              offset: const Offset(0,
-                                                  1), // changes position of shadow
-                                            ),
-                                          ],
-                                        ),
-                                        child: const CircleAvatar(
-                                          radius: 35,
-                                          backgroundColor: Colors.white,
-                                          child: Icon(
-                                            Icons.close,
-                                            size: 30,
-                                          ),
-                                        ),
-                                      ),
-                                      CircleAvatar(
-                                        radius: 50,
-                                        child: Container(
-                                          height: 100,
-                                          width: 100,
-                                          decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            gradient: LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                Color(0xFFF4B3B7),
-                                                Color(0xFFF4B3B7),
-                                                Color(0xFF589DC6),
-                                              ],
-                                              stops: [0.0, 0.333, 1.0],
-                                            ),
-                                          ),
-                                          child: const Icon(
-                                            Icons.favorite_border,
-                                            size: 50,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.grey.withOpacity(0.1),
-                                              spreadRadius: .01,
-                                              blurRadius: 10,
-                                              offset: const Offset(0,
-                                                  1), // changes position of shadow
-                                            ),
-                                          ],
-                                        ),
-                                        child: const CircleAvatar(
-                                          radius: 35,
-                                          backgroundColor: Colors.white,
-                                          child: Icon(
-                                            Icons.star,
-                                            color: APP_ACCENT_COLOR,
-                                            size: 30,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.05,
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.02,
-                                  ),
-
-                                  /// Profile details
-                                  Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height / 1.8,
+                          width: MediaQuery.of(context).size.width,
+                          child: Center(
+                            child: Carousel(
+                                autoplay: false,
+                                dotBgColor: Colors.transparent,
+                                dotIncreasedColor:
+                                    Theme.of(context).primaryColor,
+                                images: UserModel()
+                                    .getUserProfileImages(widget.user)
+                                    .map((url) => NetworkImage(url))
+                                    .toList()),
+                          ),
+                        ),
+                        Positioned(
+                            top: MediaQuery.of(context).size.height / 2,
+                            bottom: 0,
+                            child: Container(
+                              height: MediaQuery.of(context).size.height,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(50),
+                                      topRight: Radius.circular(50))),
+                            )),
+                        Positioned(
+                            top: MediaQuery.of(context).size.height / 2.3,
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 20.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            /// Full Name
-                                            Expanded(
-                                              child: Text(
-                                                '${widget.user.userFullname}, '
-                                                '${userAge.toString()}',
-                                                style: const TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.bold),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.05,
+                                        ),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.1),
+                                                spreadRadius: .01,
+                                                blurRadius: 10,
+                                                offset: const Offset(0,
+                                                    1), // changes position of shadow
+                                              ),
+                                            ],
+                                          ),
+                                          child: const CircleAvatar(
+                                            radius: 35,
+                                            backgroundColor: Colors.white,
+                                            child: Icon(
+                                              Icons.close,
+                                              size: 30,
+                                            ),
+                                          ),
+                                        ),
+                                        CircleAvatar(
+                                          radius: 50,
+                                          child: Container(
+                                            height: 100,
+                                            width: 100,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              gradient: LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Color(0xFFF4B3B7),
+                                                  Color(0xFFF4B3B7),
+                                                  Color(0xFF589DC6),
+                                                ],
+                                                stops: [0.0, 0.333, 1.0],
                                               ),
                                             ),
+                                            child: Image.asset(
+                                              'assets/icons/heartIcon.png',
+                                              height: 50,
+                                              width: 50,
+                                            ),
 
-                                            /// Show verified badge
-                                            widget.user.userIsVerified
-                                                ? Container(
-                                                    margin:
-                                                        const EdgeInsets.only(
-                                                            right: 5),
-                                                    child: Image.asset(
-                                                        'assets/images/verified_badge.png',
-                                                        width: 30,
-                                                        height: 30))
-                                                : const SizedBox(
-                                                    width: 0, height: 0),
-
-                                            /// Show VIP badge for current user
-                                            UserModel().user.userId ==
-                                                        widget.user.userId &&
-                                                    UserModel().userIsVip
-                                                ? Container(
-                                                    margin:
-                                                        const EdgeInsets.only(
-                                                            right: 5),
-                                                    child: Image.asset(
-                                                        'assets/images/crow_badge.png',
-                                                        width: 25,
-                                                        height: 25))
-                                                : const SizedBox(
-                                                    width: 0, height: 0),
-
-                                            /// Location distance
-                                            CustomBadge(
-                                                icon: const SvgIcon(
-                                                    "assets/icons/location_point_icon.svg",
-                                                    color: Colors.white,
-                                                    width: 15,
-                                                    height: 15),
-                                                text:
-                                                    '${_appHelper.getDistanceBetweenUsers(userLat: widget.user.userGeoPoint.latitude, userLong: widget.user.userGeoPoint.longitude)}km')
-                                          ],
+                                            // child: const Icon(
+                                            //   Icons.favorite_border,
+                                            //   size: 50,
+                                            //   color: Colors.white,
+                                            //   fill: 0.1,
+                                            // ),
+                                          ),
                                         ),
-                                        const SizedBox(height: 5),
-
-                                        /// Job title
-                                        _rowProfileInfo(
-                                          context,
-                                          icon: const SvgIcon(
-                                              "assets/icons/job_bag_icon.svg",
-                                              color: Colors.black38,
-                                              width: 27,
-                                              height: 27),
-                                          title: widget.user.userJobTitle,
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.1),
+                                                spreadRadius: .01,
+                                                blurRadius: 10,
+                                                offset: const Offset(0,
+                                                    1), // changes position of shadow
+                                              ),
+                                            ],
+                                          ),
+                                          child: const CircleAvatar(
+                                            radius: 35,
+                                            backgroundColor: Colors.white,
+                                            child: Icon(
+                                              Icons.star,
+                                              color: APP_ACCENT_COLOR,
+                                              size: 30,
+                                            ),
+                                          ),
                                         ),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.05,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.02,
+                                    ),
 
-                                        const SizedBox(height: 5),
+                                    /// Profile details
+                                    Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              /// Full Name
+                                              Expanded(
+                                                child: Text(
+                                                  '${widget.user.userFullname}, '
+                                                  '${userAge.toString()}',
+                                                  style: const TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
 
-                                        /// Profile bio
-                                        const Padding(
-                                          padding: EdgeInsets.all(8.0),
-                                          child: Text("About",
+                                              /// Show verified badge
+                                              widget.user.userIsVerified
+                                                  ? Container(
+                                                      margin:
+                                                          const EdgeInsets.only(
+                                                              right: 5),
+                                                      child: Image.asset(
+                                                          'assets/images/verified_badge.png',
+                                                          width: 30,
+                                                          height: 30))
+                                                  : const SizedBox(
+                                                      width: 0, height: 0),
+
+                                              /// Show VIP badge for current user
+                                              UserModel().user.userId ==
+                                                          widget.user.userId &&
+                                                      UserModel().userIsVip
+                                                  ? Container(
+                                                      margin:
+                                                          const EdgeInsets.only(
+                                                              right: 5),
+                                                      child: Image.asset(
+                                                          'assets/images/crow_badge.png',
+                                                          width: 25,
+                                                          height: 25))
+                                                  : const SizedBox(
+                                                      width: 0, height: 0),
+
+                                              /// Location distance
+                                              CustomBadge(
+                                                  icon: const SvgIcon(
+                                                      "assets/icons/location_point_icon.svg",
+                                                      color: Colors.white,
+                                                      width: 15,
+                                                      height: 15),
+                                                  text:
+                                                      '${_appHelper.getDistanceBetweenUsers(userLat: widget.user.userGeoPoint.latitude, userLong: widget.user.userGeoPoint.longitude)}km')
+                                            ],
+                                          ),
+                                          const SizedBox(height: 5),
+
+                                          /// Job title
+                                          _rowProfileInfo(
+                                            context,
+                                            icon: const SvgIcon(
+                                                "assets/icons/job_bag_icon.svg",
+                                                color: Colors.black38,
+                                                width: 27,
+                                                height: 27),
+                                            title: widget.user.userJobTitle,
+                                          ),
+
+                                          const SizedBox(height: 5),
+
+                                          /// Profile bio
+                                          const Text("About",
                                               style: TextStyle(
                                                   fontSize: 22,
                                                   fontWeight: FontWeight.bold)),
-                                        ),
-                                        Text(widget.user.userBio,
-                                            style: const TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.black38)),
-                                        const SizedBox(height: 5),
+                                          const SizedBox(height: 5),
+                                          Text(widget.user.userBio,
+                                              style: const TextStyle(
+                                                  fontSize: 16,
+                                                  color: Colors.black38)),
+                                          const SizedBox(height: 5),
 
-                                        /// Home location
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: const [
-                                                Padding(
-                                                  padding: EdgeInsets.all(8.0),
-                                                  child: Text("Mingle Events",
+                                          /// Home location
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: const [
+                                                  Text("Mingle Events",
                                                       style: TextStyle(
                                                           fontSize: 22,
                                                           fontWeight:
                                                               FontWeight.bold)),
-                                                ),
-                                                Text(
-                                                    "Anti Valentines Day Party",
-                                                    style: TextStyle(
-                                                        fontSize: 16,
-                                                        color: Colors.black38)),
-                                                SizedBox(height: 5),
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                DefaultButton(
-                                                  child: const Text("Atteding"),
-                                                  onPressed: () {},
-                                                ),
-                                                const SizedBox(height: 5),
-                                                const Text("14th Feb 2021",
-                                                    style: TextStyle(
-                                                        fontSize: 16,
-                                                        color: Colors.black38)),
-                                                const SizedBox(height: 5),
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                        const Padding(
-                                          padding: EdgeInsets.all(8.0),
-                                          child: Text("Intersets",
-                                              style: TextStyle(
-                                                  fontSize: 22,
-                                                  fontWeight: FontWeight.bold)),
-                                        ),
-
-                                        _rowProfileInfo(
-                                          context,
-                                          icon: SvgIcon(
-                                              "assets/icons/location_point_icon.svg",
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              width: 24,
-                                              height: 24),
-                                          title:
-                                              "${widget.user.userLocality}, ${widget.user.userCountry}",
-                                        ),
-
-                                        /// Education
-                                        _rowProfileInfo(context,
+                                                  SizedBox(height: 5),
+                                                  Text(
+                                                      "Anti Valentines Day Party",
+                                                      style: TextStyle(
+                                                          fontSize: 16,
+                                                          color:
+                                                              Colors.black38)),
+                                                  SizedBox(height: 5),
+                                                ],
+                                              ),
+                                              Column(
+                                                children: [
+                                                  DefaultButton(
+                                                    child:
+                                                        const Text("Atteding"),
+                                                    onPressed: () {},
+                                                  ),
+                                                  const SizedBox(height: 5),
+                                                  const Text("14th Feb 2021",
+                                                      style: TextStyle(
+                                                          fontSize: 16,
+                                                          color:
+                                                              Colors.black38)),
+                                                  const SizedBox(height: 5),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                          const Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Text("Intersets",
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                          ),
+                                          const SizedBox(
+                                            height: 150,
+                                          ),
+                                          _rowProfileInfo(
+                                            context,
                                             icon: SvgIcon(
-                                                "assets/icons/university_icon.svg",
+                                                "assets/icons/location_point_icon.svg",
                                                 color: Theme.of(context)
                                                     .primaryColor,
-                                                width: 34,
-                                                height: 34),
-                                            title: widget.user.userSchool),
-
-                                        /// Birthday
-                                        _rowProfileInfo(context,
-                                            icon: SvgIcon(
-                                                "assets/icons/gift_icon.svg",
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                width: 28,
-                                                height: 28),
+                                                width: 24,
+                                                height: 24),
                                             title:
-                                                '${_i18n.translate('birthday')} ${widget.user.userBirthYear}/${widget.user.userBirthMonth}/${widget.user.userBirthDay}'),
+                                                "${widget.user.userLocality}, ${widget.user.userCountry}",
+                                          ),
 
-                                        /// Join date
-                                        _rowProfileInfo(context,
-                                            icon: SvgIcon(
-                                                "assets/icons/info_icon.svg",
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                width: 28,
-                                                height: 28),
-                                            title: 'HELO'
-                                            // title:
-                                            //     '${_i18n.translate('join_date')} ${timeago.format(widget.user.userRegDate)}'),
-                                            ),
-                                        const Divider(),
-                                      ],
+                                          /// Education
+                                          _rowProfileInfo(context,
+                                              icon: SvgIcon(
+                                                  "assets/icons/university_icon.svg",
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 34,
+                                                  height: 34),
+                                              title: widget.user.userSchool),
+
+                                          /// Birthday
+                                          _rowProfileInfo(context,
+                                              icon: SvgIcon(
+                                                  "assets/icons/gift_icon.svg",
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 28,
+                                                  height: 28),
+                                              title:
+                                                  '${_i18n.translate('birthday')} ${widget.user.userBirthYear}/${widget.user.userBirthMonth}/${widget.user.userBirthDay}'),
+
+                                          /// Join date
+                                          _rowProfileInfo(context,
+                                              icon: SvgIcon(
+                                                  "assets/icons/info_icon.svg",
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  width: 28,
+                                                  height: 28),
+                                              title: 'HELO'
+                                              // title:
+                                              //     '${_i18n.translate('join_date')} ${timeago.format(widget.user.userRegDate)}'),
+                                              ),
+                                          const Divider(),
+                                          const UserGallery(),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          )),
-                    ],
-                  ),
-                ],
+                            )),
+                      ],
+                    ),
+                  ],
+                ),
               ),
 
               /// AppBar to return back
