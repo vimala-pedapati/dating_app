@@ -1,9 +1,10 @@
 import 'dart:io';
 import 'package:Mingledxb/constants/constants.dart';
+import 'package:Mingledxb/screens/count_down_screen.dart';
 import 'package:country_code_picker/country_localizations.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
- import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -14,12 +15,12 @@ import 'firebase_options.dart';
 import 'helpers/app_localizations.dart';
 import 'models/app_model.dart';
 import 'models/user_model.dart';
-import 'screens/splash_screen.dart';
 
 void main() async {
 // hellooo world
   // Initialized before calling runApp to init firebase app
   WidgetsFlutterBinding.ensureInitialized();
+
   /// ***  Initialize Firebase App *** ///
   /// 👉 Please check the [Documentation - README FIRST] instructions in the
   /// Table of Contents at section: [NEW - Firebase initialization for Dating App]
@@ -111,7 +112,7 @@ class MyApp extends StatelessWidget {
             /// from the list (English, in this case).
             return supportedLocales.first;
           },
-          home: const SplashScreen(),
+          home: const CountDownScreen(),
           theme: _appTheme(),
         ),
       ),
