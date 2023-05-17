@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:Mingledxb/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/constants.dart';
@@ -22,7 +23,7 @@ class _CountDownScreenState extends State<CountDownScreen> {
   void initState() {
     int days = int.parse("00");
     int hours = int.parse("00");
-    int mints = int.parse("02");
+    int mints = int.parse("01");
     int secs = int.parse("00");
     countdownDuration =
         Duration(days: days, hours: hours, minutes: mints, seconds: secs);
@@ -152,6 +153,12 @@ class _CountDownScreenState extends State<CountDownScreen> {
         timer?.cancel();
       } else {
         duration = Duration(seconds: seconds);
+        seconds == 0 ?     Navigator.push<void>(
+    context,
+    MaterialPageRoute<void>(
+      builder: (BuildContext context) => const SplashScreen(),
+    ),
+  ) : print(seconds);
       }
     });
   }
