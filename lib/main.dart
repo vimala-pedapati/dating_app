@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:Mingledxb/constants/constants.dart';
-import 'package:Mingledxb/screens/count_down_screen.dart';
 import 'package:country_code_picker/country_localizations.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +14,7 @@ import 'firebase_options.dart';
 import 'helpers/app_localizations.dart';
 import 'models/app_model.dart';
 import 'models/user_model.dart';
+import 'screens/splash_screen.dart';
 
 void main() async {
 // hellooo world
@@ -112,7 +112,7 @@ class MyApp extends StatelessWidget {
             /// from the list (English, in this case).
             return supportedLocales.first;
           },
-          home: const CountDownScreen(),
+          home: const SplashScreen(),
           theme: _appTheme(),
         ),
       ),

@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:core';
 
 import 'package:Mingledxb/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 import '../constants/constants.dart';
 import '../widgets/app_logo.dart';
@@ -18,7 +20,7 @@ class _CountDownScreenState extends State<CountDownScreen> {
   Duration duration = const Duration();
   Timer? timer;
   bool countDown = true;
-
+  late ValueNotifier valueNotifier;
   @override
   void initState() {
     int days = int.parse("00");
@@ -100,11 +102,11 @@ class _CountDownScreenState extends State<CountDownScreen> {
               SizedBox(
                 height: MediaQuery.of(context).size.width * 0.1,
               ),
-              // // Example 1
-              // const SimpleCircularProgressBar(
-              //   valueNotifier : double(),
-              //   progressColors: [Colors.cyan],
-              // ),
+              // Example 1
+              const SimpleCircularProgressBar(
+                // valueNotifier: valueNotifier.value,
+                progressColors: [Colors.cyan],
+              ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: const Text(
