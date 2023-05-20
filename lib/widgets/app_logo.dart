@@ -11,9 +11,7 @@ class AppLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 80.0),
-      child: Container(
-        child: Image.asset("assets/icons/logo_name_png.png"),
-      ),
+      child: Image.asset("assets/icons/logo_name_png.png"),
     );
     // return const CircleAvatar(
     //   backgroundImage: AssetImage('assets/icons/logo_name_png.png'),

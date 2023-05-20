@@ -1,7 +1,6 @@
 import 'package:Mingledxb/constants/constants.dart';
 import 'package:Mingledxb/screens/sign_up_custome_design_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:Mingledxb/helpers/app_localizations.dart';
 
 import '../widgets/app_logo.dart';
 
@@ -15,7 +14,6 @@ class WelcomeScreenMingle extends StatefulWidget {
 class _WelcomeScreenMingleState extends State<WelcomeScreenMingle> {
   // Variables
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  late AppLocalizations _i18n;
   final List<Color> _colors = [
     APP_ACCENT_COLOR,
     APP_PRIMARY_COLOR,
@@ -24,7 +22,6 @@ class _WelcomeScreenMingleState extends State<WelcomeScreenMingle> {
   @override
   Widget build(BuildContext context) {
     /// Initialization
-    _i18n = AppLocalizations.of(context);
 
     return Scaffold(
       key: _scaffoldKey,

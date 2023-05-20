@@ -5,12 +5,13 @@ import 'package:Mingledxb/screens/update_location_sceen.dart';
 import 'package:Mingledxb/screens/welcome_to_mingle_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:Mingledxb/constants/constants.dart';
-import 'package:Mingledxb/helpers/app_localizations.dart';
 import 'package:Mingledxb/helpers/app_helper.dart';
 import 'package:Mingledxb/screens/update_app_screen.dart';
 import 'package:Mingledxb/models/user_model.dart';
 import 'package:Mingledxb/screens/home_screen.dart';
 import 'package:Mingledxb/screens/sign_up_screen.dart';
+
+import 'count_down_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -22,12 +23,10 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   // Variables
   final AppHelper _appHelper = AppHelper();
-  late AppLocalizations _i18n;
   final List<Color> _colors = [
     APP_ACCENT_COLOR,
     APP_PRIMARY_COLOR,
   ];
-  final List<double> _stops = [0.0, 0.7];
 
   /// Navigate to next page
   void _nextScreen(screen) {
@@ -66,6 +65,7 @@ class _SplashScreenState extends State<SplashScreen> {
             updateLocationScreen: () =>
                 _nextScreen(const UpdateLocationScreen()),
             signInScreen: () => _nextScreen(const WelcomeScreenMingle()),
+            countdownscreen: () => _nextScreen(const CountDownScreen()),
             signUpScreen: () => _nextScreen(const SignUpScreen()),
             homeScreen: () => _nextScreen(const HomeScreen()),
             blockedScreen: () => _nextScreen(const BlockedAccountScreen()));
@@ -75,7 +75,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _i18n = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
         child: Container(

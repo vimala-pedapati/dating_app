@@ -4,7 +4,6 @@ import 'package:Mingledxb/dialogs/common_dialogs.dart';
 import 'package:Mingledxb/helpers/app_localizations.dart';
 import 'package:Mingledxb/models/user_model.dart';
 import 'package:Mingledxb/screens/sign_in_screen.dart';
-import 'package:Mingledxb/screens/update_location_sceen.dart';
 import 'package:Mingledxb/widgets/image_source_sheet.dart';
 import 'package:Mingledxb/widgets/processing.dart';
 import 'package:Mingledxb/widgets/show_scaffold_msg.dart';
@@ -14,6 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:Mingledxb/widgets/default_button.dart';
 import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_picker.dart';
 import 'package:scoped_model/scoped_model.dart';
+
+import 'interest_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -328,8 +329,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(
                       width: double.maxFinite,
                       child: DefaultButton(
-                        child: Text(_i18n.translate("CREATE_ACCOUNT"),
-                            style: const TextStyle(fontSize: 18)),
+                        child:
+                            const Text('Next', style: TextStyle(fontSize: 18)),
                         onPressed: () {
                           /// Sign up
                           _createAccount();
@@ -397,9 +398,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
             // Execute action
             // Go to get the user device's current location
             Future(() {
+              // Navigator.of(context).pushAndRemoveUntil(
+              //     MaterialPageRoute(
+              //         builder: (context) => const UpdateLocationScreen()),
+              //     (route) => false);
+
               Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(
-                      builder: (context) => const UpdateLocationScreen()),
+                      builder: (context) => const InterestScreen()),
                   (route) => false);
             });
             // End

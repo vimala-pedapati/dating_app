@@ -31,7 +31,7 @@ class UsersApi {
     /// Get user settings
     final Map<String, dynamic>? settings = UserModel().user.userSettings;
 
-    // // Get user geo center
+    // Get user geo center
     final GeoFirePoint center = geo.point(
         latitude: UserModel().user.userGeoPoint.latitude,
         longitude: UserModel().user.userGeoPoint.longitude);

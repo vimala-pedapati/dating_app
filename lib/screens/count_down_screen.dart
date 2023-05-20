@@ -1,9 +1,14 @@
-import 'dart:async';
+// ignore_for_file: avoid_print
 
+import 'dart:async';
+import 'dart:core';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/constants.dart';
 import '../widgets/app_logo.dart';
+import 'home_screen.dart';
 
 class CountDownScreen extends StatefulWidget {
   const CountDownScreen({super.key});
@@ -17,17 +22,65 @@ class _CountDownScreenState extends State<CountDownScreen> {
   Duration duration = const Duration();
   Timer? timer;
   bool countDown = true;
+  late ValueNotifier valueNotifier;
+
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  int daysDiff = 0;
+  int hoursDiff = 0;
+  int minutesDiff = 0;
+  int secondsDiff = 0;
+  void getDataFromFirestore() async {
+    QuerySnapshot querySnapshot = await _firestore.collection('AppInfo').get();
+
+    if (querySnapshot.docs.isNotEmpty) {
+      DocumentSnapshot docSnapshot = querySnapshot.docs.first;
+      Map<String, dynamic> data = docSnapshot.data() as Map<String, dynamic>;
+      String dateString = data['date'];
+      String timeString = data['time'];
+      convertToDaysHoursMinutesSeconds(dateString, timeString);
+    }
+  }
+
+  convertToDaysHoursMinutesSeconds(String dateString, String timeString) {
+    List<String> dateParts = dateString.split('/');
+    List<String> timeParts = timeString.split(':');
+    int month = int.parse(dateParts[0]);
+    int day = int.parse(dateParts[1]);
+    int year = int.parse(dateParts[2]);
+    int hours;
+    int minutes;
+    int seconds;
+    if (timeString.contains('AM') || timeString.contains('am')) {
+      hours = int.parse(timeParts[0]);
+    } else {
+      hours = int.parse(timeParts[0]) + 12;
+    }
+    minutes = int.parse(timeParts[1].split(' ')[0]);
+    seconds = 0;
+    DateTime dateTime = DateTime(year, month, day, hours, minutes, seconds);
+    DateTime now = DateTime.now();
+    Duration difference = dateTime.difference(now);
+    daysDiff = difference.inDays;
+    hoursDiff = difference.inHours % 24;
+    minutesDiff = difference.inMinutes % 60;
+    secondsDiff = difference.inSeconds % 60;
+
+    setState(() {});
+
+    countdownDuration = Duration(
+        days: daysDiff,
+        hours: hoursDiff,
+        minutes: minutesDiff,
+        seconds: secondsDiff);
+    startTimer();
+    reset();
+  }
 
   @override
   void initState() {
-    int days = int.parse("00");
-    int hours = int.parse("00");
-    int mints = int.parse("02");
-    int secs = int.parse("00");
-    countdownDuration =
-        Duration(days: days, hours: hours, minutes: mints, seconds: secs);
-    startTimer();
-    reset();
+    getDataFromFirestore();
+
     super.initState();
   }
 
@@ -57,18 +110,19 @@ class _CountDownScreenState extends State<CountDownScreen> {
               Stack(children: [
                 Container(
                     margin: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.1,
+                      top: MediaQuery.of(context).size.height * 0.13,
+                      left: MediaQuery.of(context).size.height * 0.03,
                       bottom: 0,
                     ),
                     child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.6,
                         child: buildTime())),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.6,
-                  height: MediaQuery.of(context).size.width * 0.6,
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  height: MediaQuery.of(context).size.width * 0.7,
                   child: CircularProgressIndicator(
-                    value:
-                        double(), // Change this value to set the progress percentage
+                    value: calculateProgress().clamp(0,
+                        1), // Change this value to set the progress percentage
                     strokeWidth: 25,
 
                     valueColor: const AlwaysStoppedAnimation(
@@ -78,11 +132,12 @@ class _CountDownScreenState extends State<CountDownScreen> {
                   ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.6,
-                  height: MediaQuery.of(context).size.width * 0.6,
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  height: MediaQuery.of(context).size.width * 0.7,
                   child: CircularProgressIndicator(
-                    value:
-                        double(), // Change this value to set the progress percentage
+                    value: calculateProgress().clamp(0,
+                        1), // Change this value to set the progress percentage
+
                     strokeWidth: 5,
 
                     valueColor: const AlwaysStoppedAnimation(
@@ -91,19 +146,11 @@ class _CountDownScreenState extends State<CountDownScreen> {
                   ),
                 ),
               ]),
-              // Text(duration.inDays == 0 ? "Time is up" : "Time left"),
-              // Text(duration.inHours == 0 ? "Time is up" : "Time left"),
-              // Text(duration.inMinutes == 0 ? "Time is up" : "Time left"),
-              // Text(duration.inSeconds == 0 ? "Time is up" : "Time left"),
-              // Text(duration.toString()),
+
               SizedBox(
                 height: MediaQuery.of(context).size.width * 0.1,
               ),
-              // // Example 1
-              // const SimpleCircularProgressBar(
-              //   valueNotifier : double(),
-              //   progressColors: [Colors.cyan],
-              // ),
+
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: const Text(
@@ -128,7 +175,10 @@ class _CountDownScreenState extends State<CountDownScreen> {
     );
   }
 
-  double() {
+  double calculateProgress() {
+    if (countdownDuration.inSeconds == 0) {
+      return 0;
+    }
     return duration.inSeconds / countdownDuration.inSeconds;
   }
 
@@ -146,14 +196,25 @@ class _CountDownScreenState extends State<CountDownScreen> {
 
   void addTime1() {
     const addSeconds = 1;
-    setState(() {
-      final seconds = duration.inSeconds - addSeconds;
-      if (seconds < 0) {
-        timer?.cancel();
-      } else {
-        duration = Duration(seconds: seconds);
-      }
-    });
+    if (mounted) {
+      setState(() {
+        final seconds = duration.inSeconds - addSeconds;
+        if (seconds < 0) {
+          timer?.cancel();
+        } else {
+          duration = Duration(seconds: seconds);
+
+          seconds == 0
+              ? Navigator.push<void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const HomeScreen(),
+                  ),
+                )
+              : print(seconds);
+        }
+      });
+    }
   }
 
   Widget buildTime() {
@@ -164,16 +225,20 @@ class _CountDownScreenState extends State<CountDownScreen> {
     final seconds = twoDigits(duration.inSeconds.remainder(60));
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       buildTimeCard(time: days, header: "Days"),
-      const SizedBox(
-        width: 8,
+      SizedBox(
+        width: MediaQuery.of(context).size.width * 0.01,
       ),
-      buildTimeCard(time: hours, header: 'HOURS'),
-      const SizedBox(
-        width: 8,
+      buildTimeCard(time: hours, header: 'Hours'),
+      SizedBox(
+        width: MediaQuery.of(context).size.width * 0.01,
       ),
-      buildTimeCard(time: minutes, header: 'MINUTES'),
-      const SizedBox(
-        width: 8,
+      buildTimeCard(time: minutes, header: 'Minutes'),
+      SizedBox(
+        width: MediaQuery.of(context).size.width * 0.01,
+      ),
+      buildTimeCard(time: seconds, header: 'Seconds'),
+      SizedBox(
+        width: MediaQuery.of(context).size.width * 0.01,
       ),
       // buildTimeCard(time: seconds, header: 'SECONDS'),
     ]);
@@ -186,7 +251,7 @@ class _CountDownScreenState extends State<CountDownScreen> {
           Text(
             time,
             style: const TextStyle(
-                color: Color.fromRGBO(104, 104, 104, 1), fontSize: 36),
+                color: Color.fromRGBO(104, 104, 104, 1), fontSize: 32),
           ),
           Text(header, style: const TextStyle(color: Colors.black45)),
         ],
