@@ -45,21 +45,21 @@ dependencies:
   google_mobile_ads: ^2.3.0 # Used to Show Admob Ads in App (e.g. Banner Ads, Interstitial Ads (full screen), Native Ads and Rewarded Video Ads)
 
 
-  in_app_purchase: 3.1.1 # This plugin help us to Sell VIP Subscription Plans in app
-  flutter_svg: 1.1.6 # This plugin help us to use custom svg icons          
-  flutter_launcher_icons: 0.11.0 # Used to generate app icon launcher for both platforms android and iOS 
-  flutter_native_splash: 2.2.16 # Used to generate the app splash screen for both platforms android and iOS 
+  in_app_purchase: ^3.1.1 # This plugin help us to Sell VIP Subscription Plans in app
+  flutter_svg: 1.1.6 # This plugin help us to use custom svg icons
+  flutter_launcher_icons: 0.11.0 # Used to generate app icon launcher for both platforms android and iOS
+  flutter_native_splash: 2.2.16 # Used to generate the app splash screen for both platforms android and iOS
   country_code_picker: 2.0.2 # Used to Select User Country Code
   scoped_model: 2.0.0 # Used to Manage Application State
   image_picker: 0.8.6+1 # # Used to select images from the User's device image library or take a new photo using the camera
   image_cropper: 3.0.1 # Used to Crop/Rotate Selected images from user's device
-  url_launcher: 6.1.9 # Used to open link schemes in application or browser
+  url_launcher: ^6.1.9 # Used to open link schemes in application or browser
   geolocator: 9.0.2 # Used to get User location by GPS 
   geocoding: 2.0.5 # Used to translate User latitude and longitude coordinates into a readable address
   rxdart: 0.27.3 # required by geoflutterfire plugin that helps us to query users by geolocation center
   shimmer: 2.0.0 # Used to create placeholder widget while app is loading the image
   timeago: 3.3.0 # Used to create fuzzy timestamps: (e.g. "3 minutes ago")
-  share: 2.0.4 # Used to share application content in other applications
+  share: ^2.0.4 # Used to share application content in other applications
   flutter_cupertino_datetime_picker: 3.0.0
   place_picker: 0.10.0 # This plugin help us to create Passport feature
   fluttertoast: 8.1.3 # For toast messages
