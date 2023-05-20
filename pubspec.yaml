@@ -58,7 +58,7 @@ dependencies:
   geocoding: 2.0.5 # Used to translate User latitude and longitude coordinates into a readable address
   rxdart: 0.27.3 # required by geoflutterfire plugin that helps us to query users by geolocation center
   shimmer: 2.0.0 # Used to create placeholder widget while app is loading the image
-  timeago: 3.3.0 # Used to create fuzzy timestamps: (e.g. "3 minutes ago")
+  timeago: 3.4.0 # Used to create fuzzy timestamps: (e.g. "3 minutes ago")
   share: 2.0.4 # Used to share application content in other applications
   flutter_cupertino_datetime_picker: 3.0.0
   place_picker: 0.10.0 # This plugin help us to create Passport feature
@@ -96,6 +96,7 @@ flutter:
      - assets/images/
      - assets/icons/
      - assets/lang/
+     - assets/interest/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

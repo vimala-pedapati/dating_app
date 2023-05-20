@@ -4,16 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:place_picker/entities/location_result.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import '../api/dislikes_api.dart';
-import '../api/likes_api.dart';
-import '../api/matches_api.dart';
 import '../constants/constants.dart';
 import '../datas/user.dart';
 import '../dialogs/common_dialogs.dart';
 import '../dialogs/progress_dialog.dart';
 import '../dialogs/show_me_dialog.dart';
 import '../dialogs/vip_dialog.dart';
-import '../helpers/app_helper.dart';
 import '../helpers/app_localizations.dart';
 import '../models/app_model.dart';
 import '../models/user_model.dart';
@@ -39,12 +35,6 @@ class CustomProfileScreen extends StatefulWidget {
 }
 
 class _CustomProfileScreenState extends State<CustomProfileScreen> {
-  ///  variables from view profile screen
-  // final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final AppHelper _appHelper = AppHelper();
-  final LikesApi _likesApi = LikesApi();
-  final DislikesApi _dislikesApi = DislikesApi();
-  final MatchesApi _matchesApi = MatchesApi();
   // late AppLocalizations _i18n;
 
   // Variables from edit screen

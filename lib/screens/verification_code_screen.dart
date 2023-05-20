@@ -9,6 +9,8 @@ import 'package:Mingledxb/widgets/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:Mingledxb/helpers/app_localizations.dart';
 
+import 'count_down_screen.dart';
+
 class VerificationCodeScreen extends StatefulWidget {
   // Variables
   final String verificationId;
@@ -52,6 +54,7 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
           UserModel().authUserAccount(
               updateLocationScreen: () =>
                   _nextScreen(const UpdateLocationScreen()),
+              countdownscreen: () => _nextScreen(const CountDownScreen()),
               homeScreen: () => _nextScreen(const HomeScreen()),
               signUpScreen: () => _nextScreen(const SignUpScreen()));
         },

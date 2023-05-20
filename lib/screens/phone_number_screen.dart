@@ -14,6 +14,7 @@ import '../widgets/default_button.dart';
 import '../widgets/show_scaffold_msg.dart';
 import '../widgets/svg_icon.dart';
 import 'blocked_account_screen.dart';
+import 'count_down_screen.dart';
 import 'home_screen.dart';
 
 class PhoneNumberScreen extends StatefulWidget {
@@ -149,6 +150,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
           UserModel().authUserAccount(
             updateLocationScreen: () => _nextScreen(const UpdateLocationScreen()),
             signUpScreen: () => _nextScreen(const SignUpScreen()),
+            countdownscreen: () => _nextScreen(const CountDownScreen()),
             homeScreen: () => _nextScreen(const HomeScreen()),
             blockedScreen: () => _nextScreen(const BlockedAccountScreen()));
           // END   

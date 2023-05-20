@@ -1,13 +1,12 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
- 
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
- 
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
-
 
 import 'package:place_picker/place_picker.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -48,7 +47,7 @@ class UserModel extends Model {
     notifyListeners();
     debugPrint('updateRestoreVipMsg() -> $value');
   }
-  
+
   /// Create Singleton factory for [UserModel]
   ///
   static final UserModel _userModel = UserModel._internal();
@@ -160,6 +159,7 @@ class UserModel extends Model {
   /// Authenticate User Account
   Future<void> authUserAccount({
     // Callback functions for route
+    required VoidCallback countdownscreen,
     required VoidCallback homeScreen,
     required VoidCallback signUpScreen,
     required VoidCallback updateLocationScreen,
@@ -185,7 +185,6 @@ class UserModel extends Model {
             // Go to blocked user account screen
             blockedScreen!();
           } else {
-
             // Update UserModel for current user
             updateUserObject(userDoc.data()!);
 
@@ -201,6 +200,7 @@ class UserModel extends Model {
 
             // Go to home screen
             homeScreen();
+            countdownscreen();
           }
           // Debug
           debugPrint("firebaseUser exists");
@@ -394,11 +394,13 @@ class UserModel extends Model {
     });
   }
 
+
   /// Update current user profile
   Future<void> updateProfile({
     required String userSchool,
     required String userJobTitle,
     required String userBio,
+
     // Callback functions
     required VoidCallback onSuccess,
     required Function(String) onFail,
