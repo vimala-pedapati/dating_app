@@ -11,6 +11,7 @@ class UserGallery extends StatelessWidget {
     return ScopedModelDescendant<UserModel>(
         builder: (context, child, userModel) {
       return GridView.builder(
+          padding: const EdgeInsets.all(0),
           physics: const ScrollPhysics(),
           itemCount: 9,
           shrinkWrap: true,

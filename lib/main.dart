@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:Mingledxb/constants/constants.dart';
-import 'package:Mingledxb/screens/count_down_screen.dart';
 import 'package:Mingledxb/screens/splash_screen.dart';
 import 'package:country_code_picker/country_localizations.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -11,7 +10,6 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-// TODO: Please "scroll down" to see the instructions to fix it.
 import 'firebase_options.dart';
 import 'helpers/app_localizations.dart';
 import 'models/app_model.dart';
@@ -26,7 +24,6 @@ void main() async {
   /// 👉 Please check the [Documentation - README FIRST] instructions in the
   /// Table of Contents at section: [NEW - Firebase initialization for Dating App]
   /// in order to fix it and generate the required [firebase_options.dart] for your app.
-  /// TODO:
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   // Initialize Google Mobile Ads SDK
@@ -113,7 +110,7 @@ class MyApp extends StatelessWidget {
             /// from the list (English, in this case).
             return supportedLocales.first;
           },
-          // home: const CountDownScreen(),
+          // home: const CircularSlider(),
           home: const SplashScreen(),
           theme: _appTheme(),
         ),

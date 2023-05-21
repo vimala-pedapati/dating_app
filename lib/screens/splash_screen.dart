@@ -65,8 +65,8 @@ class _SplashScreenState extends State<SplashScreen> {
             updateLocationScreen: () =>
                 _nextScreen(const UpdateLocationScreen()),
             signInScreen: () => _nextScreen(const WelcomeScreenMingle()),
-            countdownscreen: () => _nextScreen(const CountDownScreen()),
             signUpScreen: () => _nextScreen(const SignUpScreen()),
+            countdownscreen: () => _nextScreen(const CountDownScreen()),
             homeScreen: () => _nextScreen(const HomeScreen()),
             blockedScreen: () => _nextScreen(const BlockedAccountScreen()));
       }
@@ -76,40 +76,38 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          color: Colors.white,
-          child: Center(
-            child: SingleChildScrollView(
-              child: Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                    colors: _colors,
-                    begin: Alignment.bottomLeft,
-                    end: Alignment.topRight,
-                    stops: const [0.4, 0.7],
-                    tileMode: TileMode.repeated,
-                  )),
-                  child: Image.asset("assets/icons/logo_name_png.png")),
-              // child: Column(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: <Widget>[
-              //     const AppLogo(),
-              //     const SizedBox(height: 10),
-              //     const Text(APP_NAME,
-              //         style:
-              //             TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-              //     const SizedBox(height: 5),
-              //     Text(_i18n.translate("app_short_description"),
-              //         textAlign: TextAlign.center,
-              //         style: const TextStyle(fontSize: 18, color: Colors.grey)),
-              //     const SizedBox(height: 20),
-              //     const MyCircularProgress()
-              //   ],
-              // ),
-            ),
+      body: Container(
+        color: Colors.white,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                  colors: _colors,
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topRight,
+                  stops: const [0.4, 0.7],
+                  tileMode: TileMode.repeated,
+                )),
+                child: Image.asset("assets/icons/logo_name_png.png")),
+            // child: Column(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: <Widget>[
+            //     const AppLogo(),
+            //     const SizedBox(height: 10),
+            //     const Text(APP_NAME,
+            //         style:
+            //             TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+            //     const SizedBox(height: 5),
+            //     Text(_i18n.translate("app_short_description"),
+            //         textAlign: TextAlign.center,
+            //         style: const TextStyle(fontSize: 18, color: Colors.grey)),
+            //     const SizedBox(height: 20),
+            //     const MyCircularProgress()
+            //   ],
+            // ),
           ),
         ),
       ),

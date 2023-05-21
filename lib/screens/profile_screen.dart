@@ -52,14 +52,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();
-    // TODO: uncomment the line below if you want to display the Ads
     // Note: before make sure to add your Interstial AD ID
     // AppAdHelper().showInterstitialAd();
   }
 
   @override
   void dispose() {
-    // TODO: uncomment the line below to dispose it.
     // AppAdHelper().disposeInterstitialAd();
     super.dispose();
   }

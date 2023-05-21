@@ -1,11 +1,8 @@
 // ignore_for_file: avoid_print
-
 import 'dart:async';
 import 'dart:core';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import '../constants/constants.dart';
 import '../widgets/app_logo.dart';
 import 'home_screen.dart';
@@ -48,9 +45,9 @@ class _CountDownScreenState extends State<CountDownScreen> {
     int month = int.parse(dateParts[0]);
     int day = int.parse(dateParts[1]);
     int year = int.parse(dateParts[2]);
-    int hours;
-    int minutes;
-    int seconds;
+    int hours = 0;
+    int minutes = 0;
+    int seconds = 0;
     if (timeString.contains('AM') || timeString.contains('am')) {
       hours = int.parse(timeParts[0]);
     } else {
@@ -60,12 +57,20 @@ class _CountDownScreenState extends State<CountDownScreen> {
     seconds = 0;
     DateTime dateTime = DateTime(year, month, day, hours, minutes, seconds);
     DateTime now = DateTime.now();
+    print(now);
     Duration difference = dateTime.difference(now);
-    daysDiff = difference.inDays;
-    hoursDiff = difference.inHours % 24;
-    minutesDiff = difference.inMinutes % 60;
-    secondsDiff = difference.inSeconds % 60;
-
+    daysDiff = difference.isNegative ? 0 : difference.inDays;
+    hoursDiff = difference.isNegative ? 0 : difference.inHours % 24;
+    minutesDiff = difference.isNegative ? 0 : difference.inMinutes % 60;
+    secondsDiff = difference.isNegative ? 0 : difference.inSeconds % 60;
+    difference.isNegative
+        ? Navigator.pushReplacement(
+            context,
+            MaterialPageRoute<void>(
+              builder: (BuildContext context) => const HomeScreen(),
+            ),
+          )
+        : {};
     setState(() {});
 
     countdownDuration = Duration(
@@ -163,11 +168,11 @@ class _CountDownScreenState extends State<CountDownScreen> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.width * 0.1,
+                height: MediaQuery.of(context).size.width * 0.05,
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.3,
-                height: MediaQuery.of(context).size.width * 0.3,
+                width: MediaQuery.of(context).size.width * 0.2,
+                height: MediaQuery.of(context).size.width * 0.2,
                 child: Image.asset("assets/images/lock.png"),
               )
             ]),
@@ -199,19 +204,19 @@ class _CountDownScreenState extends State<CountDownScreen> {
     if (mounted) {
       setState(() {
         final seconds = duration.inSeconds - addSeconds;
-        if (seconds < 0) {
+        if (seconds <= 0) {
           timer?.cancel();
+          duration = const Duration();
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute<void>(
+              builder: (BuildContext context) => const HomeScreen(),
+            ),
+          );
+          timer?.cancel(); // Cancel the timer when countdown reaches zero
         } else {
           duration = Duration(seconds: seconds);
-
-          seconds == 0
-              ? Navigator.push<void>(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const HomeScreen(),
-                  ),
-                )
-              : print(seconds);
+          print(seconds);
         }
       });
     }

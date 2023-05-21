@@ -43,10 +43,12 @@ class GalleryImageCard extends StatelessWidget {
           Positioned(
             child: IconButton(
                 icon: CircleAvatar(
-                  radius: 15,
+                  radius: 10,
                   backgroundColor: Theme.of(context).primaryColor,
-                  child: Icon(imageUrl == null ? Icons.add : Icons.close,
-                      color: Colors.white),
+                  child: Center(
+                    child: Icon(imageUrl == null ? Icons.add : Icons.close,
+                        color: Colors.white, size: 12),
+                  ),
                 ),
                 onPressed: () {
                   /// Check image url to exe action
@@ -58,8 +60,8 @@ class GalleryImageCard extends StatelessWidget {
                     _deleteGalleryImage(context);
                   }
                 }),
-            right: 8,
-            bottom: 5,
+            right: 1,
+            bottom: 1,
           )
         ],
       ),

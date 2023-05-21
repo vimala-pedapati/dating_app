@@ -1,8 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 
 import '../helpers/interest_gird_view.dart';
-import '../widgets/default_button.dart';
+ import '../widgets/default_button.dart';
 
 class InterestScreen extends StatefulWidget {
   const InterestScreen({Key? key}) : super(key: key);
@@ -73,21 +72,9 @@ class _InterestScreenState extends State<InterestScreen> {
                   child: const Text("CREATE_ACCOUNT",
                       style: TextStyle(fontSize: 18)),
                   onPressed: () {
-                    final FirebaseFirestore _firestore =
-                        FirebaseFirestore.instance;
-
+                 
                     /// Sign up
                     // _createAccount();
-                    void getDataFromFirestore() async {
-                      QuerySnapshot querySnapshot =
-                          await _firestore.collection('AppInfo').get();
-
-                      if (querySnapshot.docs.isNotEmpty) {
-                        DocumentSnapshot docSnapshot = querySnapshot.docs.first;
-                        Map<String, dynamic> data =
-                            docSnapshot.data() as Map<String, dynamic>;
-                      }
-                    }
                   },
                 ),
               ),

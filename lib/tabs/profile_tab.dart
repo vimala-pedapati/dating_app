@@ -4,7 +4,6 @@ import 'package:Mingledxb/widgets/profile_basic_info_card.dart';
 import 'package:Mingledxb/widgets/profile_statistics_card.dart';
 import 'package:Mingledxb/widgets/delete_account_button.dart';
 import 'package:Mingledxb/widgets/sign_out_button_card.dart';
-import 'package:Mingledxb/widgets/vip_account_card.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -33,7 +32,7 @@ class ProfileTab extends StatelessWidget {
             const SizedBox(height: 10),
 
             /// Show VIP dialog
-            const VipAccountCard(),
+            // const VipAccountCard(),
 
             const SizedBox(height: 10),
 
