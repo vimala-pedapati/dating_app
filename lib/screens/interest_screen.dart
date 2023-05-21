@@ -2,6 +2,7 @@
 
 import '../helpers/interest_gird_view.dart';
  import '../widgets/default_button.dart';
+import 'count_down_screen.dart';
 
 class InterestScreen extends StatefulWidget {
   const InterestScreen({Key? key}) : super(key: key);
@@ -72,9 +73,13 @@ class _InterestScreenState extends State<InterestScreen> {
                   child: const Text("CREATE_ACCOUNT",
                       style: TextStyle(fontSize: 18)),
                   onPressed: () {
-                 
                     /// Sign up
                     // _createAccount();
+                    Navigator.pushReplacement<void, void>(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (BuildContext context) => const CountDownScreen(),
+                        ));
                   },
                 ),
               ),
