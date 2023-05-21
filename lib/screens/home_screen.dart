@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:Mingledxb/screens/events_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -47,6 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
     List<Widget> options = <Widget>[
       const DiscoverTab(),
       const MatchesTab(),
+      const EventsTab(),
       const ConversationsTab(),
       const ProfileTab()
     ];
@@ -242,7 +244,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _i18n = AppLocalizations.of(context);
 
     return Scaffold(
-      appBar: AppBar(
+      appBar:_selectedIndex !=2?  AppBar(
         title: Row(
           children: [
             Image.asset("assets/images/app_logo.png", width: 40, height: 40),
@@ -261,7 +263,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     builder: (context) => NotificationsScreen()));
               })
         ],
-      ),
+      ): null,
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           elevation: Platform.isIOS ? 0 : 8,
@@ -288,6 +290,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? Theme.of(context).primaryColor
                         : null),
                 label: _i18n.translate("matches")),
+            /// Matches Tab
+            BottomNavigationBarItem(
+                icon: SvgIcon(
+                    _selectedIndex == 2
+                        ? "assets/icons/events.svg"
+                        : "assets/icons/events.svg",
+                    color: _selectedIndex == 2
+                        ? Theme.of(context).primaryColor
+                        : null),
+                label: "Events"),
 
             /// Conversations Tab
             BottomNavigationBarItem(
@@ -297,10 +309,10 @@ class _HomeScreenState extends State<HomeScreen> {
             /// Profile Tab
             BottomNavigationBarItem(
                 icon: SvgIcon(
-                    _selectedIndex == 3
+                    _selectedIndex == 4
                         ? "assets/icons/user_2_icon.svg"
                         : "assets/icons/user_icon.svg",
-                    color: _selectedIndex == 3
+                    color: _selectedIndex == 4
                         ? Theme.of(context).primaryColor
                         : null),
                 label: _i18n.translate("profile")),
@@ -341,12 +353,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _getConversationCounter() {
     // Set icon
     final icon = SvgIcon(
-        _selectedIndex == 2
+        _selectedIndex == 3
             ? "assets/icons/message_2_icon.svg"
             : "assets/icons/message_icon.svg",
         width: 30,
         height: 30,
-        color: _selectedIndex == 2 ? Theme.of(context).primaryColor : null);
+        color: _selectedIndex == 3 ? Theme.of(context).primaryColor : null);
 
     /// Handle stream
     return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
