@@ -337,6 +337,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },
                       ),
                     ),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
@@ -389,6 +390,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         userSchool: _schoolController.text.trim(),
         userJobTitle: _jobController.text.trim(),
         userBio: _bioController.text.trim(),
+        userInterests: [],
         onSuccess: () async {
           // Show success message
           successDialog(context,

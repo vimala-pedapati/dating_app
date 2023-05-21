@@ -94,7 +94,7 @@ class ProfileBasicInfoCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+                  const Spacer(),
                   SizedBox(
                     height: MediaQuery.of(context).size.width * 0.1,
                     child: TextButton.icon(

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
- 
+
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -61,6 +61,8 @@ class NotificationsScreen extends StatelessWidget {
           stream: _notificationsApi.getNotifications(),
           builder: (context, snapshot) {
             /// Check data
+            ///
+
             if (!snapshot.hasData) {
               return Processing(text: i18n.translate("loading"));
             } else if (snapshot.data!.docs.isEmpty) {

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 import 'package:Mingledxb/widgets/show_scaffold_msg.dart';
 import 'package:Mingledxb/widgets/svg_icon.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +11,8 @@ import '../datas/user.dart';
 import '../dialogs/common_dialogs.dart';
 import '../dialogs/progress_dialog.dart';
 import '../dialogs/show_me_dialog.dart';
-import '../dialogs/vip_dialog.dart';
 import '../helpers/app_localizations.dart';
+import '../helpers/interest_gird_view.dart';
 import '../models/app_model.dart';
 import '../models/user_model.dart';
 import '../widgets/user_gallery.dart';
@@ -135,7 +137,6 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
   @override
   void initState() {
     super.initState();
-    // TODO: uncomment the line below if you want to display the Ads
     // Note: before make sure to add your Interstial AD ID
     // AppAdHelper().showInterstitialAd();
     initUserSettings();
@@ -143,7 +144,6 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
 
   @override
   void dispose() {
-    // TODO: uncomment the line below to dispose it.
     // AppAdHelper().disposeInterstitialAd();
     super.dispose();
   }
@@ -578,52 +578,52 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                           ),
                         ),
 
-                        const SizedBox(height: 20),
-                        //current_plan
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            _i18n.translate("plan_settings"),
-                            textAlign: TextAlign.start,
-                            style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
+                        //  const SizedBox(height: 20),
+                        // //current_plan
+                        // Padding(
+                        //   padding: const EdgeInsets.all(8.0),
+                        //   child: Text(
+                        //     _i18n.translate("plan_settings"),
+                        //     textAlign: TextAlign.start,
+                        //     style: const TextStyle(
+                        //         color: Colors.black,
+                        //         fontSize: 20,
+                        //         fontWeight: FontWeight.bold),
+                        //   ),
+                        // ),
 
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Colors.grey),
-                          ),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(_i18n.translate("current_plan")),
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.6,
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                  ),
-                                  controller:
-                                      _currentPlanController, //TODO: add current plan
-                                  textAlign: TextAlign.right,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        // Container(
+                        //   width: MediaQuery.of(context).size.width,
+                        //   decoration: BoxDecoration(
+                        //     borderRadius: BorderRadius.circular(10),
+                        //     border: Border.all(color: Colors.grey),
+                        //   ),
+                        //   child: Row(
+                        //     children: [
+                        //       Padding(
+                        //         padding: const EdgeInsets.all(8.0),
+                        //         child: Text(_i18n.translate("current_plan")),
+                        //       ),
+                        //       SizedBox(
+                        //         width: MediaQuery.of(context).size.width * 0.6,
+                        //         child: TextFormField(
+                        //           decoration: InputDecoration(
+                        //             border: OutlineInputBorder(
+                        //               borderRadius: BorderRadius.circular(10),
+                        //               borderSide: BorderSide.none,
+                        //             ),
+                        //           ),
+                        //           controller:
+                        //               _currentPlanController,
+                        //           textAlign: TextAlign.right,
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
                         //Plan settings
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Text(
                             _i18n.translate("discovery_settings"),
                             textAlign: TextAlign.start,
@@ -634,56 +634,56 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                           ),
                         ),
 
-                        /// Passport feature
-                        /// Travel to any Country or City and Swipe Women there!
-                        Card(
-                            margin: const EdgeInsets.symmetric(horizontal: 8),
-                            elevation: 2.0,
-                            shadowColor: Theme.of(context).primaryColor,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(_i18n.translate("passport"),
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          color: Theme.of(context).primaryColor,
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                                ListTile(
-                                  leading: Icon(Icons.flight,
-                                      color: Theme.of(context).primaryColor,
-                                      size: 40),
-                                  title: Text(_i18n.translate(
-                                      "travel_to_any_country_or_city_and_match_with_people_there")),
-                                  trailing: TextButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Theme.of(context).primaryColor),
-                                    ),
-                                    child: Text(_i18n.translate("travel_now"),
-                                        style: const TextStyle(
-                                            color: Colors.white)),
-                                    onPressed: () async {
-                                      // // Check User VIP Account Status
-                                      if (UserModel().userIsVip) {
-                                        // Go to passport screen
-                                        _goToPassportScreen();
-                                      } else {
-                                        /// Show VIP dialog
-                                        showDialog(
-                                            context: context,
-                                            builder: (context) =>
-                                                const VipDialog());
-                                      }
-                                    },
-                                  ),
-                                ),
-                              ],
-                            )),
-                        const SizedBox(height: 20),
+                        // /// Passport feature
+                        // /// Travel to any Country or City and Swipe Women there!
+                        // Card(
+                        //     margin: const EdgeInsets.symmetric(horizontal: 8),
+                        //     elevation: 2.0,
+                        //     shadowColor: Theme.of(context).primaryColor,
+                        //     child: Column(
+                        //       crossAxisAlignment: CrossAxisAlignment.start,
+                        //       children: [
+                        //         Padding(
+                        //           padding: const EdgeInsets.all(8.0),
+                        //           child: Text(_i18n.translate("passport"),
+                        //               style: TextStyle(
+                        //                   fontSize: 18,
+                        //                   color: Theme.of(context).primaryColor,
+                        //                   fontWeight: FontWeight.bold)),
+                        //         ),
+                        //         ListTile(
+                        //           leading: Icon(Icons.flight,
+                        //               color: Theme.of(context).primaryColor,
+                        //               size: 40),
+                        //           title: Text(_i18n.translate(
+                        //               "travel_to_any_country_or_city_and_match_with_people_there")),
+                        //           trailing: TextButton(
+                        //             style: ButtonStyle(
+                        //               backgroundColor:
+                        //                   MaterialStateProperty.all<Color>(
+                        //                       Theme.of(context).primaryColor),
+                        //             ),
+                        //             child: Text(_i18n.translate("travel_now"),
+                        //                 style: const TextStyle(
+                        //                     color: Colors.white)),
+                        //             onPressed: () async {
+                        //               // // Check User VIP Account Status
+                        //               if (UserModel().userIsVip) {
+                        //                 // Go to passport screen
+                        //                 _goToPassportScreen();
+                        //               } else {
+                        //                 /// Show VIP dialog
+                        //                 showDialog(
+                        //                     context: context,
+                        //                     builder: (context) =>
+                        //                         const VipDialog());
+                        //               }
+                        //             },
+                        //           ),
+                        //         ),
+                        //       ],
+                        //     )),
+                        // const SizedBox(height: 20),
 
                         /// User current location
                         Card(
@@ -914,6 +914,29 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                         ),
 
                         const SizedBox(height: 15),
+                        // User Interests
+                        Card(
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.favorite_border_outlined,
+                              color: Theme.of(context).primaryColor,
+                              size: 30,
+                            ),
+                            title: const Text('INTERESTS',
+                                style: TextStyle(fontSize: 18)),
+                            onTap: () {
+                              Navigator.push<void>(
+                                context,
+                                MaterialPageRoute<void>(
+                                  builder: (BuildContext context) =>
+                                      const CustomGridView(),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        // const SizedBox(height: 600, child: CustomGridView()),
+                        const SizedBox(height: 15),
 
                         /// Hide user profile setting
                         Card(
@@ -985,18 +1008,18 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                               height: 30))
                                       : const SizedBox(width: 0, height: 0),
 
-                                  /// Show VIP badge for current user
-                                  UserModel().user.userId ==
-                                              widget.user.userId &&
-                                          UserModel().userIsVip
-                                      ? Container(
-                                          margin:
-                                              const EdgeInsets.only(right: 5),
-                                          child: Image.asset(
-                                              'assets/images/crow_badge.png',
-                                              width: 25,
-                                              height: 25))
-                                      : const SizedBox(width: 0, height: 0),
+                                  // /// Show VIP badge for current user
+                                  // UserModel().user.userId ==
+                                  //             widget.user.userId &&
+                                  //         UserModel().userIsVip
+                                  //     ? Container(
+                                  //         margin:
+                                  //             const EdgeInsets.only(right: 5),
+                                  //         child: Image.asset(
+                                  //             'assets/images/crow_badge.png',
+                                  //             width: 25,
+                                  //             height: 25))
+                                  //     : const SizedBox(width: 0, height: 0),
 
                                   // /// Location distance
                                   // CustomBadge(
@@ -1031,12 +1054,9 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                             style: const TextStyle(
                                 fontSize: 18, color: Colors.grey),
                             textAlign: TextAlign.left),
-                        const SizedBox(height: 5),
 
                         // Show gallery
                         const UserGallery(),
-
-                        const SizedBox(height: 20),
                       ],
                     ),
                   ),

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -36,7 +38,7 @@ class UserModel extends Model {
   /// Other variables
   ///
   late User user;
-  bool userIsVip = false;
+  bool userIsVip = true;
   bool isLoading = false;
   String activeVipId = '';
   bool showRestoreVipMsg = false;
@@ -306,6 +308,78 @@ class UserModel extends Model {
   ///
   /// Create the User Account method
   ///
+  Future<void> userInterest({
+    required List userInterests,
+    // Callback functions
+    required VoidCallback onSuccess,
+    required Function(String) onFail,
+  }) async {
+    // Notify
+    isLoading = true;
+    notifyListeners();
+
+    /// Save user information in database
+    await _firestore
+        .collection(C_USERS)
+        .doc(getFirebaseUser!.uid)
+        .update(<String, dynamic>{
+      USER_ID: getFirebaseUser!.uid,
+
+      //adding interests
+      USER_INTERESTS: userInterests,
+    }).then((_) async {
+      /// Get current user in database
+      final DocumentSnapshot<Map<String, dynamic>> userDoc =
+          await getUser(getFirebaseUser!.uid);
+
+      /// Update UserModel for current user
+      updateUserObject(userDoc.data()!);
+
+      /// Update loading status
+      isLoading = false;
+      notifyListeners();
+      debugPrint('UserInterest updated() -> success');
+
+      /// Callback function
+      onSuccess();
+    }).catchError((onError) {
+      isLoading = false;
+      notifyListeners();
+      debugPrint('UserInterest updated() -> error');
+      // Callback function
+      onError(onError);
+    });
+  }
+
+  Future<List<String>> getUserInterest() async {
+    // Notify
+    isLoading = true;
+    notifyListeners();
+
+    try {
+      final DocumentSnapshot<Map<String, dynamic>> userDoc =
+          await _firestore.collection(C_USERS).doc(getFirebaseUser!.uid).get();
+      // Update UserModel for current user
+      updateUserObject(userDoc.data()!);
+
+      // Update loading status
+      isLoading = false;
+      notifyListeners();
+      debugPrint('UserInterest updated() -> success');
+
+      // Return user interests
+      return userDoc.get(USER_INTERESTS).cast<String>();
+    } catch (error) {
+      isLoading = false;
+      notifyListeners();
+      debugPrint('UserInterest updated() -> error');
+      print("interest error $error");
+
+      // Return an empty list on failure
+      return [];
+    }
+  }
+
   Future<void> signUp({
     required File userPhotoFile,
     required String userFullName,
@@ -316,6 +390,7 @@ class UserModel extends Model {
     required String userSchool,
     required String userJobTitle,
     required String userBio,
+    required List userInterests,
     // Callback functions
     required VoidCallback onSuccess,
     required Function(String) onFail,
@@ -355,6 +430,8 @@ class UserModel extends Model {
       USER_EMAIL: getFirebaseUser!.email ?? '',
       USER_STATUS: 'active',
       USER_LEVEL: 'user',
+      //adding interests
+      USER_INTERESTS: userInterests,
       // User location info
       USER_GEO_POINT: geoPoint.data,
       USER_COUNTRY: '',
@@ -393,7 +470,6 @@ class UserModel extends Model {
       onError(onError);
     });
   }
-
 
   /// Update current user profile
   Future<void> updateProfile({

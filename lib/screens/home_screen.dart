@@ -312,7 +312,11 @@ class _HomeScreenState extends State<HomeScreen> {
   /// Count unread notifications
   Widget _getNotificationCounter() {
     // Set icon
-    const icon = SvgIcon("assets/icons/bell_icon.svg", width: 33, height: 33);
+    // const icon = SvgIcon("assets/icons/bell_icon.svg", width: 33, height: 33);
+    const icon = Icon(
+      Icons.notifications,
+      size: 36,
+    );
 
     /// Handle stream
     return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(

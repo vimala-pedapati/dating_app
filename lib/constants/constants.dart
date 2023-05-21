@@ -1,4 +1,4 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, use_full_hex_values_for_flutter_colors
 
 import 'package:flutter/material.dart';
 
@@ -101,6 +101,7 @@ const String USER_DEVICE_TOKEN = "user_device_token";
 const String USER_TOTAL_LIKES = "user_total_likes";
 const String USER_TOTAL_VISITS = "user_total_visits";
 const String USER_TOTAL_DISLIKED = "user_total_disliked";
+const String USER_INTERESTS = "user_interests";
 // User Setting map - fields
 const String USER_MIN_AGE = "user_min_age";
 const String USER_MAX_AGE = "user_max_age";
