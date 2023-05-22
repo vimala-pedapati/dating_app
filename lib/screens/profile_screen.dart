@@ -321,12 +321,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                               Column(
+                                    const           Column(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.start,
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
-                                                children: const [
+                                                children:  [
                                                   Text("Mingle Events",
                                                       style: TextStyle(
                                                           fontSize: 22,

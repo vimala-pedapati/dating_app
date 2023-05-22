@@ -94,12 +94,12 @@ Widget eventCard({required BuildContext context,
                     color: APP_ACCENT_COLOR, borderRadius: BorderRadius.circular(5)),
                 child: const Center(child: Text("Event Image")),
               ),
-              SizedBox(
+              const SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       'EVENT',
                       style: TextStyle(
@@ -124,7 +124,7 @@ Widget eventCard({required BuildContext context,
                   ],
                 ),
               ),
-              SizedBox(
+           const   SizedBox(
                 height: 50,
                 width: double.infinity,
                 child: Row(
@@ -132,7 +132,7 @@ Widget eventCard({required BuildContext context,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children:  [
                         Text(
                           'LOCATION',
                           style: TextStyle(
@@ -158,7 +158,7 @@ Widget eventCard({required BuildContext context,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children:  [
                         Text(
                           'START',
                           style: TextStyle(
@@ -184,7 +184,7 @@ Widget eventCard({required BuildContext context,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children:  [
                         Text(
                           'FINISH',
                           style: TextStyle(
