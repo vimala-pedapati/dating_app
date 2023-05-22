@@ -865,7 +865,7 @@ DEPENDENCIES:
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/ios`)
   - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
-  - in_app_purchase_storekit (from `.symlinks/plugins/in_app_purchase_storekit/ios`)
+  - in_app_purchase_storekit (from `.symlinks/plugins/in_app_purchase_storekit/darwin`)
   - share (from `.symlinks/plugins/share/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
@@ -935,7 +935,7 @@ EXTERNAL SOURCES:
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
   in_app_purchase_storekit:
-    :path: ".symlinks/plugins/in_app_purchase_storekit/ios"
+    :path: ".symlinks/plugins/in_app_purchase_storekit/darwin"
   share:
     :path: ".symlinks/plugins/share/ios"
   url_launcher_ios:
@@ -994,4 +994,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 4e8f8b2be68aeea4c0d5beb6ff1e79fface1d048
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.12.1

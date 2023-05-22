@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
     List<Widget> options = <Widget>[
       const DiscoverTab(),
       const MatchesTab(),
-      const EventsTab(),
+      EventsTab(),
       const ConversationsTab(),
       const ProfileTab()
     ];
@@ -244,26 +244,29 @@ class _HomeScreenState extends State<HomeScreen> {
     _i18n = AppLocalizations.of(context);
 
     return Scaffold(
-      appBar:_selectedIndex !=2?  AppBar(
-        title: Row(
-          children: [
-            Image.asset("assets/images/app_logo.png", width: 40, height: 40),
-            const SizedBox(width: 20),
-            const Text(
-              APP_NAME,
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-              icon: _getNotificationCounter(),
-              onPressed: () async {
-                // Go to Notifications Screen
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => NotificationsScreen()));
-              })
-        ],
-      ): null,
+      appBar: _selectedIndex != 2
+          ? AppBar(
+              title: Row(
+                children: [
+                  Image.asset("assets/images/app_logo.png",
+                      width: 40, height: 40),
+                  const SizedBox(width: 20),
+                  const Text(
+                    APP_NAME,
+                  ),
+                ],
+              ),
+              actions: [
+                IconButton(
+                    icon: _getNotificationCounter(),
+                    onPressed: () async {
+                      // Go to Notifications Screen
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => NotificationsScreen()));
+                    })
+              ],
+            )
+          : null,
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           elevation: Platform.isIOS ? 0 : 8,
@@ -290,6 +293,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? Theme.of(context).primaryColor
                         : null),
                 label: _i18n.translate("matches")),
+
             /// Matches Tab
             BottomNavigationBarItem(
                 icon: SvgIcon(
