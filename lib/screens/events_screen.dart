@@ -41,12 +41,12 @@ class _EventsTabState extends State<EventsTab> {
     final _firestore = FirebaseFirestore.instance;
     Map<String, dynamic> latestEventDetails = {};
 
-    final eventCollection = _firestore.collection("Events");
+    final eventCollection = _firestore.collection("Events").doc('event');
     final eventQuerySnapshot = await eventCollection.get();
 
-    if (eventQuerySnapshot.docs.isNotEmpty) {
-      final latestEventDoc = eventQuerySnapshot.docs.last;
-      latestEventDetails = latestEventDoc.data();
+    if (eventQuerySnapshot.exists) {
+      final latestEventDoc = eventQuerySnapshot;
+      latestEventDetails = latestEventDoc.data()!;
     }
     print(latestEventDetails);
     latestEventDetailsDisplay = {
@@ -57,6 +57,7 @@ class _EventsTabState extends State<EventsTab> {
       "eventDescription": latestEventDetails["description"],
       "eventStartTime": latestEventDetails["startTime"],
       "eventEndTime": latestEventDetails["endTime"],
+      'eventQrCode': latestEventDetails["qrCodeUrl"],
     };
     setState(() {});
     return latestEventDetails;
@@ -274,10 +275,15 @@ Widget eventCard({
                       width: MediaQuery.of(context).size.width * 125 / 375,
                       height: MediaQuery.of(context).size.height * 125 / 812,
                       decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image:
+                              NetworkImage(eventDetails["eventQrCode"] ?? ""),
+                          fit: BoxFit.cover,
+                        ),
                         color: APP_ACCENT_COLOR,
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      child: const Center(child: Text("Qr image")),
+                      // child: const Center(child: Text("Qr image")),
                     ),
 
                     Padding(
