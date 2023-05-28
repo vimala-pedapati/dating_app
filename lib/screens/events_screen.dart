@@ -201,7 +201,7 @@ Widget eventCard({
                                 ),
                               ),
                               Text(
-                                eventDetails["eventName"] ?? "",
+                                eventDetails['eventLocation'] ?? "",
                                 // textAlign: TextAlign.left,
                                 style: const TextStyle(
                                   fontFamily: 'Inter',
