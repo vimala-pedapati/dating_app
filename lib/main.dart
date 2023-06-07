@@ -9,14 +9,12 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'firebase_options.dart';
 import 'helpers/app_localizations.dart';
 import 'models/app_model.dart';
 import 'models/user_model.dart';
 
 void main() async {
-// hellooo world
   // Initialized before calling runApp to init firebase app
   WidgetsFlutterBinding.ensureInitialized();
 

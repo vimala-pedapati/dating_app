@@ -3,7 +3,7 @@ description: Flutter Mingledxb Application
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -38,13 +38,11 @@ dependencies:
 
   # FIREBASE Packages Section
   firebase_core: ^2.7.1 # Firebase Core package required to use other firebase services
-  firebase_auth: ^4.2.9  # Used to Authenticate User Account (e.g. Sign in with Phone number, etc..)
+  firebase_auth: ^4.2.9 # Used to Authenticate User Account (e.g. Sign in with Phone number, etc..)
   cloud_firestore: ^4.4.0 # Used to Save User Data in Database
   firebase_messaging: ^14.2.2 # Used to Send Push Notifications (e.g. New like, Visit and Message)
-  firebase_storage: ^11.0.11 # Used to Save User Profile Images on Cloud Storage    
+  firebase_storage: ^11.0.11 # Used to Save User Profile Images on Cloud Storage
   google_mobile_ads: ^2.3.0 # Used to Show Admob Ads in App (e.g. Banner Ads, Interstitial Ads (full screen), Native Ads and Rewarded Video Ads)
-
-
   in_app_purchase: ^3.1.1 # This plugin help us to Sell VIP Subscription Plans in app
   flutter_svg: 1.1.6 # This plugin help us to use custom svg icons
   flutter_launcher_icons: 0.11.0 # Used to generate app icon launcher for both platforms android and iOS
@@ -54,7 +52,7 @@ dependencies:
   image_picker: 0.8.6+1 # # Used to select images from the User's device image library or take a new photo using the camera
   image_cropper: 3.0.1 # Used to Crop/Rotate Selected images from user's device
   url_launcher: ^6.1.9 # Used to open link schemes in application or browser
-  geolocator: 9.0.2 # Used to get User location by GPS 
+  geolocator: 9.0.2 # Used to get User location by GPS
   geocoding: 2.0.5 # Used to translate User latitude and longitude coordinates into a readable address
   rxdart: 0.27.3 # required by geoflutterfire plugin that helps us to query users by geolocation center
   shimmer: 2.0.0 # Used to create placeholder widget while app is loading the image
@@ -85,7 +83,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -93,10 +90,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/images/
-     - assets/icons/
-     - assets/lang/
-     - assets/interest/
+    - assets/images/
+    - assets/icons/
+    - assets/lang/
+    - assets/interest/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -124,17 +121,16 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 
-# Generate launcher icons settings  
+# Generate launcher icons settings
 flutter_icons:
   android: true
   ios: true
   remove_alpha_ios: true
   image_path: "assets/images/app_logo.png"
- 
 
 # Generate app logo for splash screen
 flutter_native_splash:
   color: "#FFFFFF"
   image: "assets/images/app_logo.png"
   android: true
-  ios: true   
+  ios: true

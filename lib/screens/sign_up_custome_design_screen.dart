@@ -266,7 +266,7 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
                 // InkWell(
                 //   onTap: () {
                 //     // google signin button
-                //     Authentication.signInWithGoogle(context: context);
+                //     Authentication.b(context: context);
                 //   },
                 //   child: Container(
                 //     decoration: BoxDecoration(
