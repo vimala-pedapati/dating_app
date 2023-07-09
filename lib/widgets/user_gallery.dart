@@ -13,7 +13,7 @@ class UserGallery extends StatelessWidget {
       return GridView.builder(
           padding: const EdgeInsets.all(0),
           physics: const ScrollPhysics(),
-          itemCount: 9,
+          itemCount: 3,
           shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3),

@@ -32,8 +32,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void _nextScreen(screen) {
     // Go to next page route
     Future(() {
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => screen), (route) => false);
+      Navigator.of(context)
+          .pushAndRemoveUntil(MaterialPageRoute(builder: (context) => screen), (route) => false);
     });
   }
 
@@ -62,8 +62,7 @@ class _SplashScreenState extends State<SplashScreen> {
       } else {
         /// Authenticate User Account
         UserModel().authUserAccount(
-            updateLocationScreen: () =>
-                _nextScreen(const UpdateLocationScreen()),
+            updateLocationScreen: () => _nextScreen(const UpdateLocationScreen()),
             signInScreen: () => _nextScreen(const WelcomeScreenMingle()),
             signUpScreen: () => _nextScreen(const SignUpScreen()),
             countdownscreen: () => _nextScreen(const CountDownScreen()),
@@ -77,21 +76,22 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white,
+        color: Colors.black,
         child: Center(
           child: SingleChildScrollView(
             child: Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                  colors: _colors,
-                  begin: Alignment.bottomLeft,
-                  end: Alignment.topRight,
-                  stops: const [0.4, 0.7],
-                  tileMode: TileMode.repeated,
-                )),
-                child: Image.asset("assets/icons/logo_name_png.png")),
+                color: Colors.black,
+                // decoration: BoxDecoration(
+                //     gradient: LinearGradient(
+                //   colors: _colors,
+                //   begin: Alignment.bottomLeft,
+                //   end: Alignment.topRight,
+                //   stops: const [0.4, 0.7],
+                //   tileMode: TileMode.repeated,
+                // )),
+                child: Image.asset("assets/images/app_logo.png")),
             // child: Column(
             //   mainAxisAlignment: MainAxisAlignment.center,
             //   children: <Widget>[

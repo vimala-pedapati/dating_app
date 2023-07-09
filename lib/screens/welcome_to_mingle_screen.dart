@@ -44,19 +44,20 @@ class _WelcomeScreenMingleState extends State<WelcomeScreenMingle> {
             ),
         child: Container(
           height: MediaQuery.of(context).size.height * 0.5,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-            colors: _colors,
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-            stops: const [0.4, 0.7],
-            tileMode: TileMode.repeated,
-          )
-              // image: DecorationImage(
-              //     image: AssetImage("assets/images/background_image.jpg"),
-              //     fit: BoxFit.cover,
-              //     repeat: ImageRepeat.noRepeat),
-              ),
+          color: Colors.black,
+          // decoration: BoxDecoration(
+          //     gradient: LinearGradient(
+          //   colors: _colors,
+          //   begin: Alignment.bottomLeft,
+          //   end: Alignment.topRight,
+          //   stops: const [0.4, 0.7],
+          //   tileMode: TileMode.repeated,
+          // )
+          //     // image: DecorationImage(
+          //     //     image: AssetImage("assets/images/background_image.jpg"),
+          //     //     fit: BoxFit.cover,
+          //     //     repeat: ImageRepeat.noRepeat),
+          //     ),
           child: Column(
             children: <Widget>[
               SizedBox(height: MediaQuery.of(context).size.height * 0.1),
@@ -93,8 +94,8 @@ class _WelcomeScreenMingleState extends State<WelcomeScreenMingle> {
               SizedBox(height: MediaQuery.of(context).size.height * 0.1),
               InkWell(
                 onTap: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const SignUpScreenCostom()));
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => const SignUpScreenCostom()));
                 },
                 child: Container(
                   //width: 100.0,

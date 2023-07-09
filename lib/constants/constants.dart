@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 /// APP SETINGS INFO CONSTANTS - SECTION ///
 ///
-const String APP_NAME = "Mingledxb";
+const String APP_NAME = "MingleDXB";
 const Color APP_PRIMARY_COLOR = Color(0xfffff67a3d9);
 const Color APP_ACCENT_COLOR = Color(0xfffff6d2e0);
 const String APP_VERSION_NAME = "Android v1.0.0 & iOS v1.0.0";

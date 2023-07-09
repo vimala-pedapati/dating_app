@@ -31,8 +31,7 @@ void main() async {
   /// heads up notifications.
   /// Check iOS device
   if (Platform.isIOS) {
-    await FirebaseMessaging.instance
-        .setForegroundNotificationPresentationOptions(
+    await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
       alert: true,
       badge: true,
       sound: true,
@@ -54,9 +53,7 @@ class MyApp extends StatelessWidget {
     return ThemeData(
       primaryColor: APP_PRIMARY_COLOR,
       colorScheme: const ColorScheme.light().copyWith(
-          primary: APP_PRIMARY_COLOR,
-          secondary: APP_ACCENT_COLOR,
-          background: APP_PRIMARY_COLOR),
+          primary: APP_PRIMARY_COLOR, secondary: APP_ACCENT_COLOR, background: APP_PRIMARY_COLOR),
       scaffoldBackgroundColor: Colors.white,
       inputDecorationTheme: InputDecorationTheme(
           errorStyle: const TextStyle(fontSize: 16),

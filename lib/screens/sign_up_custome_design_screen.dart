@@ -23,7 +23,7 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
 
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -44,54 +44,56 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
                 const SizedBox(height: 250, width: 200, child: AppLogo()),
 
                 const Text("Sign up to continue ",
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black)),
+                    style:
+                        TextStyle(fontSize: 22, fontWeight: FontWeight.w400, color: Colors.black)),
 
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const SignUpScreenCostom()));
-                  },
-                  child: Container(
-                      //width: 100.0,
-                      height: 50.0,
-                      width: 200,
-                      decoration: BoxDecoration(
-                        color: Colors.white60,
-                        border: Border.all(color: Colors.white, width: 2.0),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Sign In',
-                          style: TextStyle(fontSize: 18.0, color: Colors.white),
-                        ),
-                      )),
-                ),
-// =======
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const SignUpScreenCostom()));
-                  },
-                  child: Container(
-                    //width: 100.0,
-                    height: 70.0,
-                    width: 200,
-                    decoration: BoxDecoration(
-                      color: Colors.white60,
-                      border: Border.all(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Sign In',
-                        style: TextStyle(fontSize: 18.0, color: Colors.white),
-                      ),
-                    ),
-                  ),
+                // InkWell(
+                //   onTap: () {
+                //     Navigator.of(context).pushReplacement(
+                //         MaterialPageRoute(builder: (context) => const SignUpScreenCostom()));
+                //   },
+                //   child: Container(
+                //       //width: 100.0,
+                //       height: 50.0,
+                //       width: 200,
+                //       decoration: BoxDecoration(
+                //         color: Colors.white60,
+                //         border: Border.all(color: Colors.white, width: 2.0),
+                //         borderRadius: BorderRadius.circular(10.0),
+                //       ),
+                //       child: const Center(
+                //         child: Text(
+                //           'Sign In',
+                //           style: TextStyle(fontSize: 18.0, color: Colors.white),
+                //         ),
+                //       )),
+                // ),
+
+//                 InkWell(
+//                   onTap: () {
+//                     Navigator.of(context).pushReplacement(
+//                         MaterialPageRoute(builder: (context) => const SignUpScreenCostom()));
+//                   },
+//                   child: Container(
+//                     //width: 100.0,
+//                     height: 70.0,
+//                     width: 200,
+//                     decoration: BoxDecoration(
+//                       color: Colors.white60,
+//                       border: Border.all(color: Colors.white, width: 2.0),
+//                       borderRadius: BorderRadius.circular(10.0),
+//                     ),
+//                     child: const Center(
+//                       child: Text(
+//                         'Sign In',
+//                         style: TextStyle(fontSize: 18.0, color: Colors.white),
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.2,
                 ),
 
                 // Sign in with Phone Number
@@ -113,33 +115,51 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.01,
                 ),
-                InkWell(
-                  onTap: () {
-                    debugPrint("Use phone number tapped");
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const PhoneNumberScreen()));
-                  },
-                  child: Container(
-                    //width: 100.0,
-                    height: 50.0,
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    decoration: BoxDecoration(
-                      color: Colors.white60,
-                      border: Border.all(color: Colors.grey, width: 2.0),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Center(
-                      child: Text(
-                        _i18n.translate("sign_in_with_phone_number"),
-                        style:
-                            const TextStyle(fontSize: 18.0, color: Colors.grey),
-                      ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: SizedBox(
+                    width: double.maxFinite,
+                    child: DefaultButton(
+                      child: Text(_i18n.translate("sign_in_with_phone_number"),
+                          style: const TextStyle(fontSize: 18)),
+                      onPressed: () {
+                        debugPrint("Continue with email tapped ");
+                        customDialog(context, "Continue with email");
+
+                        // Go to phone number screen
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => const PhoneNumberScreen()));
+                      },
                     ),
                   ),
                 ),
+                // InkWell(
+                //   onTap: () {
+                //     debugPrint("Use phone number tapped");
+                //     Navigator.of(context)
+                //         .push(MaterialPageRoute(builder: (context) => const PhoneNumberScreen()));
+                //   },
+                //   child: Container(
+                //     //width: 100.0,
+                //     height: 50.0,
+                //     width: MediaQuery.of(context).size.width * 0.8,
+                //     decoration: BoxDecoration(
+                //       color: Colors.white60,
+                //       border: Border.all(color: Colors.grey, width: 2.0),
+                //       borderRadius: BorderRadius.circular(10.0),
+                //     ),
+                //     child: Center(
+                //       child: Text(
+                //         _i18n.translate("sign_in_with_phone_number"),
+                //         style: const TextStyle(fontSize: 18.0, color: Colors.grey),
+                //       ),
+                //     ),
+                //   ),
+                // ),
+
                 const SizedBox(
                   height: 80,
                 ),
@@ -233,8 +253,7 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
                     //Terms of Service section
                     Text(
                       _i18n.translate("Terms_of_use"),
-                      style: const TextStyle(
-                          color: Colors.grey, fontWeight: FontWeight.bold),
+                      style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(
@@ -243,8 +262,7 @@ class _SignUpScreenCostomState extends State<SignUpScreenCostom> {
 
                     Text(
                       _i18n.translate("Privacy_Policy"),
-                      style: const TextStyle(
-                          color: Colors.grey, fontWeight: FontWeight.bold),
+                      style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(

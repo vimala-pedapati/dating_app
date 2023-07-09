@@ -43,11 +43,12 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
         child: Container(
           height: MediaQuery.of(context).size.height * 0.5,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(begin: Alignment.bottomRight, colors: [
-            Theme.of(context).primaryColor,
-            Colors.black.withOpacity(.4)
-          ])),
+          color: Colors.black,
+          // decoration: BoxDecoration(
+          //     gradient: LinearGradient(begin: Alignment.bottomRight, colors: [
+          //   Theme.of(context).primaryColor,
+          //   Colors.black.withOpacity(.4)
+          // ])),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
@@ -63,10 +64,7 @@ class _SignInScreenState extends State<SignInScreen> {
               //         color: Colors.white)),
 
               const Text("Get ready to Mingle! ",
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white)),
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white)),
               const SizedBox(height: 10),
 
               // Text(_i18n.translate("welcome_back"),
@@ -83,8 +81,8 @@ class _SignInScreenState extends State<SignInScreen> {
               InkWell(
                 onTap: () {
                   debugPrint("sign in pressed");
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const SignUpScreenCostom()));
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => const SignUpScreenCostom()));
                 },
                 child: Container(
                   //width: 100.0,

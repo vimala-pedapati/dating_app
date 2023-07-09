@@ -68,15 +68,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
     _i18n = AppLocalizations.of(context);
     //
     // Get User Birthday
-    final DateTime userBirthday = DateTime(widget.user.userBirthYear,
-        widget.user.userBirthMonth, widget.user.userBirthDay);
+    final DateTime userBirthday =
+        DateTime(widget.user.userBirthYear, widget.user.userBirthMonth, widget.user.userBirthDay);
     // Get User Current Age
     final int userAge = UserModel().calculateUserAge(userBirthday);
 
     return Scaffold(
         key: _scaffoldKey,
-        body: ScopedModelDescendant<UserModel>(
-            builder: (context, child, userModel) {
+        body: ScopedModelDescendant<UserModel>(builder: (context, child, userModel) {
           return Stack(
             children: [
               SingleChildScrollView(
@@ -86,7 +85,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Stack(
                       children: [
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 2,
+                          height: MediaQuery.of(context).size.height * 1.3,
                           width: MediaQuery.of(context).size.width,
                         ),
                         SizedBox(
@@ -96,8 +95,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: Carousel(
                                 autoplay: false,
                                 dotBgColor: Colors.transparent,
-                                dotIncreasedColor:
-                                    Theme.of(context).primaryColor,
+                                dotIncreasedColor: Theme.of(context).primaryColor,
                                 images: UserModel()
                                     .getUserProfileImages(widget.user)
                                     .map((url) => NetworkImage(url))
@@ -113,8 +111,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               decoration: const BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(50),
-                                      topRight: Radius.circular(50))),
+                                      topLeft: Radius.circular(50), topRight: Radius.circular(50))),
                             )),
                         Positioned(
                             top: MediaQuery.of(context).size.height / 2.3,
@@ -127,30 +124,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.05,
+                                          width: MediaQuery.of(context).size.width * 0.05,
                                         ),
                                         Container(
                                           decoration: BoxDecoration(
                                             boxShadow: [
                                               BoxShadow(
-                                                color: Colors.grey
-                                                    .withOpacity(0.1),
+                                                color: Colors.grey.withOpacity(0.1),
                                                 spreadRadius: .01,
                                                 blurRadius: 10,
-                                                offset: const Offset(0,
-                                                    1), // changes position of shadow
+                                                offset: const Offset(
+                                                    0, 1), // changes position of shadow
                                               ),
                                             ],
                                           ),
                                           child: const CircleAvatar(
-                                            radius: 35,
+                                            radius: 30,
                                             backgroundColor: Colors.white,
                                             child: Icon(
                                               Icons.close,
@@ -178,8 +170,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             ),
                                             child: Image.asset(
                                               'assets/icons/heartIcon.png',
-                                              height: 50,
-                                              width: 50,
+                                              height: 30,
+                                              width: 30,
                                             ),
 
                                             // child: const Icon(
@@ -194,17 +186,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           decoration: BoxDecoration(
                                             boxShadow: [
                                               BoxShadow(
-                                                color: Colors.grey
-                                                    .withOpacity(0.1),
+                                                color: Colors.grey.withOpacity(0.1),
                                                 spreadRadius: .01,
                                                 blurRadius: 10,
-                                                offset: const Offset(0,
-                                                    1), // changes position of shadow
+                                                offset: const Offset(
+                                                    0, 1), // changes position of shadow
                                               ),
                                             ],
                                           ),
                                           child: const CircleAvatar(
-                                            radius: 35,
+                                            radius: 30,
                                             backgroundColor: Colors.white,
                                             child: Icon(
                                               Icons.star,
@@ -214,29 +205,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           ),
                                         ),
                                         SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.05,
+                                          width: MediaQuery.of(context).size.width * 0.05,
                                         ),
                                       ],
                                     ),
                                     SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.02,
+                                      height: MediaQuery.of(context).size.height * 0.02,
                                     ),
 
                                     /// Profile details
                                     Padding(
                                       padding: const EdgeInsets.all(10),
                                       child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               /// Full Name
                                               Expanded(
@@ -244,39 +228,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   '${widget.user.userFullname}, '
                                                   '${userAge.toString()}',
                                                   style: const TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                      fontSize: 20, fontWeight: FontWeight.bold),
                                                 ),
                                               ),
 
                                               /// Show verified badge
                                               widget.user.userIsVerified
                                                   ? Container(
-                                                      margin:
-                                                          const EdgeInsets.only(
-                                                              right: 5),
+                                                      margin: const EdgeInsets.only(right: 5),
                                                       child: Image.asset(
                                                           'assets/images/verified_badge.png',
                                                           width: 30,
                                                           height: 30))
-                                                  : const SizedBox(
-                                                      width: 0, height: 0),
+                                                  : const SizedBox(width: 0, height: 0),
 
                                               /// Show VIP badge for current user
-                                              UserModel().user.userId ==
-                                                          widget.user.userId &&
+                                              UserModel().user.userId == widget.user.userId &&
                                                       UserModel().userIsVip
                                                   ? Container(
-                                                      margin:
-                                                          const EdgeInsets.only(
-                                                              right: 5),
+                                                      margin: const EdgeInsets.only(right: 5),
                                                       child: Image.asset(
                                                           'assets/images/crow_badge.png',
                                                           width: 25,
                                                           height: 25))
-                                                  : const SizedBox(
-                                                      width: 0, height: 0),
+                                                  : const SizedBox(width: 0, height: 0),
 
                                               /// Location distance
                                               CustomBadge(
@@ -294,11 +269,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           /// Job title
                                           _rowProfileInfo(
                                             context,
-                                            icon: const SvgIcon(
-                                                "assets/icons/job_bag_icon.svg",
-                                                color: Colors.black38,
-                                                width: 27,
-                                                height: 27),
+                                            icon: const SvgIcon("assets/icons/job_bag_icon.svg",
+                                                color: Colors.black38, width: 27, height: 27),
                                             title: widget.user.userJobTitle,
                                           ),
 
@@ -307,76 +279,60 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           /// Profile bio
                                           const Text("About",
                                               style: TextStyle(
-                                                  fontSize: 22,
-                                                  fontWeight: FontWeight.bold)),
+                                                  fontSize: 22, fontWeight: FontWeight.bold)),
                                           const SizedBox(height: 5),
                                           Text(widget.user.userBio,
                                               style: const TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.black38)),
+                                                  fontSize: 16, color: Colors.black38)),
                                           const SizedBox(height: 5),
 
                                           /// Home location
                                           Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children:  [
+                                              const Column(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
                                                   Text("Mingle Events",
                                                       style: TextStyle(
                                                           fontSize: 22,
-                                                          fontWeight:
-                                                              FontWeight.bold)),
+                                                          fontWeight: FontWeight.bold)),
                                                   SizedBox(height: 5),
-                                                  Text(
-                                                      "Anti Valentines Day Party",
+                                                  Text("Anti Valentines Day Party",
                                                       style: TextStyle(
-                                                          fontSize: 16,
-                                                          color:
-                                                              Colors.black38)),
+                                                          fontSize: 16, color: Colors.black38)),
                                                   SizedBox(height: 5),
                                                 ],
                                               ),
                                               Column(
                                                 children: [
                                                   DefaultButton(
-                                                    child:
-                                                        const Text("Atteding"),
+                                                    child: const Text("Atteding"),
                                                     onPressed: () {},
                                                   ),
                                                   const SizedBox(height: 5),
                                                   const Text("14th Feb 2021",
                                                       style: TextStyle(
-                                                          fontSize: 16,
-                                                          color:
-                                                              Colors.black38)),
+                                                          fontSize: 16, color: Colors.black38)),
                                                   const SizedBox(height: 5),
                                                 ],
                                               )
                                             ],
                                           ),
-                                          const Padding(
-                                            padding: EdgeInsets.all(8.0),
-                                            child: Text("Intersets",
-                                                style: TextStyle(
-                                                    fontSize: 22,
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                          ),
-                                          const SizedBox(
-                                            height: 150,
-                                          ),
+                                          // const Padding(
+                                          //   padding: EdgeInsets.all(8.0),
+                                          //   child: Text("Intersets",
+                                          //       style: TextStyle(
+                                          //           fontSize: 22, fontWeight: FontWeight.bold)),
+                                          // ),
+                                          // const SizedBox(
+                                          //   height: 150,
+                                          // ),
                                           _rowProfileInfo(
                                             context,
-                                            icon: SvgIcon(
-                                                "assets/icons/location_point_icon.svg",
-                                                color: Theme.of(context)
-                                                    .primaryColor,
+                                            icon: SvgIcon("assets/icons/location_point_icon.svg",
+                                                color: Theme.of(context).primaryColor,
                                                 width: 24,
                                                 height: 24),
                                             title:
@@ -385,20 +341,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                                           /// Education
                                           _rowProfileInfo(context,
-                                              icon: SvgIcon(
-                                                  "assets/icons/university_icon.svg",
-                                                  color: Theme.of(context)
-                                                      .primaryColor,
+                                              icon: SvgIcon("assets/icons/university_icon.svg",
+                                                  color: Theme.of(context).primaryColor,
                                                   width: 34,
                                                   height: 34),
                                               title: widget.user.userSchool),
 
                                           /// Birthday
                                           _rowProfileInfo(context,
-                                              icon: SvgIcon(
-                                                  "assets/icons/gift_icon.svg",
-                                                  color: Theme.of(context)
-                                                      .primaryColor,
+                                              icon: SvgIcon("assets/icons/gift_icon.svg",
+                                                  color: Theme.of(context).primaryColor,
                                                   width: 28,
                                                   height: 28),
                                               title:
@@ -406,10 +358,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                                           /// Join date
                                           _rowProfileInfo(context,
-                                              icon: SvgIcon(
-                                                  "assets/icons/info_icon.svg",
-                                                  color: Theme.of(context)
-                                                      .primaryColor,
+                                              icon: SvgIcon("assets/icons/info_icon.svg",
+                                                  color: Theme.of(context).primaryColor,
                                                   width: 28,
                                                   height: 28),
                                               title: 'HELO'
@@ -439,17 +389,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: AppBar(
                   backgroundColor: Colors.transparent,
                   elevation: 0,
-                  iconTheme:
-                      IconThemeData(color: Theme.of(context).primaryColor),
+                  iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
                   actions: <Widget>[
                     // Check the current User ID
                     if (UserModel().user.userId != widget.user.userId)
                       IconButton(
-                        icon: Icon(Icons.flag,
-                            color: Theme.of(context).primaryColor, size: 32),
+                        icon: Icon(Icons.flag, color: Theme.of(context).primaryColor, size: 32),
                         // Report/Block profile dialog
-                        onPressed: () =>
-                            ReportDialog(userId: widget.user.userId).show(),
+                        onPressed: () => ReportDialog(userId: widget.user.userId).show(),
                       )
                   ],
                 ),
@@ -457,12 +404,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ],
           );
         }),
-        bottomNavigationBar:
-            widget.showButtons ? _buildButtons(context) : null);
+        bottomNavigationBar: widget.showButtons ? _buildButtons(context) : null);
   }
 
-  Widget _rowProfileInfo(BuildContext context,
-      {required Widget icon, required String title}) {
+  Widget _rowProfileInfo(BuildContext context, {required Widget icon, required String title}) {
     return Row(
       children: [
         icon,
@@ -486,8 +431,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             if (!widget.hideDislikeButton)
               cicleButton(
                   padding: 8.0,
-                  icon:
-                      Icon(Icons.close, color: Theme.of(context).primaryColor),
+                  icon: Icon(Icons.close, color: Theme.of(context).primaryColor),
                   bgColor: Colors.grey,
                   onTap: () {
                     // Dislike profile
@@ -499,8 +443,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             // Show error message
                             showScaffoldMessage(
                                 context: context,
-                                message: _i18n.translate(
-                                    "you_already_disliked_this_profile"));
+                                message: _i18n.translate("you_already_disliked_this_profile"));
                           }
                         });
                   }),
@@ -551,13 +494,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               // Show success message
               showScaffoldMessage(
                   context: context,
-                  message:
-                      '${_i18n.translate("like_sent_to")} ${widget.user.userFullname}');
+                  message: '${_i18n.translate("like_sent_to")} ${widget.user.userFullname}');
             } else if (!result) {
               // Show error message
               showScaffoldMessage(
-                  context: context,
-                  message: _i18n.translate("you_already_liked_this_profile"));
+                  context: context, message: _i18n.translate("you_already_liked_this_profile"));
             }
 
             /// Validate to delete disliked user from disliked list

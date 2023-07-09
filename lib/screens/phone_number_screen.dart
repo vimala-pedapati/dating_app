@@ -3,7 +3,6 @@ import 'package:Mingledxb/screens/update_location_sceen.dart';
 import 'package:Mingledxb/screens/verification_code_screen.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -46,9 +45,19 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
     _pr = ProgressDialog(context, isDismissible: false);
 
     return Scaffold(
+        backgroundColor: Colors.black,
         key: _scaffoldkey,
         appBar: AppBar(
-          title: Text(_i18n.translate("phone_number")),
+          leading: IconButton(
+              icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+              onPressed: () => Navigator.of(context).pop()),
+          backgroundColor: Colors.black,
+          title: Text(
+              _i18n.translate(
+                "phone_number",
+              ),
+              style:
+                  const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
         ),
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
@@ -64,11 +73,9 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
               Text(_i18n.translate("sign_in_with_phone_number"),
                   textAlign: TextAlign.center, style: const TextStyle(fontSize: 20)),
               const SizedBox(height: 25),
-              Text(
-                  _i18n.translate(
-                      "please_enter_your_phone_number_and_we_will_send_you_a_sms"),
+              Text(_i18n.translate("please_enter_your_phone_number_and_we_will_send_you_a_sms"),
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 18, color: Colors.grey)),
+                  style: const TextStyle(fontSize: 18, color: Colors.white)),
               const SizedBox(height: 22),
 
               /// Form
@@ -99,8 +106,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                       validator: (number) {
                         // Basic validation
                         if (number.toString().isEmpty) {
-                          return _i18n
-                              .translate("please_enter_your_phone_number");
+                          return _i18n.translate("please_enter_your_phone_number");
                         }
                         return null;
                       },
@@ -109,8 +115,8 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                     SizedBox(
                       width: double.maxFinite,
                       child: DefaultButton(
-                        child: Text(_i18n.translate("CONTINUE"),
-                            style: const TextStyle(fontSize: 18)),
+                        child:
+                            Text(_i18n.translate("CONTINUE"), style: const TextStyle(fontSize: 18)),
                         onPressed: () async {
                           /// Validate form
                           if (_formKey.currentState!.validate()) {
@@ -132,8 +138,8 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
   void _nextScreen(screen) {
     // Go to next page route
     Future(() {
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => screen), (route) => false);
+      Navigator.of(context)
+          .pushAndRemoveUntil(MaterialPageRoute(builder: (context) => screen), (route) => false);
     });
   }
 
@@ -148,12 +154,12 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
         checkUserAccount: () {
           /// Authenticate User Account
           UserModel().authUserAccount(
-            updateLocationScreen: () => _nextScreen(const UpdateLocationScreen()),
-            signUpScreen: () => _nextScreen(const SignUpScreen()),
-            countdownscreen: () => _nextScreen(const CountDownScreen()),
-            homeScreen: () => _nextScreen(const HomeScreen()),
-            blockedScreen: () => _nextScreen(const BlockedAccountScreen()));
-          // END   
+              updateLocationScreen: () => _nextScreen(const UpdateLocationScreen()),
+              signUpScreen: () => _nextScreen(const SignUpScreen()),
+              countdownscreen: () => _nextScreen(const CountDownScreen()),
+              homeScreen: () => _nextScreen(const HomeScreen()),
+              blockedScreen: () => _nextScreen(const BlockedAccountScreen()));
+          // END
         },
         codeSent: (code) async {
           // Hide progreess dialog
@@ -170,15 +176,13 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
 
           // Check Erro type
           if (errorType == 'invalid_number') {
-              // Check error type
-              final String message =
-                  _i18n.translate("we_were_unable_to_verify_your_number");
-              // Show error message
-              // Validate context
-              if (mounted) {
-                showScaffoldMessage(
-                    context: context, message: message, bgcolor: Colors.red);
-              }
+            // Check error type
+            final String message = _i18n.translate("we_were_unable_to_verify_your_number");
+            // Show error message
+            // Validate context
+            if (mounted) {
+              showScaffoldMessage(context: context, message: message, bgcolor: Colors.red);
+            }
           }
         });
   }

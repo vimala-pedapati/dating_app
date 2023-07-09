@@ -97,10 +97,7 @@ class GalleryImageCard extends StatelessWidget {
 
                   /// Update gallery image
                   await UserModel().updateProfileImage(
-                      imageFile: image,
-                      oldImageUrl: imageUrl,
-                      path: 'gallery',
-                      index: index);
+                      imageFile: image, oldImageUrl: imageUrl, path: 'gallery', index: index);
                   // Hide dialog
                   pr.hide();
                   // close modal
@@ -134,8 +131,7 @@ class GalleryImageCard extends StatelessWidget {
           pr.show(i18n.translate("processing"));
 
           /// Delete image
-          await UserModel()
-              .deleteGalleryImage(imageUrl: imageUrl!, index: index);
+          await UserModel().deleteGalleryImage(imageUrl: imageUrl!, index: index);
 
           // Hide progress dialog
           pr.hide();
