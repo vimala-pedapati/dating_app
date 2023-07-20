@@ -24,7 +24,7 @@ class ProfileBasicInfoCard extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       physics: const ScrollPhysics(),
       child: Card(
-        color: Theme.of(context).primaryColor,
+        color: Colors.grey[900],
         elevation: 4.0,
         shape: defaultCardBorder(),
         child: Container(
@@ -38,15 +38,12 @@ class ProfileBasicInfoCard extends StatelessWidget {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(3.0),
-                    decoration: const BoxDecoration(
-                        color: Colors.white, shape: BoxShape.circle),
+                    decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
                     child: CircleAvatar(
-                      backgroundColor: Theme.of(context).primaryColor,
+                      backgroundColor: Colors.white,
                       radius: 40,
-                      backgroundImage:
-                          NetworkImage(UserModel().user.userProfilePhoto),
-                      onBackgroundImageError: (e, s) =>
-                          {debugPrint(e.toString())},
+                      backgroundImage: NetworkImage(UserModel().user.userProfilePhoto),
+                      onBackgroundImageError: (e, s) => {debugPrint(e.toString())},
                     ),
                   ),
 
@@ -59,16 +56,12 @@ class ProfileBasicInfoCard extends StatelessWidget {
                       Text(
                         "${UserModel().user.userFullname.split(' ')[0]} ",
                         style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
                       ),
                       Text(
                         userAge.toString(),
                         style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
                       ),
                       const SizedBox(height: 5),
 
@@ -98,18 +91,14 @@ class ProfileBasicInfoCard extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.width * 0.1,
                     child: TextButton.icon(
-                        icon: Icon(Icons.edit,
-                            color: Theme.of(context).primaryColor),
+                        icon: const Icon(Icons.edit, color: Colors.black),
                         style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.white),
-                            shape: MaterialStateProperty.all<OutlinedBorder>(
-                                RoundedRectangleBorder(
+                            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                            shape: MaterialStateProperty.all<OutlinedBorder>(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(28),
                             ))),
                         label: Text(i18n.translate("edit"),
-                            style: TextStyle(
-                                color: Theme.of(context).primaryColor)),
+                            style: const TextStyle(color: Colors.black)),
                         onPressed: () {
                           /// Go to edit profile screen
                           // Navigator.of(context).push(MaterialPageRoute(

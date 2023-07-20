@@ -7,8 +7,7 @@ class NoData extends StatelessWidget {
   final Widget? icon;
   final String text;
 
-  const NoData({Key? key, this.svgName, this.icon, required this.text})
-      : super(key: key);
+  const NoData({Key? key, this.svgName, this.icon, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,22 +16,22 @@ class NoData extends StatelessWidget {
     // Check svgName
     if (svgName != null) {
       // Get SVG icon
-      _icon = SvgIcon("assets/icons/$svgName.svg",
-          width: 100, height: 100, color: Theme.of(context).primaryColor);
+      _icon = SvgIcon("assets/icons/$svgName.svg", width: 100, height: 100, color: Colors.white);
     } else {
       _icon = icon!;
     }
 
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          // Show icon
-          _icon,
-          Text(text,
-              style: const TextStyle(fontSize: 18),
-              textAlign: TextAlign.center),
-        ],
+    return Container(
+      color: Colors.black,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            // Show icon
+            _icon,
+            Text(text, style: const TextStyle(fontSize: 18), textAlign: TextAlign.center),
+          ],
+        ),
       ),
     );
   }

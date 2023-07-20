@@ -19,8 +19,7 @@ class ProfileCard extends StatelessWidget {
   /// Swiper position
   final SwiperPosition? position;
 
-  ProfileCard({Key? key, this.page, this.position, required this.user})
-      : super(key: key);
+  ProfileCard({Key? key, this.page, this.position, required this.user}) : super(key: key);
 
   // Local variables
   final AppHelper _appHelper = AppHelper();
@@ -70,10 +69,7 @@ class ProfileCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.bottomRight,
-                      colors: [
-                        Theme.of(context).primaryColor,
-                        Colors.transparent
-                      ]),
+                      colors: [Theme.of(context).primaryColor, Colors.transparent]),
                 ),
 
                 /// User info container
@@ -224,10 +220,8 @@ class ProfileCard extends StatelessWidget {
               ? Positioned(
                   right: 0,
                   child: IconButton(
-                      icon: Icon(Icons.flag,
-                          color: Theme.of(context).primaryColor, size: 32),
-                      onPressed: () =>
-                          ReportDialog(userId: user.userId).show()))
+                      icon: const Icon(Icons.flag, color: Colors.white, size: 32),
+                      onPressed: () => ReportDialog(userId: user.userId).show()))
               : const SizedBox(width: 0, height: 0),
         ],
       ),

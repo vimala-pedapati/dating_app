@@ -42,10 +42,8 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
   // Variables from edit screen
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final _schoolController =
-      TextEditingController(text: UserModel().user.userSchool);
-  final _jobController =
-      TextEditingController(text: UserModel().user.userJobTitle);
+  final _schoolController = TextEditingController(text: UserModel().user.userSchool);
+  final _jobController = TextEditingController(text: UserModel().user.userJobTitle);
   final _bioController = TextEditingController(text: UserModel().user.userBio);
   late AppLocalizations _i18n;
   late ProgressDialog _pr;
@@ -53,23 +51,21 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
   // Go to Passport screen
   Future<void> _goToPassportScreen() async {
     // Get picked location result
-    LocationResult? result = await Navigator.of(context).push<LocationResult?>(
-        MaterialPageRoute(builder: (context) => const PassportScreen()));
+    LocationResult? result = await Navigator.of(context)
+        .push<LocationResult?>(MaterialPageRoute(builder: (context) => const PassportScreen()));
     // Handle the retur result
     if (result != null) {
       // Update current your location
       _updateUserLocation(true, locationResult: result);
       // Debug info
-      debugPrint(
-          '_goToPassportScreen() -> result: ${result.country!.name}, ${result.city!.name}');
+      debugPrint('_goToPassportScreen() -> result: ${result.country!.name}, ${result.city!.name}');
     } else {
       debugPrint('_goToPassportScreen() -> result: empty');
     }
   }
 
   // Update User Location
-  Future<void> _updateUserLocation(bool isPassport,
-      {LocationResult? locationResult}) async {
+  Future<void> _updateUserLocation(bool isPassport, {LocationResult? locationResult}) async {
     /// Update user location: Country & City an Geo Data
 
     /// Update user data
@@ -79,15 +75,12 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
         onSuccess: () {
           // Show success message
           showScaffoldMessage(
-              context: context,
-              message: _i18n.translate("location_updated_successfully"));
+              context: context, message: _i18n.translate("location_updated_successfully"));
         },
         onFail: () {
           // Show error message
           showScaffoldMessage(
-              context: context,
-              message:
-                  _i18n.translate("we_were_unable_to_update_your_location"));
+              context: context, message: _i18n.translate("we_were_unable_to_update_your_location"));
         });
   }
 
@@ -154,8 +147,8 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
     _i18n = AppLocalizations.of(context);
     //
     // Get User Birthday
-    final DateTime userBirthday = DateTime(widget.user.userBirthYear,
-        widget.user.userBirthMonth, widget.user.userBirthDay);
+    final DateTime userBirthday =
+        DateTime(widget.user.userBirthYear, widget.user.userBirthMonth, widget.user.userBirthDay);
     // Get User Current Age
     final int userAge = UserModel().calculateUserAge(userBirthday);
 
@@ -174,6 +167,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
     _currentPlanController.text = "Free";
 
     return Scaffold(
+      backgroundColor: Colors.black,
       key: _scaffoldKey,
       body: SingleChildScrollView(
         // padding: const EdgeInsets.all(15),
@@ -211,10 +205,8 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.06,
-                                  width:
-                                      MediaQuery.of(context).size.height * 0.06,
+                                  height: MediaQuery.of(context).size.height * 0.06,
+                                  width: MediaQuery.of(context).size.height * 0.06,
                                   margin: const EdgeInsets.only(left: 20),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
@@ -233,8 +225,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                 Center(
                                   child: Text(
                                     _i18n.translate("profile"),
-                                    style: const TextStyle(
-                                        fontSize: 22, color: Colors.white),
+                                    style: const TextStyle(fontSize: 22, color: Colors.white),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
@@ -252,19 +243,16 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                     backgroundColor: Colors.white,
                                     child: CircleAvatar(
                                       radius: 60,
-                                      backgroundImage: NetworkImage(
-                                          userModel.user.userProfilePhoto),
-                                      backgroundColor:
-                                          Theme.of(context).primaryColor,
+                                      backgroundImage:
+                                          NetworkImage(userModel.user.userProfilePhoto),
+                                      backgroundColor: Theme.of(context).primaryColor,
                                     ),
                                   ),
                                   Positioned(
                                     child: CircleAvatar(
                                       radius: 18,
-                                      backgroundColor:
-                                          Theme.of(context).primaryColor,
-                                      child: const Icon(Icons.edit,
-                                          color: Colors.white),
+                                      backgroundColor: Theme.of(context).primaryColor,
+                                      child: const Icon(Icons.edit, color: Colors.white),
                                     ),
                                     right: 0,
                                     bottom: 0,
@@ -275,8 +263,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                             onTap: () async {
                               /// Update profile image
                               _selectImage(
-                                  imageUrl: userModel.user.userProfilePhoto,
-                                  path: 'profile');
+                                  imageUrl: userModel.user.userProfilePhoto, path: 'profile');
                             },
                           ),
                           const SizedBox(
@@ -310,17 +297,14 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                               child: Text(
                                 _i18n.translate("account_settings"),
                                 style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                                    color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                             ),
                             const Spacer(),
                             // Save changes button
                             TextButton(
                               child: Text(_i18n.translate("SAVE"),
-                                  style: TextStyle(
-                                      color: Theme.of(context).primaryColor)),
+                                  style: TextStyle(color: Theme.of(context).primaryColor)),
                               onPressed: () {
                                 /// Validate form
                                 if (_formKey.currentState!.validate()) {
@@ -469,8 +453,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                               Expanded(
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child:
-                                      Text(_i18n.translate("write_about_you")),
+                                  child: Text(_i18n.translate("write_about_you")),
                                 ),
                               ),
                               SizedBox(
@@ -478,8 +461,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                 child: TextFormField(
                                   maxLines: 4,
                                   decoration: InputDecoration(
-                                    floatingLabelBehavior:
-                                        FloatingLabelBehavior.always,
+                                    floatingLabelBehavior: FloatingLabelBehavior.always,
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide.none,
@@ -489,8 +471,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                   textAlign: TextAlign.right,
                                   validator: (bio) {
                                     if (bio == null) {
-                                      return _i18n
-                                          .translate("please_write_your_bio");
+                                      return _i18n.translate("please_write_your_bio");
                                     }
                                     return null;
                                   },
@@ -528,8 +509,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                   textAlign: TextAlign.right,
                                   validator: (school) {
                                     if (school == null) {
-                                      return _i18n.translate(
-                                          "please_enter_your_school_name");
+                                      return _i18n.translate("please_enter_your_school_name");
                                     }
                                     return null;
                                   },
@@ -567,8 +547,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                   textAlign: TextAlign.right,
                                   validator: (job) {
                                     if (job == null) {
-                                      return _i18n.translate(
-                                          "please_enter_your_job_title");
+                                      return _i18n.translate("please_enter_your_job_title");
                                     }
                                     return null;
                                   },
@@ -628,9 +607,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                             _i18n.translate("discovery_settings"),
                             textAlign: TextAlign.start,
                             style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
+                                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                         ),
 
@@ -693,25 +670,21 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                      _i18n.translate("your_current_location"),
+                                  child: Text(_i18n.translate("your_current_location"),
                                       style: const TextStyle(fontSize: 18)),
                                 ),
                                 ListTile(
-                                  leading: SvgIcon(
-                                      "assets/icons/location_point_icon.svg",
+                                  leading: SvgIcon("assets/icons/location_point_icon.svg",
                                       color: Theme.of(context).primaryColor),
                                   title: Text(
                                       '${UserModel().user.userCountry}, ${UserModel().user.userLocality}'),
                                   trailing: TextButton(
                                     style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Theme.of(context).primaryColor),
+                                      backgroundColor: MaterialStateProperty.all<Color>(
+                                          Theme.of(context).primaryColor),
                                     ),
                                     child: Text(_i18n.translate("UPDATE"),
-                                        style: const TextStyle(
-                                            color: Colors.white)),
+                                        style: const TextStyle(color: Colors.white)),
                                     onPressed: () async {
                                       /// Update user location: Country & City an Geo Data
                                       _updateUserLocation(false);
@@ -737,40 +710,30 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                         '${_i18n.translate("maximum_distance")} ${_selectedMaxDistance.round()} km',
                                         style: const TextStyle(fontSize: 18)),
                                     const SizedBox(height: 3),
-                                    Text(
-                                        _i18n.translate(
-                                            "show_people_within_this_radius"),
-                                        style: const TextStyle(
-                                            color: Colors.grey)),
+                                    Text(_i18n.translate("show_people_within_this_radius"),
+                                        style: const TextStyle(color: Colors.grey)),
                                   ],
                                 ),
                               ),
                               SliderTheme(
                                 data: SliderTheme.of(context).copyWith(
-                                  trackHeight:
-                                      2, // Set the track height to 2 pixels
+                                  trackHeight: 2, // Set the track height to 2 pixels
                                   thumbShape: const RoundSliderThumbShape(
-                                    enabledThumbRadius:
-                                        8, // Set the thumb radius to 8 pixels
+                                    enabledThumbRadius: 8, // Set the thumb radius to 8 pixels
                                   ),
                                   overlayShape: const RoundSliderOverlayShape(
-                                    overlayRadius:
-                                        16, // Set the overlay radius to 16 pixels
+                                    overlayRadius: 16, // Set the overlay radius to 16 pixels
                                   ),
                                 ),
                                 child: Slider(
                                   activeColor: APP_ACCENT_COLOR,
                                   value: _selectedMaxDistance,
-                                  label:
-                                      _selectedMaxDistance.round().toString() +
-                                          ' km',
+                                  label: _selectedMaxDistance.round().toString() + ' km',
                                   divisions: 100,
                                   min: 0,
                                   max: UserModel().userIsVip
                                       ? AppModel().appInfo.vipAccountMaxDistance
-                                      : AppModel()
-                                          .appInfo
-                                          .freeAccountMaxDistance,
+                                      : AppModel().appInfo.freeAccountMaxDistance,
                                   onChanged: (radius) {
                                     setState(() {
                                       _selectedMaxDistance = radius;
@@ -785,8 +748,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                         userId: UserModel().user.userId,
                                         data: {
                                           '$USER_SETTINGS.$USER_MAX_DISTANCE':
-                                              double.parse(
-                                                  radius.toStringAsFixed(2))
+                                              double.parse(radius.toStringAsFixed(2))
                                         }).then((_) {
                                       debugPrint(
                                           'User max distance updated -> ${radius.toStringAsFixed(2)}');
@@ -804,9 +766,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                           "${_i18n.translate("need_more_radius_away")} "
                                           "${AppModel().appInfo.vipAccountMaxDistance} km "
                                           "${_i18n.translate('radius_away')}",
-                                          style: TextStyle(
-                                              color: Theme.of(context)
-                                                  .primaryColor)),
+                                          style: TextStyle(color: Theme.of(context).primaryColor)),
                                     ),
                             ],
                           ),
@@ -821,26 +781,21 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                             ListTile(
                               title: Text(_i18n.translate("age_range"),
                                   style: const TextStyle(fontSize: 19)),
-                              subtitle: Text(_i18n.translate(
-                                  "show_people_within_this_age_range")),
+                              subtitle: Text(_i18n.translate("show_people_within_this_age_range")),
                               trailing: Text(
                                   "${_selectedAgeRange.start.toStringAsFixed(0)} - "
                                   "${_selectedAgeRange.end.toStringAsFixed(0)}",
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold)),
+                                  style:
+                                      const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                             ),
                             SliderTheme(
                               data: SliderTheme.of(context).copyWith(
-                                trackHeight:
-                                    2, // Set the track height to 2 pixels
+                                trackHeight: 2, // Set the track height to 2 pixels
                                 thumbShape: const RoundSliderThumbShape(
-                                  enabledThumbRadius:
-                                      8, // Set the thumb radius to 8 pixels
+                                  enabledThumbRadius: 8, // Set the thumb radius to 8 pixels
                                 ),
                                 overlayShape: const RoundSliderOverlayShape(
-                                  overlayRadius:
-                                      16, // Set the overlay radius to 16 pixels
+                                  overlayRadius: 16, // Set the overlay radius to 16 pixels
                                 ),
                               ),
                               child: RangeSlider(
@@ -858,29 +813,24 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                           newRange.start.toStringAsFixed(0),
                                           newRange.end.toStringAsFixed(0));
                                     });
-                                    debugPrint(
-                                        '_selectedAgeRange: $_selectedAgeRange');
+                                    debugPrint('_selectedAgeRange: $_selectedAgeRange');
                                   },
                                   onChangeEnd: (endValues) {
                                     /// Update age range
                                     ///
                                     /// Get start value
-                                    final int minAge = int.parse(
-                                        endValues.start.toStringAsFixed(0));
+                                    final int minAge =
+                                        int.parse(endValues.start.toStringAsFixed(0));
 
                                     /// Get end value
-                                    final int maxAge = int.parse(
-                                        endValues.end.toStringAsFixed(0));
+                                    final int maxAge = int.parse(endValues.end.toStringAsFixed(0));
 
                                     // Update age range
-                                    UserModel().updateUserData(
-                                        userId: UserModel().user.userId,
-                                        data: {
-                                          '$USER_SETTINGS.$USER_MIN_AGE':
-                                              minAge,
-                                          '$USER_SETTINGS.$USER_MAX_AGE':
-                                              maxAge,
-                                        }).then((_) {
+                                    UserModel()
+                                        .updateUserData(userId: UserModel().user.userId, data: {
+                                      '$USER_SETTINGS.$USER_MIN_AGE': minAge,
+                                      '$USER_SETTINGS.$USER_MAX_AGE': maxAge,
+                                    }).then((_) {
                                       debugPrint('Age range updated');
                                     });
                                   }),
@@ -899,8 +849,8 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                             ),
                             title: Text(_i18n.translate('show_me'),
                                 style: const TextStyle(fontSize: 18)),
-                            trailing: Text(_showMeOption(_i18n),
-                                style: const TextStyle(fontSize: 18)),
+                            trailing:
+                                Text(_showMeOption(_i18n), style: const TextStyle(fontSize: 18)),
                             onTap: () {
                               /// Choose Show me option
                               showDialog(
@@ -922,14 +872,12 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                               color: Theme.of(context).primaryColor,
                               size: 30,
                             ),
-                            title: const Text('INTERESTS',
-                                style: TextStyle(fontSize: 18)),
+                            title: const Text('INTERESTS', style: TextStyle(fontSize: 18)),
                             onTap: () {
                               Navigator.push<void>(
                                 context,
                                 MaterialPageRoute<void>(
-                                  builder: (BuildContext context) =>
-                                      const CustomGridView(),
+                                  builder: (BuildContext context) => const CustomGridView(),
                                 ),
                               );
                             },
@@ -943,24 +891,18 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                           child: ListTile(
                             leading: _hideProfile
                                 ? Icon(Icons.visibility_off,
-                                    color: Theme.of(context).primaryColor,
-                                    size: 30)
+                                    color: Theme.of(context).primaryColor, size: 30)
                                 : Icon(Icons.visibility,
-                                    color: Theme.of(context).primaryColor,
-                                    size: 30),
+                                    color: Theme.of(context).primaryColor, size: 30),
                             title: Text(_i18n.translate('hide_profile'),
                                 style: const TextStyle(fontSize: 18)),
                             subtitle: _hideProfile
                                 ? Text(
-                                    _i18n.translate(
-                                        'your_profile_is_hidden_on_discover_tab'),
+                                    _i18n.translate('your_profile_is_hidden_on_discover_tab'),
                                     style: const TextStyle(color: Colors.red),
                                   )
-                                : Text(
-                                    _i18n.translate(
-                                        'your_profile_is_visible_on_discover_tab'),
-                                    style:
-                                        const TextStyle(color: Colors.green)),
+                                : Text(_i18n.translate('your_profile_is_visible_on_discover_tab'),
+                                    style: const TextStyle(color: Colors.green)),
                             trailing: Switch(
                               activeColor: Theme.of(context).primaryColor,
                               value: _hideProfile,
@@ -994,18 +936,14 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   /// Show verified badge
                                   widget.user.userIsVerified
                                       ? Container(
-                                          margin:
-                                              const EdgeInsets.only(right: 5),
-                                          child: Image.asset(
-                                              'assets/images/verified_badge.png',
-                                              width: 30,
-                                              height: 30))
+                                          margin: const EdgeInsets.only(right: 5),
+                                          child: Image.asset('assets/images/verified_badge.png',
+                                              width: 30, height: 30))
                                       : const SizedBox(width: 0, height: 0),
 
                                   // /// Show VIP badge for current user
@@ -1038,9 +976,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                               /// Join date
                               _rowProfileInfo(context,
                                   icon: SvgIcon("assets/icons/info_icon.svg",
-                                      color: Theme.of(context).primaryColor,
-                                      width: 28,
-                                      height: 28),
+                                      color: Theme.of(context).primaryColor, width: 28, height: 28),
                                   title:
                                       '${_i18n.translate('join_date')} ${timeago.format(widget.user.userRegDate)}'),
 
@@ -1051,8 +987,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
 
                         // Profile gallery
                         Text(_i18n.translate("gallery"),
-                            style: const TextStyle(
-                                fontSize: 18, color: Colors.grey),
+                            style: const TextStyle(fontSize: 18, color: Colors.grey),
                             textAlign: TextAlign.left),
 
                         // Show gallery
@@ -1081,8 +1016,8 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                   _pr.show(_i18n.translate("processing"));
 
                   /// Update profile image
-                  await UserModel().updateProfileImage(
-                      imageFile: image, oldImageUrl: imageUrl, path: 'profile');
+                  await UserModel()
+                      .updateProfileImage(imageFile: image, oldImageUrl: imageUrl, path: 'profile');
                   // Hide dialog
                   _pr.hide();
                   // close modal
@@ -1101,8 +1036,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
         userBio: _bioController.text.trim(),
         onSuccess: () {
           /// Show success message
-          successDialog(context,
-              message: _i18n.translate("profile_updated_successfully"),
+          successDialog(context, message: _i18n.translate("profile_updated_successfully"),
               positiveAction: () {
             /// Close dialog
             Navigator.of(context).pop();
@@ -1121,8 +1055,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
           debugPrint(error);
           // Show error message
           errorDialog(context,
-              message: _i18n
-                  .translate("an_error_occurred_while_updating_your_profile"));
+              message: _i18n.translate("an_error_occurred_while_updating_your_profile"));
         });
   }
 }
@@ -1137,8 +1070,7 @@ class CurveClipper extends CustomClipper<Path> {
 
     Path path = Path()
       ..lineTo(0, size.height - curveHeight)
-      ..quadraticBezierTo(
-          controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy)
+      ..quadraticBezierTo(controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy)
       ..lineTo(size.width, 0)
       ..close();
 
@@ -1149,8 +1081,7 @@ class CurveClipper extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
 
-Widget _rowProfileInfo(BuildContext context,
-    {required Widget icon, required String title}) {
+Widget _rowProfileInfo(BuildContext context, {required Widget icon, required String title}) {
   return Row(
     children: [
       icon,

@@ -80,8 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
   ///
   void _handlePurchaseUpdates() {
     // Listen purchase updates
-    _inAppPurchaseStream =
-        InAppPurchase.instance.purchaseStream.listen((purchases) async {
+    _inAppPurchaseStream = InAppPurchase.instance.purchaseStream.listen((purchases) async {
       // Loop incoming purchases
       for (var purchase in purchases) {
         // Control purchase status
@@ -99,13 +98,11 @@ class _HomeScreenState extends State<HomeScreen> {
             UserModel().setActiveVipId(purchase.productID);
 
             /// Update user verified status
-            await UserModel().updateUserData(
-                userId: UserModel().user.userId,
-                data: {USER_IS_VERIFIED: true});
+            await UserModel()
+                .updateUserData(userId: UserModel().user.userId, data: {USER_IS_VERIFIED: true});
 
             // User first name
-            final String userFirstname =
-                UserModel().user.userFullname.split(' ')[0];
+            final String userFirstname = UserModel().user.userFullname.split(' ')[0];
 
             /// Save notification in database for user
             _notificationsApi.onPurchaseNotification(
@@ -148,8 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
           case PurchaseStatus.canceled:
             // Show canceled feedback
             Fluttertoast.showToast(
-              msg:
-                  _i18n.translate('you_canceled_the_purchase_please_try_again'),
+              msg: _i18n.translate('you_canceled_the_purchase_please_try_again'),
               gravity: ToastGravity.BOTTOM,
               backgroundColor: APP_PRIMARY_COLOR,
               textColor: Colors.white,
@@ -244,8 +240,10 @@ class _HomeScreenState extends State<HomeScreen> {
     _i18n = AppLocalizations.of(context);
 
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: _selectedIndex != 2
           ? AppBar(
+              backgroundColor: Colors.black,
               title: Row(
                 children: [
                   Image.asset("assets/images/app_logo.png",
@@ -255,74 +253,76 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(width: 20),
                   const Text(
                     APP_NAME,
+                    style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
               actions: [
                 IconButton(
                     icon: _getNotificationCounter(),
+                    color: Colors.white,
                     onPressed: () async {
                       // Go to Notifications Screen
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => NotificationsScreen()));
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) => NotificationsScreen()));
                     })
               ],
             )
           : null,
       bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          elevation: Platform.isIOS ? 0 : 8,
-          currentIndex: _selectedIndex,
-          onTap: _onTappedNavBar,
-          items: [
-            /// Discover Tab
-            BottomNavigationBarItem(
-                icon: SvgIcon("assets/icons/search_icon.svg",
-                    width: 27,
-                    height: 27,
-                    color: _selectedIndex == 0
-                        ? Theme.of(context).primaryColor
-                        : null),
-                label: _i18n.translate("discover")),
+        backgroundColor: Colors.black, // Background color of the navigation bar
+        type: BottomNavigationBarType.fixed,
+        elevation: Platform.isIOS ? 0 : 8,
+        currentIndex: _selectedIndex,
+        onTap: _onTappedNavBar,
+        selectedItemColor: Theme.of(context).primaryColor, // Color of the selected item
+        unselectedItemColor: Colors.white, // Color of the unselected items
+        selectedLabelStyle:
+            const TextStyle(fontWeight: FontWeight.bold), // Style for selected item's label
+        unselectedLabelStyle:
+            const TextStyle(fontWeight: FontWeight.normal), // Style for unselected items' labels
+        items: [
+          /// Discover Tab
+          BottomNavigationBarItem(
+            icon: const SvgIcon(
+              "assets/icons/search_icon.svg",
+              width: 27,
+              height: 27,
+            ),
+            label: _i18n.translate("discover"),
+          ),
 
-            /// Matches Tab
-            BottomNavigationBarItem(
-                icon: SvgIcon(
-                    _selectedIndex == 1
-                        ? "assets/icons/heart_2_icon.svg"
-                        : "assets/icons/heart_icon.svg",
-                    color: _selectedIndex == 1
-                        ? Theme.of(context).primaryColor
-                        : null),
-                label: _i18n.translate("matches")),
+          /// Matches Tab
+          BottomNavigationBarItem(
+            icon: SvgIcon(
+              _selectedIndex == 1 ? "assets/icons/heart_2_icon.svg" : "assets/icons/heart_icon.svg",
+            ),
+            label: _i18n.translate("matches"),
+          ),
 
-            /// Matches Tab
-            BottomNavigationBarItem(
-                icon: SvgIcon(
-                    _selectedIndex == 2
-                        ? "assets/icons/events.svg"
-                        : "assets/icons/events.svg",
-                    color: _selectedIndex == 2
-                        ? Theme.of(context).primaryColor
-                        : null),
-                label: "Events"),
+          /// Events Tab
+          const BottomNavigationBarItem(
+            icon: SvgIcon(
+              "assets/icons/events.svg",
+            ),
+            label: "Events",
+          ),
 
-            /// Conversations Tab
-            BottomNavigationBarItem(
-                icon: _getConversationCounter(),
-                label: _i18n.translate("conversations")),
+          /// Conversations Tab
+          BottomNavigationBarItem(
+            icon: _getConversationCounter(),
+            label: _i18n.translate("conversations"),
+          ),
 
-            /// Profile Tab
-            BottomNavigationBarItem(
-                icon: SvgIcon(
-                    _selectedIndex == 4
-                        ? "assets/icons/user_2_icon.svg"
-                        : "assets/icons/user_icon.svg",
-                    color: _selectedIndex == 4
-                        ? Theme.of(context).primaryColor
-                        : null),
-                label: _i18n.translate("profile")),
-          ]),
+          /// Profile Tab
+          BottomNavigationBarItem(
+            icon: SvgIcon(
+              _selectedIndex == 4 ? "assets/icons/user_2_icon.svg" : "assets/icons/user_icon.svg",
+            ),
+            label: _i18n.translate("profile"),
+          ),
+        ],
+      ),
       body: _showCurrentNavBar(),
     );
   }
@@ -345,10 +345,8 @@ class _HomeScreenState extends State<HomeScreen> {
             return icon;
           } else {
             /// Get total counter to alert user
-            final total = snapshot.data!.docs
-                .where((doc) => doc.data()[N_READ] == false)
-                .toList()
-                .length;
+            final total =
+                snapshot.data!.docs.where((doc) => doc.data()[N_READ] == false).toList().length;
             if (total == 0) return icon;
             return NotificationCounter(icon: icon, counter: total);
           }
@@ -359,9 +357,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _getConversationCounter() {
     // Set icon
     final icon = SvgIcon(
-        _selectedIndex == 3
-            ? "assets/icons/message_2_icon.svg"
-            : "assets/icons/message_icon.svg",
+        _selectedIndex == 3 ? "assets/icons/message_2_icon.svg" : "assets/icons/message_icon.svg",
         width: 30,
         height: 30,
         color: _selectedIndex == 3 ? Theme.of(context).primaryColor : null);

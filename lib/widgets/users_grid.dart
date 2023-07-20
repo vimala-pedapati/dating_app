@@ -7,24 +7,24 @@ class UsersGrid extends StatelessWidget {
   final Widget Function(BuildContext, int) itemBuilder;
 
   const UsersGrid(
-      {Key? key, 
-      this.gridViewController,
-      required this.itemCount,
-      required this.itemBuilder}) : super(key: key);
+      {Key? key, this.gridViewController, required this.itemCount, required this.itemBuilder})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      controller: gridViewController,
-      shrinkWrap: true,
-      itemCount: itemCount,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 0,
-        crossAxisSpacing: 0,
-        childAspectRatio: 250 / 320,
+    return Container(
+      color: Colors.black,
+      child: GridView.builder(
+        shrinkWrap: true,
+        itemCount: itemCount,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 0,
+          crossAxisSpacing: 0,
+          childAspectRatio: 250 / 320,
+        ),
+        itemBuilder: itemBuilder,
       ),
-      itemBuilder: itemBuilder,
     );
   }
 }

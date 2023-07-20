@@ -97,18 +97,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return _locale;
   }
 
-  /// Display date picker.
   void _showDatePicker() {
     DatePicker.showDatePicker(
       context,
       onMonthChangeStartWithFirstDate: true,
       pickerTheme: DateTimePickerTheme(
-        showTitle: true,
-        confirm: Text(_i18n.translate('DONE'),
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0,
-                color: Theme.of(context).primaryColor)),
+        backgroundColor: Colors.black,
+        itemTextStyle: const TextStyle(color: Colors.white),
+        confirm: Text(
+          _i18n.translate('DONE'),
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18.0,
+            color: Colors.white,
+          ),
+        ),
+        cancel: Text(
+          _i18n.translate('CANCEL'), // You may want to add 'CANCEL' translation
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18.0,
+            color: Colors.white,
+          ),
+        ),
+        // Customize other properties of DateTimePickerTheme as needed
+        // For example, you can change the color of the selected date, etc.
       ),
       minDateTime: DateTime(1920, 1, 1),
       maxDateTime: DateTime.now(),
@@ -140,30 +153,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       key: _scaffoldKey,
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: Text(_i18n.translate("sign_up")),
         actions: [
           // LOGOUT BUTTON
           TextButton(
             child: Text(_i18n.translate('sign_out'),
-                style: TextStyle(color: Theme.of(context).primaryColor)),
+                // style: TextStyle(color: Theme.of(context).primaryColor)),
+                style: const TextStyle(color: Colors.white)),
             onPressed: () {
               // Log out button
               UserModel().signOut().then((_) {
                 /// Go to login screen
                 Future(() {
                   Navigator.of(context).popUntil((route) => route.isFirst);
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const SignInScreen()));
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => const SignInScreen()));
                 });
               });
             },
           )
         ],
       ),
-      body: ScopedModelDescendant<UserModel>(
-          builder: (context, child, userModel) {
+      body: ScopedModelDescendant<UserModel>(builder: (context, child, userModel) {
         /// Check loading status
         if (userModel.isLoading) return const Processing();
         return SingleChildScrollView(
@@ -172,7 +187,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             children: <Widget>[
               Text(_i18n.translate("create_account"),
                   style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold)),
+                      fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
               const SizedBox(height: 20),
 
               /// Profile photo
@@ -195,8 +210,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 },
               ),
               const SizedBox(height: 10),
-              Text(_i18n.translate("profile_photo"),
-                  textAlign: TextAlign.center),
+              Text(_i18n.translate("profile_photo"), textAlign: TextAlign.center),
 
               const SizedBox(height: 22),
 
@@ -205,64 +219,97 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
-                    /// FullName field
                     TextFormField(
                       controller: _nameController,
                       decoration: InputDecoration(
-                          labelText: _i18n.translate("fullname"),
-                          hintText: _i18n.translate("enter_your_fullname"),
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          prefixIcon: const Padding(
-                            padding: EdgeInsets.all(12.0),
-                            child: SvgIcon("assets/icons/user_icon.svg"),
-                          )),
+                        labelText: _i18n.translate("fullname"),
+                        hintText: _i18n.translate("enter_your_fullname"),
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: SvgIcon("assets/icons/user_icon.svg"),
+                        ),
+                        // Add black color to border
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(28),
+                        ),
+                        // Add white color to text, hint, and label
+                        labelStyle: const TextStyle(color: Colors.white),
+                        hintStyle: const TextStyle(color: Colors.white),
+                      ),
+                      // Add white color to the validator error message
+                      // You can further customize the errorStyle as needed
+                      // For example, changing the color, fontSize, etc.
                       validator: (name) {
                         // Basic validation
                         if (name?.isEmpty ?? false) {
-                          return _i18n.translate("please_enter_your_fullname");
+                          return _i18n.translate(
+                            "please_enter_your_fullname",
+                          );
                         }
                         return null;
                       },
+                      style: const TextStyle(color: Colors.white),
                     ),
+
                     const SizedBox(height: 20),
 
                     /// User gender
-                    DropdownButtonFormField<String>(
-                      items: _genders.map((gender) {
-                        return DropdownMenuItem(
-                          value: gender,
-                          child: _i18n.translate("lang") != 'en'
-                              ? Text(
-                                  '${gender.toString()} - ${_i18n.translate(gender.toString().toLowerCase())}')
-                              : Text(gender.toString()),
-                        );
-                      }).toList(),
-                      hint: Text(_i18n.translate("select_gender")),
-                      onChanged: (gender) {
-                        setState(() {
-                          _selectedGender = gender;
-                        });
-                      },
-                      validator: (String? value) {
-                        if (value == null) {
-                          return _i18n.translate("please_select_your_gender");
-                        }
-                        return null;
-                      },
+                    /// User gender
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(30), // Adjust the radius value as needed
+                        border: Border.all(color: Colors.white), // Add white color to the border
+                      ),
+                      child: DropdownButtonFormField<String>(
+                        dropdownColor: Colors.black,
+                        items: _genders.map((gender) {
+                          return DropdownMenuItem(
+                            value: gender,
+                            child: _i18n.translate("lang") != 'en'
+                                ? Text(
+                                    '${gender.toString()} - ${_i18n.translate(gender.toString().toLowerCase())} ',
+                                    style: const TextStyle(color: Colors.white),
+                                  )
+                                : Text(
+                                    gender.toString(),
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
+                          );
+                        }).toList(),
+                        hint: Text(
+                          _i18n.translate("select_gender"),
+                          style:
+                              const TextStyle(color: Colors.white), // Add white color to hint text
+                        ),
+                        onChanged: (gender) {
+                          setState(() {
+                            _selectedGender = gender;
+                          });
+                        },
+                        validator: (String? value) {
+                          if (value == null) {
+                            return _i18n.translate("please_select_your_gender");
+                          }
+                          return null;
+                        },
+                      ),
                     ),
+
                     const SizedBox(height: 20),
 
                     /// Birthday card
                     Card(
+                        color: Colors.black,
                         clipBehavior: Clip.antiAlias,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(28),
                             side: BorderSide(color: Colors.grey[350] as Color)),
                         child: ListTile(
-                          leading:
-                              const SvgIcon("assets/icons/calendar_icon.svg"),
-                          title: Text(_birthday!,
-                              style: const TextStyle(color: Colors.grey)),
+                          leading: const SvgIcon("assets/icons/calendar_icon.svg"),
+                          title: Text(_birthday!, style: const TextStyle(color: Colors.white)),
                           trailing: const Icon(Icons.arrow_drop_down),
                           onTap: () {
                             /// Select birthday
@@ -275,32 +322,52 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     TextFormField(
                       controller: _schoolController,
                       decoration: InputDecoration(
-                          labelText: _i18n.translate("school"),
-                          hintText: _i18n.translate("enter_your_school_name"),
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          prefixIcon: const Padding(
-                            padding: EdgeInsets.all(9.0),
-                            child: SvgIcon("assets/icons/university_icon.svg"),
-                          )),
+                        // Add black color
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.white), // Border color
+                          borderRadius: BorderRadius.circular(28),
+                        ),
+                        hintStyle: const TextStyle(color: Colors.white), // Hint text color
+                        labelStyle: const TextStyle(color: Colors.white), // Label text color
+                        labelText: _i18n.translate("school"),
+                        hintText: _i18n.translate("enter_your_school_name"),
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.all(9.0),
+                          child: SvgIcon("assets/icons/university_icon.svg"),
+                        ),
+                      ),
+                      style: const TextStyle(color: Colors.white), // Text input color
                     ),
-                    const SizedBox(height: 20),
 
-                    /// Job title field
+                    const SizedBox(height: 20),
+// job title
                     TextFormField(
+                      style: const TextStyle(color: Colors.white),
                       controller: _jobController,
                       decoration: InputDecoration(
-                          labelText: _i18n.translate("job_title"),
-                          hintText: _i18n.translate("enter_your_job_title"),
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          prefixIcon: const Padding(
-                            padding: EdgeInsets.all(12.0),
-                            child: SvgIcon("assets/icons/job_bag_icon.svg"),
-                          )),
+                        labelText: _i18n.translate("job_title"),
+                        hintText: _i18n.translate("enter_your_job_title"),
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: SvgIcon("assets/icons/job_bag_icon.svg"),
+                        ),
+                        // Add black color to border
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(28),
+                        ),
+                        // Add white color to text, hint, and label
+                        labelStyle: const TextStyle(color: Colors.white),
+                        hintStyle: const TextStyle(color: Colors.white),
+                      ),
                     ),
-                    const SizedBox(height: 20),
 
-                    /// Bio field
+                    const SizedBox(height: 20),
+// bio
                     TextFormField(
+                      style: const TextStyle(color: Colors.white),
                       controller: _bioController,
                       maxLines: 4,
                       decoration: InputDecoration(
@@ -311,10 +378,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           padding: EdgeInsets.all(12.0),
                           child: SvgIcon("assets/icons/info_icon.svg"),
                         ),
+                        // Add black color to border
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(28),
+                        ),
+                        // Add white color to text, hint, and label
+                        labelStyle: const TextStyle(color: Colors.white),
+                        hintStyle: const TextStyle(color: Colors.white),
                       ),
+                      // Add white color to the validator error message
+                      // You can further customize the errorStyle as needed
+                      // For example, changing the color, fontSize, etc.
                       validator: (bio) {
                         if (bio?.isEmpty ?? false) {
-                          return _i18n.translate("please_write_your_bio");
+                          return _i18n.translate(
+                            "please_write_your_bio",
+                          );
                         }
                         return null;
                       },
@@ -329,8 +409,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(
                       width: double.maxFinite,
                       child: DefaultButton(
-                        child:
-                            const Text('Next', style: TextStyle(fontSize: 18)),
+                        child: const Text('Next', style: TextStyle(fontSize: 18)),
                         onPressed: () {
                           /// Sign up
                           _createAccount();
@@ -371,8 +450,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       showScaffoldMessage(
           context: context,
           duration: const Duration(seconds: 7),
-          message: _i18n.translate(
-              "only_18_years_old_and_above_are_allowed_to_create_an_account"),
+          message: _i18n.translate("only_18_years_old_and_above_are_allowed_to_create_an_account"),
           bgcolor: Colors.red);
     } else if (!_formKey.currentState!.validate()) {
     } else {
@@ -394,8 +472,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         onSuccess: () async {
           // Show success message
           successDialog(context,
-              message:
-                  _i18n.translate("your_account_has_been_created_successfully"),
+              message: _i18n.translate("your_account_has_been_created_successfully"),
               positiveAction: () {
             // Execute action
             // Go to get the user device's current location
@@ -406,8 +483,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               //     (route) => false);
 
               Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                      builder: (context) => const InterestScreen()),
+                  MaterialPageRoute(builder: (context) => const InterestScreen()),
                   (route) => false);
             });
             // End
@@ -418,8 +494,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           debugPrint(error);
           // Show error message
           errorDialog(context,
-              message: _i18n
-                  .translate("an_error_occurred_while_creating_your_account"));
+              message: _i18n.translate("an_error_occurred_while_creating_your_account"));
         },
       );
     }
@@ -432,19 +507,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: Row(
         children: <Widget>[
           Checkbox(
-              activeColor: Theme.of(context).primaryColor,
-              value: _agreeTerms,
-              onChanged: (value) {
-                _setAgreeTerms(value!);
-              }),
+            activeColor: Colors.black, // Color of the checkbox when checked
+            checkColor: Colors.black, // Color of the checkmark when checked
+            fillColor: MaterialStateColor.resolveWith((states) {
+              if (states.contains(MaterialState.selected)) {
+                // When the checkbox is selected (checked)
+                return Colors.white; // Change this to the desired color for the checkbox border
+              } else {
+                // When the checkbox is not selected (unchecked)
+                return Colors.white; // Change this to the desired color for the checkbox border
+              }
+            }),
+            visualDensity: VisualDensity.compact, // Add this property to make the checkbox visible
+            value: _agreeTerms,
+            onChanged: (value) {
+              _setAgreeTerms(value!);
+            },
+          ),
           Row(
             children: <Widget>[
               GestureDetector(
-                  onTap: () => _setAgreeTerms(!_agreeTerms),
-                  child: Text(_i18n.translate("i_agree_with"),
-                      style: const TextStyle(fontSize: 16))),
+                onTap: () => _setAgreeTerms(!_agreeTerms),
+                child: Text(
+                  _i18n.translate("i_agree_with"),
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
+                ),
+              ),
               // Terms of Service and Privacy Policy
-              TermsOfServiceRow(color: Colors.black),
+              TermsOfServiceRow(color: Colors.white), // Set the color to white
             ],
           ),
         ],

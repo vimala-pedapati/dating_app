@@ -1,6 +1,6 @@
 import 'package:Mingledxb/screens/profile_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
- 
+
 import 'package:flutter/material.dart';
 
 import '../api/likes_api.dart';
@@ -38,13 +38,10 @@ class _ProfileLikesScreenState extends State<ProfileLikesScreen> {
   /// Load more users
   void _loadMoreUsersListener() async {
     _gridViewController.addListener(() {
-      if (_gridViewController.position.pixels ==
-          _gridViewController.position.maxScrollExtent) {
+      if (_gridViewController.position.pixels == _gridViewController.position.maxScrollExtent) {
         /// Load more users
         if (_loadMore) {
-          _likesApi
-              .getLikedMeUsers(loadMore: true, userLastDoc: _userLastDoc)
-              .then((users) {
+          _likesApi.getLikedMeUsers(loadMore: true, userLastDoc: _userLastDoc).then((users) {
             /// Update users list
             if (users.isNotEmpty) {
               _updateUsersList(users);
@@ -106,7 +103,13 @@ class _ProfileLikesScreenState extends State<ProfileLikesScreen> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(_i18n.translate("likes")),
+          backgroundColor: Colors.black,
+          // change color for the back button
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Text(_i18n.translate("likes"), style: const TextStyle(color: Colors.white)),
         ),
         body: Column(
           children: [
@@ -175,23 +178,19 @@ class _ProfileLikesScreenState extends State<ProfileLikesScreen> {
                               context: context,
                               barrierDismissible: false,
                               builder: (context) {
-                                return ProfileScreen(
-                                    user: user, hideDislikeButton: true);
+                                return ProfileScreen(user: user, hideDislikeButton: true);
                               });
 
                           /// Increment user visits an push notification
                           _visitsApi.visitUserProfile(
                             visitedUserId: user.userId,
                             userDeviceToken: user.userDeviceToken,
-                            nMessage:
-                                "${UserModel().user.userFullname.split(' ')[0]}, "
+                            nMessage: "${UserModel().user.userFullname.split(' ')[0]}, "
                                 "${_i18n.translate("visited_your_profile_click_and_see")}",
                           );
                         } else {
                           /// Show VIP dialog
-                          showDialog(
-                              context: context,
-                              builder: (context) => const VipDialog());
+                          showDialog(context: context, builder: (context) => const VipDialog());
                         }
                       },
                     );

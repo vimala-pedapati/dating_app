@@ -25,14 +25,13 @@ class _EventsTabState extends State<EventsTab> {
   @override
   build(BuildContext context) {
     return Scaffold(
-        backgroundColor: APP_ACCENT_COLOR,
+        backgroundColor: Colors.black,
         body: Column(
           children: [
             const SizedBox(
               height: 100,
             ),
-            eventCard(
-                context: context, eventDetails: latestEventDetailsDisplay),
+            eventCard(context: context, eventDetails: latestEventDetailsDisplay),
           ],
         ));
   }
@@ -80,8 +79,8 @@ Widget eventCard({
               padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
               // height: MediaQuery.of(context).size.height * 0.5,
               width: MediaQuery.of(context).size.width * 0.9,
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              decoration:
+                  BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
               child: SizedBox(
                 child: Column(
                   children: [
@@ -139,12 +138,10 @@ Widget eventCard({
                     Container(
                       height: 150,
                       width: double.infinity,
-                      margin: const EdgeInsets.only(
-                          left: 0, right: 0, top: 20, bottom: 20),
+                      margin: const EdgeInsets.only(left: 0, right: 0, top: 20, bottom: 20),
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: NetworkImage(
-                                  eventDetails["eventImage"] ?? ""),
+                              image: NetworkImage(eventDetails["eventImage"] ?? ""),
                               fit: BoxFit.cover),
                           color: APP_ACCENT_COLOR,
                           borderRadius: BorderRadius.circular(5)),
@@ -276,8 +273,7 @@ Widget eventCard({
                       height: MediaQuery.of(context).size.height * 125 / 812,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image:
-                              NetworkImage(eventDetails["eventQrCode"] ?? ""),
+                          image: NetworkImage(eventDetails["eventQrCode"] ?? ""),
                           fit: BoxFit.cover,
                         ),
                         color: APP_ACCENT_COLOR,
@@ -295,8 +291,7 @@ Widget eventCard({
                             width: 30,
                             height: 30,
                             decoration: BoxDecoration(
-                                color: APP_ACCENT_COLOR,
-                                borderRadius: BorderRadius.circular(5)),
+                                color: Colors.black, borderRadius: BorderRadius.circular(5)),
                           ),
                           Container(
                             width: 30,
@@ -306,7 +301,7 @@ Widget eventCard({
                                 borderRadius: BorderRadius.circular(5)),
                             child: const SvgIcon(
                               "assets/icons/wifi.svg",
-                              color: APP_ACCENT_COLOR,
+                              color: Colors.black,
                             ),
                           ),
                         ],
@@ -324,9 +319,7 @@ Widget eventCard({
         child: Container(
           height: 60,
           width: 60,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-              color: APP_ACCENT_COLOR),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: Colors.black),
         ),
       )
     ],

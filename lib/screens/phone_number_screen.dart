@@ -86,7 +86,21 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                     TextFormField(
                       controller: _numberController,
                       decoration: InputDecoration(
-                          labelText: _i18n.translate("phone_number"),
+                          //add border color white
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          labelStyle: const TextStyle(color: Colors.white),
+                          // labelText: _i18n.translate(
+                          //   "phone_number",
+                          // ),
                           hintText: _i18n.translate("enter_your_number"),
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                           prefixIcon: Padding(

@@ -81,6 +81,7 @@ class MyApp extends StatelessWidget {
           scaffoldMessengerKey: scaffoldMessengerKey,
           title: APP_NAME,
           debugShowCheckedModeBanner: false,
+ 
 
           /// Setup translations
           localizationsDelegates: const [

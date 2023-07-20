@@ -48,15 +48,14 @@ class OtpScreen extends StatefulWidget {
       this.keyboardBackgroundColor,
       this.icon})
       : super(key: key) {
-      _isGradientApplied = true;
+    _isGradientApplied = true;
   }
 
   @override
   _OtpScreenState createState() => _OtpScreenState();
 }
 
-class _OtpScreenState extends State<OtpScreen>
-    with SingleTickerProviderStateMixin {
+class _OtpScreenState extends State<OtpScreen> with SingleTickerProviderStateMixin {
   late Size _screenSize;
   late int _currentDigit;
   late List<int?>? otpValues;
@@ -72,20 +71,21 @@ class _OtpScreenState extends State<OtpScreen>
   Widget build(BuildContext context) {
     _screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.black,
       body: Container(
         padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
         height: MediaQuery.of(context).size.height,
-        decoration: widget._isGradientApplied!
-            ? BoxDecoration(
-                gradient: LinearGradient(
-                colors: [widget.topColor!, widget.bottomColor!],
-                begin: FractionalOffset.topLeft,
-                end: FractionalOffset.bottomRight,
-                stops: const [0, 1],
-                tileMode: TileMode.clamp,
-              ))
-            : const BoxDecoration(color: Colors.white),
+        color: Colors.black,
+        // decoration: widget._isGradientApplied!
+        //     ? BoxDecoration(
+        //         gradient: LinearGradient(
+        //         colors: [widget.topColor!, widget.bottomColor!],
+        //         begin: FractionalOffset.topLeft,
+        //         end: FractionalOffset.bottomRight,
+        //         stops: const [0, 1],
+        //         tileMode: TileMode.clamp,
+        //       ))
+        //     : const BoxDecoration(color: Colors.white),
         width: _screenSize.width,
         child: _getInputPart,
       ),
@@ -97,10 +97,7 @@ class _OtpScreenState extends State<OtpScreen>
     return Text(
       widget.title!,
       textAlign: TextAlign.center,
-      style: TextStyle(
-          fontSize: 28.0,
-          color: widget.titleColor,
-          fontWeight: FontWeight.bold),
+      style: TextStyle(fontSize: 28.0, color: widget.titleColor, fontWeight: FontWeight.bold),
     );
   }
 
@@ -109,10 +106,7 @@ class _OtpScreenState extends State<OtpScreen>
     return Text(
       widget.subTitle!,
       textAlign: TextAlign.center,
-      style: TextStyle(
-          fontSize: 18.0,
-          color: widget.titleColor,
-          fontWeight: FontWeight.w600),
+      style: TextStyle(fontSize: 18.0, color: widget.titleColor, fontWeight: FontWeight.w600),
     );
   }
 
@@ -259,6 +253,7 @@ class _OtpScreenState extends State<OtpScreen>
                       label: Icon(
                         Icons.backspace,
                         color: widget.themeColor,
+                        //  color: Colors.black,
                       ),
                       onPressed: () {
                         setState(() {
@@ -377,5 +372,4 @@ class _OtpScreenState extends State<OtpScreen>
     otpValues = List<int?>.filled(widget.otpLength!, null, growable: false);
     setState(() {});
   }
-
 }

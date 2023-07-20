@@ -89,6 +89,7 @@ class _CustomGridViewState extends State<CustomGridView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: GridView.builder(
@@ -101,8 +102,7 @@ class _CustomGridViewState extends State<CustomGridView> {
             itemBuilder: (BuildContext ctx, index) {
               return InkWell(
                 onTap: () {
-                  if (SelectedInterestList.contains(
-                      interestsData[index]['name'])) {
+                  if (SelectedInterestList.contains(interestsData[index]['name'])) {
                     SelectedInterestList.remove(interestsData[index]['name']);
                   } else {
                     SelectedInterestList.add(interestsData[index]['name']!);
@@ -119,8 +119,7 @@ class _CustomGridViewState extends State<CustomGridView> {
 
                   setState(() {});
                 },
-                child: SelectedInterestList.contains(
-                        interestsData[index]['name'])
+                child: SelectedInterestList.contains(interestsData[index]['name'])
                     ? Container(
                         width: 140,
                         height: 40,
@@ -158,16 +157,14 @@ class _CustomGridViewState extends State<CustomGridView> {
                                   Colors.white,
                                   BlendMode.srcIn,
                                 ),
-                                child:
-                                    Image.asset(interestsData[index]['icon']!),
+                                child: Image.asset(interestsData[index]['icon']!),
                               ),
                               const SizedBox(
                                 width: 10,
                               ),
                               Text(
                                 interestsData[index]['name']!,
-                                style: const TextStyle(
-                                    fontSize: 16, color: Colors.white),
+                                style: const TextStyle(fontSize: 16, color: Colors.white),
                                 textAlign: TextAlign.start,
                               ),
                             ],
@@ -203,16 +200,14 @@ class _CustomGridViewState extends State<CustomGridView> {
                                   APP_PRIMARY_COLOR,
                                   BlendMode.srcIn,
                                 ),
-                                child:
-                                    Image.asset(interestsData[index]['icon']!),
+                                child: Image.asset(interestsData[index]['icon']!),
                               ),
                               const SizedBox(
                                 width: 10,
                               ),
                               Text(
                                 interestsData[index]['name']!,
-                                style: const TextStyle(
-                                    fontSize: 16, color: Colors.black),
+                                style: const TextStyle(fontSize: 16, color: Colors.black),
                                 textAlign: TextAlign.start,
                               ),
                             ],

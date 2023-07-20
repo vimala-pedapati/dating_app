@@ -1,6 +1,6 @@
 import 'package:Mingledxb/screens/profile_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
- 
+
 import 'package:flutter/material.dart';
 
 import '../api/dislikes_api.dart';
@@ -38,13 +38,11 @@ class _DislikedProfilesScreenState extends State<DislikedProfilesScreen> {
   /// Load more users
   void _loadMoreUsersListener() async {
     _gridViewController.addListener(() {
-      if (_gridViewController.position.pixels ==
-          _gridViewController.position.maxScrollExtent) {
+      if (_gridViewController.position.pixels == _gridViewController.position.maxScrollExtent) {
         /// Load more users
         if (_loadMore) {
           _dislikesApi
-              .getDislikedUsers(
-                  withLimit: true, loadMore: true, userLastDoc: _userLastDoc)
+              .getDislikedUsers(withLimit: true, loadMore: true, userLastDoc: _userLastDoc)
               .then((users) {
             /// Update user list
             if (users.isNotEmpty) {
@@ -106,21 +104,32 @@ class _DislikedProfilesScreenState extends State<DislikedProfilesScreen> {
     _i18n = AppLocalizations.of(context);
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(_i18n.translate("disliked_profiles")),
+      appBar: AppBar(
+        // change color for backbutton
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios,color: Colors.white,),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        body: Column(
-          children: [
-            /// Header Title
-            BuildTitle(
-              svgIconName: "close_icon",
-              title: _i18n.translate("profiles_you_rejected"),
-            ),
+        backgroundColor: Colors.black, // Background color of the app bar
+        title: Text(
+          _i18n.translate("disliked_profiles"),
+          style: const TextStyle(color: Colors.white), // Text color of the app bar title
+        ),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: [
+          /// Header Title
+          BuildTitle(
+            svgIconName: "close_icon",
+            title: _i18n.translate("profiles_you_rejected"),
+          ),
 
-            /// Matches
-            Expanded(child: _showProfiles())
-          ],
-        ));
+          /// Matches
+          Expanded(child: _showProfiles())
+        ],
+      ),
+    );
   }
 
   /// Show profiles
@@ -177,24 +186,19 @@ class _DislikedProfilesScreenState extends State<DislikedProfilesScreen> {
                               barrierDismissible: false,
                               builder: (context) {
                                 return ProfileScreen(
-                                    user: user,
-                                    hideDislikeButton: true,
-                                    fromDislikesScreen: true);
+                                    user: user, hideDislikeButton: true, fromDislikesScreen: true);
                               });
 
                           /// Increment user visits an push notification
                           _visitsApi.visitUserProfile(
                             visitedUserId: user.userId,
                             userDeviceToken: user.userDeviceToken,
-                            nMessage:
-                                "${UserModel().user.userFullname.split(' ')[0]}, "
+                            nMessage: "${UserModel().user.userFullname.split(' ')[0]}, "
                                 "${_i18n.translate("visited_your_profile_click_and_see")}",
                           );
                         } else {
                           /// Show VIP dialog
-                          showDialog(
-                              context: context,
-                              builder: (context) => const VipDialog());
+                          showDialog(context: context, builder: (context) => const VipDialog());
                         }
                       },
                     );
