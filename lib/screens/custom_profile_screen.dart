@@ -6,18 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:place_picker/entities/location_result.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:timeago/timeago.dart' as timeago;
+
 import '../constants/constants.dart';
 import '../datas/user.dart';
 import '../dialogs/common_dialogs.dart';
 import '../dialogs/progress_dialog.dart';
-import '../dialogs/show_me_dialog.dart';
 import '../helpers/app_localizations.dart';
 import '../helpers/interest_gird_view.dart';
-import '../models/app_model.dart';
 import '../models/user_model.dart';
+import '../widgets/image_source_sheet.dart';
 import '../widgets/user_gallery.dart';
 import 'passport_screen.dart';
-import '../widgets/image_source_sheet.dart';
 
 class CustomProfileScreen extends StatefulWidget {
   /// Params
@@ -304,7 +303,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                             // Save changes button
                             TextButton(
                               child: Text(_i18n.translate("SAVE"),
-                                  style: TextStyle(color: Theme.of(context).primaryColor)),
+                                  style: const TextStyle(color: Colors.white)),
                               onPressed: () {
                                 /// Validate form
                                 if (_formKey.currentState!.validate()) {
@@ -325,14 +324,27 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                             children: [
                               const Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: Text("Name "),
+                                child: Text("Name ", style: TextStyle(color: Colors.white)),
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.7,
                                 child: TextFormField(
+                                  style: const TextStyle(
+                                      color: Colors.white), // Text color in black theme
+                                  cursorColor: Colors.white, // Cursor color in black theme
                                   decoration: InputDecoration(
                                     contentPadding: const EdgeInsets.all(0),
+                                    filled: true, // Fill the background with black
+                                    fillColor: Colors.black, // Background color in black theme
                                     border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide.none,
                                     ),
@@ -357,11 +369,15 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                             children: [
                               const Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: Text("Phone Number"),
+                                child: Text("Phone Number", style: TextStyle(color: Colors.white)),
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.6,
                                 child: TextFormField(
+                                  style: const TextStyle(
+                                      color: Colors.white), // Text color in black theme
+                                  cursorColor: Colors.white, // Cursor color in black theme
+
                                   decoration: InputDecoration(
                                     contentPadding: const EdgeInsets.all(0),
                                     border: OutlineInputBorder(
@@ -389,11 +405,16 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                             children: [
                               const Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: Text("Date of birth "),
+                                child:
+                                    Text("Date of birth ", style: TextStyle(color: Colors.white)),
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.6,
                                 child: TextFormField(
+                                  style: const TextStyle(
+                                      color: Colors.white), // Text color in black theme
+                                  cursorColor: Colors.white, // Cursor color in black theme
+
                                   decoration: InputDecoration(
                                     contentPadding: const EdgeInsets.all(0),
                                     border: OutlineInputBorder(
@@ -420,11 +441,15 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                             children: [
                               const Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: Text("Email "),
+                                child: Text("Email ", style: TextStyle(color: Colors.white)),
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.7,
                                 child: TextFormField(
+                                  style: const TextStyle(
+                                      color: Colors.white), // Text color in black theme
+                                  cursorColor: Colors.white, // Cursor color in black theme
+
                                   decoration: InputDecoration(
                                     contentPadding: const EdgeInsets.all(0),
                                     border: OutlineInputBorder(
@@ -453,16 +478,36 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                               Expanded(
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Text(_i18n.translate("write_about_you")),
+                                  child: Text(
+                                    _i18n.translate("write_about_you"),
+                                    // add bio
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.7,
                                 child: TextFormField(
                                   maxLines: 4,
+                                  style: const TextStyle(
+                                      color: Colors.white), // Text color in black theme
+                                  cursorColor: Colors.white, // Cursor color in black theme
                                   decoration: InputDecoration(
                                     floatingLabelBehavior: FloatingLabelBehavior.always,
+                                    filled: true, // Fill the background with black
+                                    fillColor: Colors.black, // Background color in black theme
+                                    hintText: 'Write your bio here', // Placeholder text
+                                    hintStyle: const TextStyle(
+                                        color: Colors.white), // Placeholder color in black theme
                                     border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide.none,
                                     ),
@@ -470,7 +515,7 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                                   controller: _bioController,
                                   textAlign: TextAlign.right,
                                   validator: (bio) {
-                                    if (bio == null) {
+                                    if (bio == null || bio.isEmpty) {
                                       return _i18n.translate("please_write_your_bio");
                                     }
                                     return null;
@@ -494,11 +539,16 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Text(_i18n.translate("school")),
+                                child: Text(
+                                  _i18n.translate("school"),
+                                  style: const TextStyle(color: Colors.white),
+                                ),
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.7,
                                 child: TextFormField(
+                                  style: const TextStyle(
+                                      color: Colors.white), // Text color in black theme
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
@@ -522,40 +572,40 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                         const SizedBox(height: 20),
 
                         /// Job title field
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Colors.grey),
-                          ),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(_i18n.translate("job_title")),
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.7,
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                  ),
-                                  controller: _jobController,
-                                  textAlign: TextAlign.right,
-                                  validator: (job) {
-                                    if (job == null) {
-                                      return _i18n.translate("please_enter_your_job_title");
-                                    }
-                                    return null;
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        // Container(
+                        //   width: MediaQuery.of(context).size.width,
+                        //   decoration: BoxDecoration(
+                        //     borderRadius: BorderRadius.circular(10),
+                        //     border: Border.all(color: Colors.grey),
+                        //   ),
+                        //   child: Row(
+                        //     children: [
+                        //       Padding(
+                        //         padding: const EdgeInsets.all(8.0),
+                        //         child: Text(_i18n.translate("job_title")),
+                        //       ),
+                        //       SizedBox(
+                        //         width: MediaQuery.of(context).size.width * 0.7,
+                        //         child: TextFormField(
+                        //           decoration: InputDecoration(
+                        //             border: OutlineInputBorder(
+                        //               borderRadius: BorderRadius.circular(10),
+                        //               borderSide: BorderSide.none,
+                        //             ),
+                        //           ),
+                        //           controller: _jobController,
+                        //           textAlign: TextAlign.right,
+                        //           validator: (job) {
+                        //             if (job == null) {
+                        //               return _i18n.translate("please_enter_your_job_title");
+                        //             }
+                        //             return null;
+                        //           },
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
 
                         //  const SizedBox(height: 20),
                         // //current_plan
@@ -601,15 +651,15 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                         //   ),
                         // ),
                         //Plan settings
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            _i18n.translate("discovery_settings"),
-                            textAlign: TextAlign.start,
-                            style: const TextStyle(
-                                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.all(10.0),
+                        //   child: Text(
+                        //     _i18n.translate("discovery_settings"),
+                        //     textAlign: TextAlign.start,
+                        //     style: const TextStyle(
+                        //         color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                        //   ),
+                        // ),
 
                         // /// Passport feature
                         // /// Travel to any Country or City and Swipe Women there!
@@ -663,216 +713,222 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                         // const SizedBox(height: 20),
 
                         /// User current location
-                        Card(
-                            margin: const EdgeInsets.symmetric(horizontal: 8),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(_i18n.translate("your_current_location"),
-                                      style: const TextStyle(fontSize: 18)),
-                                ),
-                                ListTile(
-                                  leading: SvgIcon("assets/icons/location_point_icon.svg",
-                                      color: Theme.of(context).primaryColor),
-                                  title: Text(
-                                      '${UserModel().user.userCountry}, ${UserModel().user.userLocality}'),
-                                  trailing: TextButton(
-                                    style: ButtonStyle(
-                                      backgroundColor: MaterialStateProperty.all<Color>(
-                                          Theme.of(context).primaryColor),
-                                    ),
-                                    child: Text(_i18n.translate("UPDATE"),
-                                        style: const TextStyle(color: Colors.white)),
-                                    onPressed: () async {
-                                      /// Update user location: Country & City an Geo Data
-                                      _updateUserLocation(false);
-                                    },
-                                  ),
-                                ),
-                              ],
-                            )),
-                        const SizedBox(height: 15),
+                        // Card(
+                        //     margin: const EdgeInsets.symmetric(horizontal: 8),
+                        //     child: Column(
+                        //       crossAxisAlignment: CrossAxisAlignment.start,
+                        //       children: [
+                        //         Padding(
+                        //           padding: const EdgeInsets.all(8.0),
+                        //           child: Text(_i18n.translate("your_current_location"),
+                        //               style: const TextStyle(fontSize: 18)),
+                        //         ),
+                        //         ListTile(
+                        //           leading: SvgIcon("assets/icons/location_point_icon.svg",
+                        //               color: Theme.of(context).primaryColor),
+                        //           title: Text(
+                        //               '${UserModel().user.userCountry}, ${UserModel().user.userLocality}'),
+                        //           trailing: TextButton(
+                        //             style: ButtonStyle(
+                        //               backgroundColor: MaterialStateProperty.all<Color>(
+                        //                   Theme.of(context).primaryColor),
+                        //             ),
+                        //             child: Text(_i18n.translate("UPDATE"),
+                        //                 style: const TextStyle(color: Colors.white)),
+                        //             onPressed: () async {
+                        //               /// Update user location: Country & City an Geo Data
+                        //               _updateUserLocation(false);
+                        //             },
+                        //           ),
+                        //         ),
+                        //       ],
+                        //     )),
+                        // const SizedBox(height: 15),
 
                         /// User Max distance
-                        Card(
-                          margin: const EdgeInsets.symmetric(horizontal: 8),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                        '${_i18n.translate("maximum_distance")} ${_selectedMaxDistance.round()} km',
-                                        style: const TextStyle(fontSize: 18)),
-                                    const SizedBox(height: 3),
-                                    Text(_i18n.translate("show_people_within_this_radius"),
-                                        style: const TextStyle(color: Colors.grey)),
-                                  ],
-                                ),
-                              ),
-                              SliderTheme(
-                                data: SliderTheme.of(context).copyWith(
-                                  trackHeight: 2, // Set the track height to 2 pixels
-                                  thumbShape: const RoundSliderThumbShape(
-                                    enabledThumbRadius: 8, // Set the thumb radius to 8 pixels
-                                  ),
-                                  overlayShape: const RoundSliderOverlayShape(
-                                    overlayRadius: 16, // Set the overlay radius to 16 pixels
-                                  ),
-                                ),
-                                child: Slider(
-                                  activeColor: APP_ACCENT_COLOR,
-                                  value: _selectedMaxDistance,
-                                  label: _selectedMaxDistance.round().toString() + ' km',
-                                  divisions: 100,
-                                  min: 0,
-                                  max: UserModel().userIsVip
-                                      ? AppModel().appInfo.vipAccountMaxDistance
-                                      : AppModel().appInfo.freeAccountMaxDistance,
-                                  onChanged: (radius) {
-                                    setState(() {
-                                      _selectedMaxDistance = radius;
-                                    });
-                                    // debug
-                                    debugPrint(
-                                        '_selectedMaxDistance: ${radius.toStringAsFixed(2)}');
-                                  },
-                                  onChangeEnd: (radius) {
-                                    /// Update user max distance
-                                    UserModel().updateUserData(
-                                        userId: UserModel().user.userId,
-                                        data: {
-                                          '$USER_SETTINGS.$USER_MAX_DISTANCE':
-                                              double.parse(radius.toStringAsFixed(2))
-                                        }).then((_) {
-                                      debugPrint(
-                                          'User max distance updated -> ${radius.toStringAsFixed(2)}');
-                                    });
-                                  },
-                                ),
-                              ),
+                        // Card(
+                        //   margin: const EdgeInsets.symmetric(horizontal: 8),
+                        //   child: Column(
+                        //     crossAxisAlignment: CrossAxisAlignment.start,
+                        //     children: [
+                        //       Padding(
+                        //         padding: const EdgeInsets.all(8.0),
+                        //         child: Column(
+                        //           crossAxisAlignment: CrossAxisAlignment.start,
+                        //           children: <Widget>[
+                        //             Text(
+                        //                 '${_i18n.translate("maximum_distance")} ${_selectedMaxDistance.round()} km',
+                        //                 style: const TextStyle(fontSize: 18)),
+                        //             const SizedBox(height: 3),
+                        //             Text(_i18n.translate("show_people_within_this_radius"),
+                        //                 style: const TextStyle(color: Colors.grey)),
+                        //           ],
+                        //         ),
+                        //       ),
+                        //       SliderTheme(
+                        //         data: SliderTheme.of(context).copyWith(
+                        //           trackHeight: 2, // Set the track height to 2 pixels
+                        //           thumbShape: const RoundSliderThumbShape(
+                        //             enabledThumbRadius: 8, // Set the thumb radius to 8 pixels
+                        //           ),
+                        //           overlayShape: const RoundSliderOverlayShape(
+                        //             overlayRadius: 16, // Set the overlay radius to 16 pixels
+                        //           ),
+                        //         ),
+                        //         child: Slider(
+                        //           activeColor: APP_ACCENT_COLOR,
+                        //           value: _selectedMaxDistance,
+                        //           label: _selectedMaxDistance.round().toString() + ' km',
+                        //           divisions: 100,
+                        //           min: 0,
+                        //           max: UserModel().userIsVip
+                        //               ? AppModel().appInfo.vipAccountMaxDistance
+                        //               : AppModel().appInfo.freeAccountMaxDistance,
+                        //           onChanged: (radius) {
+                        //             setState(() {
+                        //               _selectedMaxDistance = radius;
+                        //             });
+                        //             // debug
+                        //             debugPrint(
+                        //                 '_selectedMaxDistance: ${radius.toStringAsFixed(2)}');
+                        //           },
+                        //           onChangeEnd: (radius) {
+                        //             /// Update user max distance
+                        //             UserModel().updateUserData(
+                        //                 userId: UserModel().user.userId,
+                        //                 data: {
+                        //                   '$USER_SETTINGS.$USER_MAX_DISTANCE':
+                        //                       double.parse(radius.toStringAsFixed(2))
+                        //                 }).then((_) {
+                        //               debugPrint(
+                        //                   'User max distance updated -> ${radius.toStringAsFixed(2)}');
+                        //             });
+                        //           },
+                        //         ),
+                        //       ),
 
-                              // Show message for non VIP user
-                              UserModel().userIsVip
-                                  ? const SizedBox(width: 0, height: 0)
-                                  : Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                          "${_i18n.translate("need_more_radius_away")} "
-                                          "${AppModel().appInfo.vipAccountMaxDistance} km "
-                                          "${_i18n.translate('radius_away')}",
-                                          style: TextStyle(color: Theme.of(context).primaryColor)),
-                                    ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 15),
+                        //       // Show message for non VIP user
+                        //       UserModel().userIsVip
+                        //           ? const SizedBox(width: 0, height: 0)
+                        //           : Padding(
+                        //               padding: const EdgeInsets.all(8.0),
+                        //               child: Text(
+                        //                   "${_i18n.translate("need_more_radius_away")} "
+                        //                   "${AppModel().appInfo.vipAccountMaxDistance} km "
+                        //                   "${_i18n.translate('radius_away')}",
+                        //                   style: TextStyle(color: Theme.of(context).primaryColor)),
+                        //             ),
+                        //     ],
+                        //   ),
+                        // ),
+                        // const SizedBox(height: 15),
 
                         // User age range
-                        Card(
-                            child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ListTile(
-                              title: Text(_i18n.translate("age_range"),
-                                  style: const TextStyle(fontSize: 19)),
-                              subtitle: Text(_i18n.translate("show_people_within_this_age_range")),
-                              trailing: Text(
-                                  "${_selectedAgeRange.start.toStringAsFixed(0)} - "
-                                  "${_selectedAgeRange.end.toStringAsFixed(0)}",
-                                  style:
-                                      const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                            ),
-                            SliderTheme(
-                              data: SliderTheme.of(context).copyWith(
-                                trackHeight: 2, // Set the track height to 2 pixels
-                                thumbShape: const RoundSliderThumbShape(
-                                  enabledThumbRadius: 8, // Set the thumb radius to 8 pixels
-                                ),
-                                overlayShape: const RoundSliderOverlayShape(
-                                  overlayRadius: 16, // Set the overlay radius to 16 pixels
-                                ),
-                              ),
-                              child: RangeSlider(
-                                  activeColor: APP_ACCENT_COLOR,
-                                  values: _selectedAgeRange,
-                                  labels: _selectedAgeRangeLabels,
-                                  divisions: 100,
-                                  min: 18,
-                                  max: 100,
-                                  onChanged: (newRange) {
-                                    // Update state
-                                    setState(() {
-                                      _selectedAgeRange = newRange;
-                                      _selectedAgeRangeLabels = RangeLabels(
-                                          newRange.start.toStringAsFixed(0),
-                                          newRange.end.toStringAsFixed(0));
-                                    });
-                                    debugPrint('_selectedAgeRange: $_selectedAgeRange');
-                                  },
-                                  onChangeEnd: (endValues) {
-                                    /// Update age range
-                                    ///
-                                    /// Get start value
-                                    final int minAge =
-                                        int.parse(endValues.start.toStringAsFixed(0));
+                        // Card(
+                        //     child: Column(
+                        //   crossAxisAlignment: CrossAxisAlignment.start,
+                        //   children: [
+                        //     ListTile(
+                        //       title: Text(_i18n.translate("age_range"),
+                        //           style: const TextStyle(fontSize: 19)),
+                        //       subtitle: Text(_i18n.translate("show_people_within_this_age_range")),
+                        //       trailing: Text(
+                        //           "${_selectedAgeRange.start.toStringAsFixed(0)} - "
+                        //           "${_selectedAgeRange.end.toStringAsFixed(0)}",
+                        //           style:
+                        //               const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        //     ),
+                        //     SliderTheme(
+                        //       data: SliderTheme.of(context).copyWith(
+                        //         trackHeight: 2, // Set the track height to 2 pixels
+                        //         thumbShape: const RoundSliderThumbShape(
+                        //           enabledThumbRadius: 8, // Set the thumb radius to 8 pixels
+                        //         ),
+                        //         overlayShape: const RoundSliderOverlayShape(
+                        //           overlayRadius: 16, // Set the overlay radius to 16 pixels
+                        //         ),
+                        //       ),
+                        //       child: RangeSlider(
+                        //           activeColor: APP_ACCENT_COLOR,
+                        //           values: _selectedAgeRange,
+                        //           labels: _selectedAgeRangeLabels,
+                        //           divisions: 100,
+                        //           min: 18,
+                        //           max: 100,
+                        //           onChanged: (newRange) {
+                        //             // Update state
+                        //             setState(() {
+                        //               _selectedAgeRange = newRange;
+                        //               _selectedAgeRangeLabels = RangeLabels(
+                        //                   newRange.start.toStringAsFixed(0),
+                        //                   newRange.end.toStringAsFixed(0));
+                        //             });
+                        //             debugPrint('_selectedAgeRange: $_selectedAgeRange');
+                        //           },
+                        //           onChangeEnd: (endValues) {
+                        //             /// Update age range
+                        //             ///
+                        //             /// Get start value
+                        //             final int minAge =
+                        //                 int.parse(endValues.start.toStringAsFixed(0));
 
-                                    /// Get end value
-                                    final int maxAge = int.parse(endValues.end.toStringAsFixed(0));
+                        //             /// Get end value
+                        //             final int maxAge = int.parse(endValues.end.toStringAsFixed(0));
 
-                                    // Update age range
-                                    UserModel()
-                                        .updateUserData(userId: UserModel().user.userId, data: {
-                                      '$USER_SETTINGS.$USER_MIN_AGE': minAge,
-                                      '$USER_SETTINGS.$USER_MAX_AGE': maxAge,
-                                    }).then((_) {
-                                      debugPrint('Age range updated');
-                                    });
-                                  }),
-                            )
-                          ],
-                        )),
+                        //             // Update age range
+                        //             UserModel()
+                        //                 .updateUserData(userId: UserModel().user.userId, data: {
+                        //               '$USER_SETTINGS.$USER_MIN_AGE': minAge,
+                        //               '$USER_SETTINGS.$USER_MAX_AGE': maxAge,
+                        //             }).then((_) {
+                        //               debugPrint('Age range updated');
+                        //             });
+                        //           }),
+                        //     )
+                        //   ],
+                        // )),
 
-                        const SizedBox(height: 15),
+                        // const SizedBox(height: 15),
                         // Show me option
-                        Card(
-                          child: ListTile(
-                            leading: Icon(
-                              Icons.wc_outlined,
-                              color: Theme.of(context).primaryColor,
-                              size: 30,
-                            ),
-                            title: Text(_i18n.translate('show_me'),
-                                style: const TextStyle(fontSize: 18)),
-                            trailing:
-                                Text(_showMeOption(_i18n), style: const TextStyle(fontSize: 18)),
-                            onTap: () {
-                              /// Choose Show me option
-                              showDialog(
-                                  context: context,
-                                  barrierDismissible: false,
-                                  builder: (context) {
-                                    return const ShowMeDialog();
-                                  });
-                            },
-                          ),
-                        ),
+                        // Card(
+                        //   child: ListTile(
+                        //     leading: Icon(
+                        //       Icons.wc_outlined,
+                        //       color: Theme.of(context).primaryColor,
+                        //       size: 30,
+                        //     ),
+                        //     title: Text(_i18n.translate('show_me'),
+                        //         style: const TextStyle(fontSize: 18)),
+                        //     trailing:
+                        //         Text(_showMeOption(_i18n), style: const TextStyle(fontSize: 18)),
+                        //     onTap: () {
+                        //       /// Choose Show me option
+                        //       showDialog(
+                        //           context: context,
+                        //           barrierDismissible: false,
+                        //           builder: (context) {
+                        //             return const ShowMeDialog();
+                        //           });
+                        //     },
+                        //   ),
+                        // ),
 
                         const SizedBox(height: 15),
                         // User Interests
                         Card(
+                          color: Colors.black, // Background color of the Card in black theme
                           child: ListTile(
-                            leading: Icon(
+                            leading: const Icon(
                               Icons.favorite_border_outlined,
-                              color: Theme.of(context).primaryColor,
+                              color: Colors.white, // Icon color in white for black theme
                               size: 30,
                             ),
-                            title: const Text('INTERESTS', style: TextStyle(fontSize: 18)),
+                            title: const Text(
+                              'INTERESTS',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white), // Text color in white for black theme
+                            ),
                             onTap: () {
                               Navigator.push<void>(
                                 context,
@@ -883,28 +939,41 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
                             },
                           ),
                         ),
+
                         // const SizedBox(height: 600, child: CustomGridView()),
                         const SizedBox(height: 15),
 
                         /// Hide user profile setting
                         Card(
+                          color: Colors.black, // Background color of the Card in black theme
                           child: ListTile(
                             leading: _hideProfile
-                                ? Icon(Icons.visibility_off,
-                                    color: Theme.of(context).primaryColor, size: 30)
-                                : Icon(Icons.visibility,
-                                    color: Theme.of(context).primaryColor, size: 30),
-                            title: Text(_i18n.translate('hide_profile'),
-                                style: const TextStyle(fontSize: 18)),
+                                ? const Icon(Icons.visibility_off,
+                                    color: Colors.white,
+                                    size: 30) // Icon color in white for black theme
+                                : const Icon(Icons.visibility,
+                                    color: Colors.white,
+                                    size: 30), // Icon color in white for black theme
+                            title: Text(
+                              _i18n.translate('hide_profile'),
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white), // Text color in white for black theme
+                            ),
                             subtitle: _hideProfile
                                 ? Text(
                                     _i18n.translate('your_profile_is_hidden_on_discover_tab'),
                                     style: const TextStyle(color: Colors.red),
                                   )
-                                : Text(_i18n.translate('your_profile_is_visible_on_discover_tab'),
-                                    style: const TextStyle(color: Colors.green)),
+                                : Text(
+                                    _i18n.translate('your_profile_is_visible_on_discover_tab'),
+                                    style: const TextStyle(color: Colors.green),
+                                  ),
                             trailing: Switch(
-                              activeColor: Theme.of(context).primaryColor,
+                              activeColor:
+                                  Colors.white, // Switch active color in white for black theme
+                              inactiveThumbColor: Colors.white,
+                              inactiveTrackColor: Colors.grey,
                               value: _hideProfile,
                               onChanged: (newValue) {
                                 // Update UI
@@ -920,8 +989,9 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
 
                                 // Update profile status
                                 UserModel().updateUserData(
-                                    userId: UserModel().user.userId,
-                                    data: {USER_STATUS: userStatus}).then((_) {
+                                  userId: UserModel().user.userId,
+                                  data: {USER_STATUS: userStatus},
+                                ).then((_) {
                                   debugPrint('Profile hidden: $newValue');
                                 });
                               },
@@ -975,8 +1045,8 @@ class _CustomProfileScreenState extends State<CustomProfileScreen> {
 
                               /// Join date
                               _rowProfileInfo(context,
-                                  icon: SvgIcon("assets/icons/info_icon.svg",
-                                      color: Theme.of(context).primaryColor, width: 28, height: 28),
+                                  icon: const SvgIcon("assets/icons/info_icon.svg",
+                                      color: Colors.white, width: 20, height: 20),
                                   title:
                                       '${_i18n.translate('join_date')} ${timeago.format(widget.user.userRegDate)}'),
 
@@ -1088,7 +1158,10 @@ Widget _rowProfileInfo(BuildContext context, {required Widget icon, required Str
       const SizedBox(width: 10),
       Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Text(title, style: const TextStyle(fontSize: 19)),
+        child: Text(
+          title,
+          style: const TextStyle(fontSize: 19, color: Colors.white),
+        ),
       ),
     ],
   );

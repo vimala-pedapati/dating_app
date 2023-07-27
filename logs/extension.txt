@@ -1,0 +1,126 @@
+!! PLEASE REVIEW THIS LOG FOR SENSITIVE INFORMATION BEFORE SHARING !!
+
+Dart Code extension: 3.68.1
+Flutter extension: 3.69.20230703 (not activated)
+
+App: Visual Studio Code
+Version: 1.80.1
+Platform: mac
+
+HTTP_PROXY: undefined
+NO_PROXY: undefined
+
+Logging Categories:
+    General
+
+Thu Jul 27 2023 [21:05:27 GMT+0530 (India Standard Time)] Log file started
+[21:05:27] [General] [Info] Searching for SDKs...
+[21:05:27] [General] [Info] Environment PATH:
+[21:05:27] [General] [Info]     /usr/bin
+[21:05:27] [General] [Info]     /bin
+[21:05:27] [General] [Info]     /usr/sbin
+[21:05:27] [General] [Info]     /sbin
+[21:05:27] [General] [Info]     /usr/local/bin
+[21:05:27] [General] [Info] Returning cached results for project search
+[21:05:27] [General] [Info] Found Flutter project at /Users/premganesh/Devloveper/Projects/project_1/Mingledxb/Mingledxb:
+			Mobile? true
+			Web? false
+			Create Trigger? false
+			Flutter Repo? false
+[21:05:27] [General] [Info] Searching for flutter
+[21:05:27] [General] [Info]     Looking for flutter in:
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/Projects/project_1/Mingledxb/Mingledxb
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/Projects/project_1/Mingledxb/Mingledxb -> /Users/premganesh/Devloveper/Projects/project_1/Mingledxb/Mingledxb/bin
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/Projects/project_1/Mingledxb/Mingledxb/.flutter
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/Projects/project_1/Mingledxb/Mingledxb/.flutter -> /Users/premganesh/Devloveper/Projects/project_1/Mingledxb/Mingledxb/.flutter/bin
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/Projects/project_1/Mingledxb/Mingledxb/vendor/flutter
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/Projects/project_1/Mingledxb/Mingledxb/vendor/flutter -> /Users/premganesh/Devloveper/Projects/project_1/Mingledxb/Mingledxb/vendor/flutter/bin
+[21:05:27] [General] [Info]         /Users/premganesh/flutter-sdk
+[21:05:27] [General] [Info]         /Users/premganesh/flutter-sdk -> /Users/premganesh/flutter-sdk/bin
+[21:05:27] [General] [Info]         /google/flutter
+[21:05:27] [General] [Info]         /google/flutter -> /google/flutter/bin
+[21:05:27] [General] [Info]         /usr/bin
+[21:05:27] [General] [Info]         /bin
+[21:05:27] [General] [Info]         /usr/sbin
+[21:05:27] [General] [Info]         /sbin
+[21:05:27] [General] [Info]         /usr/local/bin
+[21:05:27] [General] [Info]     Found at:
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/
+[21:05:27] [General] [Info]     Candidate paths to be post-filtered:
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/ -> /Users/premganesh/Devloveper/flutter
+[21:05:27] [General] [Info]     Found at /Users/premganesh/Devloveper/flutter/bin/ -> /Users/premganesh/Devloveper/flutter
+[21:05:27] [General] [Info]     Returning SDK path /Users/premganesh/Devloveper/flutter for flutter
+[21:05:27] [General] [Info] Searching for dart
+[21:05:27] [General] [Info]     Looking for dart in:
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk -> /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk/bin
+[21:05:27] [General] [Info]         /usr/bin
+[21:05:27] [General] [Info]         /bin
+[21:05:27] [General] [Info]         /usr/sbin
+[21:05:27] [General] [Info]         /sbin
+[21:05:27] [General] [Info]         /usr/local/bin
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk -> /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk/bin
+[21:05:27] [General] [Info]     Found at:
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk -> /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk/bin
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk -> /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk/bin
+[21:05:27] [General] [Info]     Candidate paths to be post-filtered:
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk
+[21:05:27] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk
+[21:05:27] [General] [Info]     Returning SDK path undefined for dart
+[21:05:27] [General] [Info] Flutter is not initialized, running 'flutter doctor' to force...
+[21:05:27] [General] [Info] (PROC 2383) Logging data for process...
+[21:05:29] [General] [Info] (PROC 2383) [!] Flutter (Channel stable, 3.10.4-0.0.pre.1, on macOS 13.2.1 22D68 darwin-arm64, locale en-IN)
+[21:05:29] [General] [Info] (PROC 2383)     • Flutter version 3.10.4-0.0.pre.1 on channel stable at /Users/premganesh/Devloveper/flutter
+[21:05:29] [General] [Info] (PROC 2383)     ! The flutter binary is not on your path. Consider adding /Users/premganesh/Devloveper/flutter/bin to your path.
+    ! The dart binary is not on your path. Consider adding /Users/premganesh/Devloveper/flutter/bin to your path.
+    • Upstream repository https://github.com/flutter/flutter.git
+[21:05:29] [General] [Info] (PROC 2383)     • Framework revision fef30af78f (7 weeks ago), 2023-06-07 16:03:44 +0530
+    • Engine revision 2a3401c9bb
+    • Dart version 3.0.3
+[21:05:29] [General] [Info] (PROC 2383)     • DevTools version 2.23.1
+    • If those were intentional, you can disregard the above warnings; however it is recommended to use "git" directly to perform update checks and upgrades.
+[21:05:30] [General] [Info] (PROC 2383) [✓] Android toolchain - develop for Android devices (Android SDK version 33.0.1)
+[21:05:30] [General] [Info] (PROC 2383)     • Android SDK at /Users/premganesh/Library/Android/sdk
+    • Platform android-33, build-tools 33.0.1
+    • Java binary at: /Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/java
+    • Java version OpenJDK Runtime Environment (build 17.0.6+0-17.0.6b802.4-9586694)
+    • All Android licenses accepted.
+[21:05:30] [General] [Info] (PROC 2383) [✓] Xcode - develop for iOS and macOS (Xcode 14.2)
+[21:05:30] [General] [Info] (PROC 2383)     • Xcode at /Applications/Xcode.app/Contents/Developer
+    • Build 14C18
+    • CocoaPods version 1.12.1
+[21:05:30] [General] [Info] (PROC 2383) [✓] Chrome - develop for the web
+    • Chrome at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+[21:05:30] [General] [Info] (PROC 2383) [✓] Android Studio (version 2022.2)
+    • Android Studio at /Applications/Android Studio.app/Contents
+    • Flutter plugin can be installed from:
+[21:05:30] [General] [Info] (PROC 2383)       🔨 https://plugins.jetbrains.com/plugin/9212-flutter
+[21:05:30] [General] [Info] (PROC 2383)     • Dart plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/6351-dart
+    • Java version OpenJDK Runtime Environment (build 17.0.6+0-17.0.6b802.4-9586694)
+[21:05:30] [General] [Info] (PROC 2383) [✓] VS Code (version 1.80.1)
+    • VS Code at /Applications/Visual Studio Code.app/Contents
+    • Flutter extension version 3.69.20230703
+[21:05:35] [General] [Info] (PROC 2383) [✓] Connected device (2 available)
+[21:05:35] [General] [Info] (PROC 2383)     • macOS (desktop) • macos  • darwin-arm64   • macOS 13.2.1 22D68 darwin-arm64
+    • Chrome (web)    • chrome • web-javascript • Google Chrome 114.0.5735.248
+[21:05:35] [General] [Info] (PROC 2383) [✓] Network resources
+    • All expected network resources are available.
+[21:05:35] [General] [Info] (PROC 2383) 
+! Doctor found issues in 1 category.
+[21:05:35] [General] [Info] (PROC 2383) exited (0, null)
+[21:05:35] [General] [Info] (PROC 2383) closed (0, null)
+[21:05:35] [General] [Info] Flutter initialized!
+[21:05:35] [General] [Info] Searching for dart
+[21:05:35] [General] [Info]     Looking for dart in:
+[21:05:35] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk
+[21:05:35] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk -> /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk/bin
+[21:05:35] [General] [Info]     Found at:
+[21:05:35] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk -> /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk/bin
+[21:05:35] [General] [Info]     Candidate paths to be post-filtered:
+[21:05:35] [General] [Info]         /Users/premganesh/Devloveper/flutter/bin/cache/dart-sdk
+[21:05:35] [General] [Info]     Returning SDK path undefined for dart
+[21:05:35] [General] [Info] Done!
+Thu Jul 27 2023 [21:07:09 GMT+0530 (India Standard Time)] Log file ended
