@@ -3,10 +3,8 @@ import 'dart:io';
 
 import 'package:Mingledxb/screens/events_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
@@ -42,18 +40,62 @@ class _HomeScreenState extends State<HomeScreen> {
   late Stream<DocumentSnapshot<Map<String, dynamic>>> _userStream;
   // in_app_purchase stream
   late StreamSubscription<List<PurchaseDetails>> _inAppPurchaseStream;
+  Map<String, dynamic> latestEventDetailsDisplay = {};
 
   /// Tab navigation
   Widget _showCurrentNavBar() {
     List<Widget> options = <Widget>[
       const DiscoverTab(),
       const MatchesTab(),
-      const EventsTab(),
+      EventsTab(
+        latestEventDetailsDisplay: latestEventDetailsDisplay,
+      ),
       const ConversationsTab(),
       const ProfileTab()
     ];
 
     return options.elementAt(_selectedIndex);
+  }
+
+  Future<Map<String, dynamic>> getEventDetails() async {
+    final _firestore = FirebaseFirestore.instance;
+    Map<String, dynamic> latestEventDetails = {};
+
+    final eventCollection = _firestore.collection("Events").doc('event');
+    final eventQuerySnapshot = await eventCollection.get();
+
+    if (eventQuerySnapshot.exists) {
+      final latestEventDoc = eventQuerySnapshot;
+      latestEventDetails = latestEventDoc.data()!;
+    }
+    print('''
+evetndata
+${latestEventDetails["imageUrl"]}
+${latestEventDetails["eventTitle"]}
+${latestEventDetails["location"]}
+${latestEventDetails["date"]}
+${latestEventDetails["description"]}
+${latestEventDetails["endTime"]}
+
+
+
+''');
+
+    if (mounted) {
+      setState(() {
+        latestEventDetailsDisplay = {
+          "eventImage": latestEventDetails["imageUrl"],
+          "eventName": latestEventDetails["eventTitle"],
+          "eventLocation": latestEventDetails["location"],
+          "eventDate": latestEventDetails["date"],
+          "eventDescription": latestEventDetails["description"],
+          "eventStartTime": latestEventDetails["startTime"],
+          "eventEndTime": latestEventDetails["endTime"],
+          'eventQrCode': latestEventDetails["qrCodeUrl"],
+        };
+      });
+    }
+    return latestEventDetails;
   }
 
   /// Update selected tab
@@ -221,6 +263,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _getCurrentUserUpdates();
     _handlePurchaseUpdates();
     _initFirebaseMessage();
+    getEventDetails();
 
     /// Request permission for IOS
     _requestPermissionForIOS();
